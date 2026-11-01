@@ -1,0 +1,336 @@
+<title>Liberties and Capture</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'lesson-1' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}" aria-current="page">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+    </nav>
+    <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lesson 1 of 4</p>
+      <h1>Liberties and Capture</h1>
+      <p class="lede">Go has almost no rules, and a game between strong players is still one of the hardest things humans do. This lesson covers the one rule that everything else is built on: how stones stay alive, and how they die.</p>
+      <ul class="goals">
+        <li>Place stones and count their liberties.</li>
+        <li>Capture a stone or a whole chain of stones.</li>
+        <li>Spot a stone in atari and save it.</li>
+        <li>Beat the computer at Capture Go.</li>
+      </ul>
+    </div>
+    <!--HERO-->
+  </header>
+
+  <section class="step" id="game">
+    <p class="eyebrow">Part 1</p>
+    <h2>The game in one paragraph</h2>
+    <div class="prose">
+      <p>Two players, Black and White, take turns placing one stone on the board. Black moves first. Stones are placed on the <dfn>intersections</dfn>, where the lines cross, not inside the squares. Once a stone is placed, it never moves. At the end of the game, the player who controls more of the board wins.</p>
+      <p>That last sentence is the real goal: Go is a game about territory. But before you can understand territory, you need to know what makes stones safe and what gets them captured. That is what the first three lessons are about.</p>
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead><tr><th></th><th>Chess</th><th>Go</th></tr></thead>
+        <tbody>
+          <tr><th>Pieces</th><td>Six kinds, each with its own moves and value</td><td>Every stone is identical. A stone is worth only what its position makes it worth.</td></tr>
+          <tr><th>Moving</th><td>Pieces move around the board</td><td>Stones never move. Each turn adds one more stone.</td></tr>
+          <tr><th>Winning</th><td>Checkmate the king</td><td>Control more of the board than your opponent</td></tr>
+          <tr><th>Board</th><td>64 squares, full of pieces from move one</td><td>361 points (19×19), empty at the start. Beginners use 9×9.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="note-label">If you play Civilization or Polytopia</span>
+      <p>Go feels more like those games than like chess. You start with an empty map, claim land a piece at a time, and decide when to expand and when to defend what you have. You can’t win everywhere, so the skill is choosing where to be strong.</p>
+    </div>
+
+    <div id="w-board"></div>
+  </section>
+
+  <section class="step" id="liberties">
+    <p class="eyebrow">Part 2</p>
+    <h2>Liberties: the air a stone breathes</h2>
+    <div class="prose">
+      <p>A stone’s <dfn>liberties</dfn> are the empty points right next to it, directly along the lines: up, down, left and right. A stone in the open has four liberties.</p>
+      <p>Diagonal points are <em>not</em> liberties. The lines don’t connect diagonally, so neither do stones.</p>
+    </div>
+    <div id="w-lib1"></div>
+    <div class="prose">
+      <p>The edge of the board works like a wall. A stone on the edge has lost one direction, and a stone in the corner has lost two.</p>
+    </div>
+    <div id="w-lib2"></div>
+    <div id="w-lib3"></div>
+  </section>
+
+  <section class="step" id="capture">
+    <p class="eyebrow">Part 3</p>
+    <h2>Capture: take away every liberty</h2>
+    <div class="prose">
+      <p>When a stone has no liberties left, it is <dfn>captured</dfn>: it is taken off the board, and the player who captured it keeps it as a <dfn>prisoner</dfn>. You capture by placing your stones on all of the enemy stone’s liberties.</p>
+      <p>Step through the example below. Watch the green dots: they are White’s remaining liberties.</p>
+    </div>
+    <div id="w-cap-replay"></div>
+    <div class="note key">
+      <span class="note-label">Atari</span>
+      <p>A stone with only one liberty left is <dfn>in atari</dfn> <span class="term-jp">(当たり)</span>. It can be captured on the very next move. Saying “atari” in Go is a bit like saying “check” in chess: it warns that something is about to be taken.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>There is one big difference from check. In chess you <em>must</em> get out of check. In Go you are allowed to ignore atari and play somewhere else, and good players sometimes do. If the stone in danger isn’t worth much, saving it is a waste of a move.</p>
+    </div>
+    <h3>Your turn: capture in one move</h3>
+    <div class="prose"><p>In each problem, you are Black. Find the move that captures. Use the numbered buttons to jump between problems.</p></div>
+    <div id="w-cap-set"></div>
+  </section>
+
+  <section class="step" id="chains">
+    <p class="eyebrow">Part 4</p>
+    <h2>Chains share their liberties</h2>
+    <div class="prose">
+      <p>Stones of the same colour that touch along a line are connected. They form a <dfn>chain</dfn> (some books say <em>group</em> or <em>string</em>), and a chain lives or dies as one unit. Its liberties are all the empty points next to <em>any</em> of its stones, each counted once.</p>
+      <p>This is why connecting your stones makes them stronger: more stones usually means more liberties, and the enemy needs more moves to fill them all.</p>
+    </div>
+    <div id="w-chain1"></div>
+    <div class="prose"><p>Now the question that trips up almost every beginner. Read it carefully before you answer.</p></div>
+    <div id="w-diag"></div>
+    <div class="prose">
+      <p>Try it yourself on the board below. Play stones for both sides and press <b>Count liberties</b> to see each chain’s liberty count written on one of its stones. Connect stones and watch the numbers grow; surround a chain and watch its number shrink.</p>
+    </div>
+    <div id="w-chain-sandbox"></div>
+  </section>
+
+  <section class="step" id="escape">
+    <p class="eyebrow">Part 5</p>
+    <h2>Escaping from atari</h2>
+    <div class="prose">
+      <p>If your stone is in atari, you usually have two ways to save it:</p>
+      <ol>
+        <li><b>Run.</b> Add a stone on its last liberty. The new stone joins the chain and brings its own liberties with it.</li>
+        <li><b>Capture an attacker.</b> If one of the enemy stones surrounding you is itself short of liberties, capture it. That opens up space around your stone.</li>
+      </ol>
+    </div>
+    <div id="w-run-replay"></div>
+    <h3>Your turn: save the white stone</h3>
+    <div class="prose"><p>Now you are White. Each problem has exactly one move that saves the stone marked with a triangle.</p></div>
+    <div id="w-save-set"></div>
+  </section>
+
+  <section class="step" id="capture-go">
+    <p class="eyebrow">Part 6</p>
+    <h2>Play Capture Go</h2>
+    <div class="prose">
+      <p>Capture Go is a short game that teachers use to train exactly what you just learned. The rules are normal Go rules with one change: <b>whoever captures a stone first wins.</b></p>
+      <p>Play on the small 7×7 board below against the computer. Some advice before you start:</p>
+      <ul>
+        <li>After every move, ask two questions: “Which of my chains has the fewest liberties?” and “Which of the computer’s chains has the fewest?”</li>
+        <li>Keep your stones connected. Loose single stones are easy targets.</li>
+        <li>A chain with two liberties is in danger: one more enemy move puts it in atari.</li>
+        <li>The <b>danger rings</b> help while you learn: a red ring means atari (one liberty), and a dashed yellow ring means two liberties. Turn them off when you feel ready.</li>
+      </ul>
+      <p>Start on <b>Normal</b>. When you can beat it twice in a row, try <b>Hard</b>.</p>
+    </div>
+    <div id="w-game"></div>
+  </section>
+
+  <section class="step" id="recap">
+    <p class="eyebrow">Summary</p>
+    <h2>What to remember</h2>
+    <ol class="recap">
+      <li>A stone’s liberties are the empty points directly next to it along the lines. Diagonals don’t count.</li>
+      <li>Stones touching along a line form one chain, and the chain shares all its liberties.</li>
+      <li>A chain with no liberties left is captured. A chain with one liberty left is in atari.</li>
+      <li>The edge and the corner take liberties away, so stones there are easier to capture.</li>
+      <li>To save a chain in atari, either extend it into open space or capture one of the stones attacking it.</li>
+    </ol>
+    <h3>Words from this lesson</h3>
+    <dl class="glossary">
+      <dt>Liberty</dt><dd>An empty point directly next to a stone or chain.</dd>
+      <dt>Chain</dt><dd>Stones of one colour connected along the lines. They share liberties and are captured together.</dd>
+      <dt>Atari</dt><dd>The state of having only one liberty left. The chain can be captured on the next move.</dd>
+      <dt>Capture</dt><dd>Removing a chain from the board by filling its last liberty.</dd>
+      <dt>Prisoner</dt><dd>A captured stone, kept by the player who captured it.</dd>
+    </dl>
+    <nav class="lesson-nav">
+      <span></span>
+      <a href="{{L2}}"><small>Next lesson</small>2 · Ladders and Nets →</a>
+    </nav>
+  </section>
+</main>
+
+<script>
+(function () {
+  const ui = Go.ui;
+  const EMPTY7 = ['.......', '.......', '.......', '.......', '.......', '.......', '.......'];
+
+  ui.explore('#w-board', {
+    size: 9, title: 'A 9×9 board',
+    prompt: '<p>Click to place stones. Black and White take turns. Notice that stones go where the lines cross, including on the edges and in the corners.</p><p>The small dots are called <b>star points</b>. They are just landmarks to help you find your way around the board.</p>',
+    prisoners: false,
+  });
+
+  ui.pickPoints('#w-lib1', {
+    title: 'Exercise', checkpoint: 'lib-center',
+    setup: ['.......', '.......', '.......', '...O...', '.......', '.......', '.......'],
+    prompt: '<p>Click every liberty of the white stone, then press <b>Check</b>.</p>',
+    targets: b => b.group('D4').libs,
+    extraHint: 'Diagonal points are not liberties: only the points directly along the lines count.',
+    success: 'Correct: four liberties, one in each direction along the lines.',
+  });
+
+  ui.pickPoints('#w-lib2', {
+    title: 'Exercise', checkpoint: 'lib-edge',
+    setup: ['.......', '.......', '.......', 'O......', '.......', '.......', '......O'],
+    prompt: '<p>There are two white stones: one on the edge and one in the corner. Mark the liberties of <b>both</b>.</p>',
+    targets: b => new Set([...b.group('A4').libs, ...b.group('G1').libs]),
+    extraHint: 'Remember that diagonal points don’t count.',
+    success: 'Correct. The edge stone has three liberties and the corner stone has only two.',
+  });
+
+  ui.choice('#w-lib3', {
+    title: 'Question', checkpoint: 'lib-which',
+    setup: ['.......', '.......', '.......', 'O..O...', '.......', '.......', '......O'],
+    marks: [{ at: 'A4', type: 'label', text: 'A' }, { at: 'D4', type: 'label', text: 'B' }, { at: 'G1', type: 'label', text: 'C' }],
+    prompt: '<p>Which of these three white stones could Black capture with the fewest moves?</p>',
+    options: [
+      { text: 'A, on the edge', why: 'Not the fewest. The edge stone has three liberties, so Black needs three moves. Look for a stone with fewer.' },
+      { text: 'B, in the centre', why: 'This is the hardest one to capture. With four liberties it needs four Black moves.' },
+      { text: 'C, in the corner', correct: true, why: 'Right. The corner stone has only two liberties, so two Black moves capture it. Stones in the corner are the easiest to capture, but as you’ll see in Lesson 4, the corner is also the easiest place to build territory.' },
+    ],
+  });
+
+  ui.replay('#w-cap-replay', {
+    title: 'Example', checkpoint: 'cap-replay',
+    setup: ['.......', '.......', '.......', '...O...', '.......', '.......', '.......'],
+    intro: 'The white stone at D4 has four liberties, shown by the green dots. (In this example White is busy elsewhere on the board, so only Black’s moves are shown.)',
+    introMarks: [{ at: 'D5', type: 'lib' }, { at: 'D3', type: 'lib' }, { at: 'C4', type: 'lib' }, { at: 'E4', type: 'lib' }],
+    steps: [
+      { play: 'D5', color: 'B', libsOf: 'D4', text: 'Black plays D5. White now has three liberties.' },
+      { play: 'C4', color: 'B', libsOf: 'D4', text: 'Black plays C4. White has two liberties.' },
+      { play: 'D3', color: 'B', libsOf: 'D4', text: 'Black plays D3. White has one liberty left, at E4. The white stone is <b>in atari</b>.', marks: [{ at: 'D4', type: 'ring', tone: 'danger' }] },
+      { play: 'E4', color: 'B', text: 'Black plays E4 and fills the last liberty. The white stone is captured and removed from the board. Black keeps it as a prisoner.', tone: 'good', marks: [{ at: 'D4', type: 'x', tone: 'danger' }] },
+    ],
+  });
+
+  ui.puzzleSet('#w-cap-set', {
+    id: 'cap', title: 'Capture in one',
+    puzzles: [
+      {
+        setup: ['.......', '.......', '...X...', '..XO...', '...X...', '.......', '.......'],
+        toPlay: 'B', answers: ['E4'],
+        prompt: '<p>Black to play. Capture the white stone.</p>',
+        defaultWrong: 'That doesn’t capture. Count the white stone’s liberties: which empty point is still next to it?',
+        explain: 'E4 was the white stone’s last liberty.',
+      },
+      {
+        setup: ['.......', '.......', '.......', '.......', '.......', '.......', '..XOX..'],
+        toPlay: 'B', answers: ['D2'],
+        prompt: '<p>Black to play. Capture the white stone on the edge.</p>',
+        defaultWrong: 'Not that one. The edge acts like a wall, so the white stone has only one liberty left. Where is it?',
+        explain: 'On the edge, only three stones are needed to surround a stone, and two of them were already there.',
+      },
+      {
+        setup: ['OX.....', '.......', '.......', '.......', '.......', '.......', '.......'],
+        toPlay: 'B', answers: ['A6'],
+        prompt: '<p>Black to play. Capture the white stone in the corner.</p>',
+        defaultWrong: 'A corner stone has only two liberties, and Black already fills one. Find the other.',
+        explain: 'A corner stone has just two liberties, so it can be captured very quickly.',
+      },
+      {
+        setup: ['.......', '.......', '..XX...', '.XOO...', '..XX...', '.......', '.......'],
+        toPlay: 'B', answers: ['E4'],
+        prompt: '<p>Black to play. The two white stones form a chain. Capture both of them with one move.</p>',
+        defaultWrong: 'That doesn’t capture. The two white stones share their liberties. Count them together: how many are left?',
+        explain: 'The chain had only one shared liberty left, so one move captured both stones.',
+      },
+      {
+        setup: ['.......', '.....X.', '....XO.', '.......', '.X.....', 'XOX....', '.......'],
+        toPlay: 'B', answers: ['B1'],
+        prompt: '<p>Black to play. There are two white stones. One of them can be captured right now. Which one, and where?</p>',
+        wrong: {
+          F4: 'That puts the white stone on the right in atari, but it isn’t captured yet. White will simply run away. Look for a stone that has only one liberty.',
+          G5: 'That puts the white stone on the right in atari, but it isn’t captured yet. White will simply run away. Look for a stone that has only one liberty.',
+        },
+        defaultWrong: 'That doesn’t capture anything. Count the liberties of each white stone.',
+        explain: 'The stone at B2 was already in atari. Always check every enemy chain for a stone with one liberty.',
+      },
+    ],
+  });
+
+  ui.pickPoints('#w-chain1', {
+    title: 'Exercise', checkpoint: 'chain-libs',
+    setup: ['.......', '.......', '.......', '..OO...', '...O...', '.......', '.......'],
+    prompt: '<p>These three white stones form one chain. Mark all of the chain’s liberties.</p>',
+    targets: b => b.group('D4').libs,
+    missHint: 'Check around every one of the three stones, including below the bottom one.',
+    extraHint: 'Diagonal points don’t count, and each liberty only needs to be marked once.',
+    success: 'Correct: seven liberties. Black would need seven moves to capture this chain, compared with four for a single stone in the open.',
+  });
+
+  ui.choice('#w-diag', {
+    title: 'Question', checkpoint: 'diag',
+    setup: ['.......', '.......', '.......', '..O....', '...O...', '.......', '.......'],
+    prompt: '<p>These two white stones touch only at a corner, diagonally. Are they one chain?</p>',
+    options: [
+      { text: 'Yes. They touch, so they are connected.', why: 'No. Stones connect only along the lines, and there is no line between C4 and D3. Each stone is a separate chain with its own four liberties.' },
+      { text: 'No. They are two separate stones.', correct: true, why: 'Correct. Diagonal stones are not connected. Each one has four liberties of its own. (Two of them, C3 and D4, happen to be liberties of both stones.) A diagonal pair is still a useful shape, though: in later lessons you’ll see why it is hard for Black to cut them apart.' },
+    ],
+    after: [{ at: 'C5', type: 'lib' }, { at: 'B4', type: 'lib' }, { at: 'C3', type: 'lib' }, { at: 'D4', type: 'lib' }, { at: 'E3', type: 'lib' }, { at: 'D2', type: 'lib' }],
+  });
+
+  ui.explore('#w-chain-sandbox', {
+    size: 7, title: 'Sandbox', countsToggle: true, counts: true,
+    prompt: '<p>Play stones for both colours. Each chain shows its liberty count. Try to build a white chain with more than ten liberties, then try to capture it with Black.</p>',
+  });
+
+  ui.replay('#w-run-replay', {
+    title: 'Example: running', checkpoint: 'run-replay',
+    setup: ['.......', '.......', '...X...', '..XOX..', '.......', '.......', '.......'],
+    intro: 'The white stone at D4 is in atari. Its only liberty is D3.',
+    introMarks: [{ at: 'D3', type: 'lib' }, { at: 'D4', type: 'ring', tone: 'danger' }],
+    steps: [
+      { play: 'D3', color: 'W', libsOf: 'D4', text: 'White plays D3. The new stone joins the chain and brings its own empty neighbours, so the chain now has three liberties: C3, E3 and D2. It is out of atari.' },
+      { play: 'D2', color: 'B', libsOf: 'D4', text: 'Black keeps chasing with D2. The chain is down to two liberties.' },
+      { play: 'C3', color: 'W', libsOf: 'D4', text: 'White runs again, toward open space. Three liberties again. As long as White keeps heading into open space, Black cannot catch the chain. In Lesson 2 you’ll see what happens when the escape route leads into a wall instead.' },
+    ],
+  });
+
+  ui.puzzleSet('#w-save-set', {
+    id: 'save', title: 'Save the stone',
+    puzzles: [
+      {
+        setup: ['.......', '.......', '...X...', '..XOX..', '.......', '.......', '.......'],
+        toPlay: 'W', mode: 'save', target: 'D4',
+        marks: [{ at: 'D4', type: 'tri' }],
+        prompt: '<p>White to play. The marked stone is in atari. Save it.</p>',
+        explain: 'Extending into open space gave the chain three liberties.',
+      },
+      {
+        setup: ['.......', '.......', '...XO..', '..XOXO.', '..X....', '...X...', '.......'],
+        toPlay: 'W', mode: 'save', target: 'D4',
+        marks: [{ at: 'D4', type: 'tri' }],
+        prompt: '<p>White to play. The marked stone is in atari again, but this time running doesn’t work. Find another way to save it.</p>',
+        wrong: { D3: 'Running to D3 doesn’t help. The two white stones together still have only one liberty, at E3, so Black captures both. Look for a black stone that is weaker than yours.' },
+        hint: 'Count the liberties of the black stone at E4.',
+        explain: 'The black stone at E4 was itself in atari. Capturing it opened up space around the white stone. When you’re in atari, always check whether an attacker can be captured first.',
+      },
+    ],
+  });
+
+  ui.captureGame('#w-game', {
+    size: 7, target: 1, title: 'Capture Go against the computer', checkpoint: 'capture-go-win', idPrefix: 'l1',
+    prompt: '<p>First capture wins. Win one game to complete the lesson.</p>',
+  });
+})();
+</script>

@@ -1,0 +1,356 @@
+<title>Ladders and Nets</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'lesson-2' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}" aria-current="page">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+    </nav>
+    <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lesson 2 of 4</p>
+      <h1>Ladders and Nets</h1>
+      <p class="lede">In Lesson 1 you captured stones that were already in trouble. Now you will learn to hunt a stone that is trying to escape. This is where calculation comes in: before you start a chase, you work out how it ends, the same way you would check a forcing line in chess.</p>
+      <ul class="goals">
+        <li>Choose the right side to put a stone in atari.</li>
+        <li>Read a ladder to the end before you play it.</li>
+        <li>Spot a ladder breaker and know when a ladder fails.</li>
+        <li>Catch a stone with a net, and win stones with a double atari.</li>
+      </ul>
+    </div>
+    <!--HERO-->
+  </header>
+
+  <section class="step" id="direction">
+    <p class="eyebrow">Part 1</p>
+    <h2>Two liberties: which side do you push from?</h2>
+    <div class="prose">
+      <p>A stone with two liberties can be put in atari in two different ways: you can fill either of the two liberties. The stone will then run out through the other one. So the real question is not “can I put it in atari?” but “where do I want it to run?”</p>
+      <p>The rule of thumb is simple: <b>atari from the side that drives the stone toward the edge of the board or toward your own stones.</b> Those are the places where it will find fewer liberties. If you drive it into open space, it gains liberties and gets away.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>This is like choosing which check to give. Two checks can look equally aggressive, but one drives the king into the open and the other drives it into a mating net. The good player asks where the king will go next, not just whether it is in check.</p>
+    </div>
+    <h3>Your turn: choose the right atari</h3>
+    <div class="prose"><p>You are Black. In each problem, find the move that leads to capturing the white stone. If White runs, the computer will answer for White and you keep going until the stone is captured.</p></div>
+    <div id="w-dir-set"></div>
+  </section>
+
+  <section class="step" id="ladder">
+    <p class="eyebrow">Part 2</p>
+    <h2>The ladder</h2>
+    <div class="prose">
+      <p>Sometimes you can keep a stone in atari move after move. Each time it runs, it gets exactly two liberties, and you immediately take one of them away again. The chase zigzags across the board like a staircase until the running stones hit the edge and die. This pattern is called a <dfn>ladder</dfn> <span class="term-jp">(征 shicho)</span>.</p>
+      <p>Step through the example, or press <b>Play</b> to watch it run. The green dots show White’s liberties after every move. Notice that White never has more than two.</p>
+    </div>
+    <div id="w-ladder"></div>
+    <div class="note key">
+      <span class="note-label">A Go proverb</span>
+      <p>“If you don’t know ladders, don’t play Go.” Ladders come up in almost every game. You need to be able to look at a stone with two liberties and know, without playing a single move, whether a ladder would catch it.</p>
+    </div>
+    <div class="prose">
+      <p>In a real game, White would never run all the way to the edge like that. A strong player reads the ladder in their head, sees that it fails, and gives up the stone right away. Each extra running stone only makes the loss bigger.</p>
+      <p>Now run the ladder yourself. The computer will play White and always choose the most stubborn escape.</p>
+    </div>
+    <div id="w-ladder-try"></div>
+  </section>
+
+  <section class="step" id="breaker">
+    <p class="eyebrow">Part 3</p>
+    <h2>The ladder breaker</h2>
+    <div class="prose">
+      <p>A ladder only works if the path is clear. If a white stone is already sitting somewhere along the path, the running chain will reach it and connect. Suddenly it has three or four liberties, and the chase is over. That waiting stone is called a <dfn>ladder breaker</dfn>.</p>
+      <p>Here is the same ladder as before, with one difference: there is a white stone at D4.</p>
+    </div>
+    <div id="w-breaker"></div>
+    <div class="note">
+      <span class="note-label">Why a failed ladder is a disaster</span>
+      <p>When a ladder works, you capture a whole chain. When it fails, you are left with a long diagonal line of single stones, each with only two or three liberties, and the opponent gets to pick them off with double ataris. A failed ladder usually loses the game on a small board. That is why you read the whole ladder <em>before</em> you play the first move, not while you are playing it.</p>
+    </div>
+    <h3>Does this ladder work?</h3>
+    <div class="prose"><p>In each of the next three questions, Black is thinking about starting the same ladder by playing at the point marked 1 (H7). One extra stone has been added somewhere on the board. Trace the zigzag path in your head and decide whether the ladder still captures White.</p></div>
+    <div id="w-q1"></div>
+    <div id="w-q2"></div>
+    <div id="w-q3"></div>
+    <h3>Your turn: find the ladder that works</h3>
+    <div id="w-breaker-try"></div>
+  </section>
+
+  <section class="step" id="net">
+    <p class="eyebrow">Part 4</p>
+    <h2>The net</h2>
+    <div class="prose">
+      <p>When a ladder doesn’t work, there is sometimes a quieter way to catch the stone. Instead of putting it in atari, you play one point further away, so that the stone is loosely surrounded. Whichever way it tries to run, it never gets more than two liberties, and your stones are already waiting to finish the job. This is called a <dfn>net</dfn> <span class="term-jp">(下駄 geta)</span>.</p>
+      <p>In the example below, the four white stones near the corners break every ladder on the board, so putting the stone at E5 in atari would let it escape. Watch what the net does instead.</p>
+    </div>
+    <div id="w-net"></div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>A net is a quiet move, like a chess move that doesn’t give check but leaves the king with no safe squares. Beginners look only at ataris, the same way beginners in chess look only at checks. Always ask whether a quiet move would be stronger.</p>
+    </div>
+    <h3>Your turn: cast the net</h3>
+    <div class="prose"><p>You are Black. In both problems, the corner stones break the ladders, so an atari lets White run away. Find the net. If White tries to run, keep going until the stone is captured.</p></div>
+    <div id="w-net-set"></div>
+  </section>
+
+  <section class="step" id="double-atari">
+    <p class="eyebrow">Part 5</p>
+    <h2>Double atari</h2>
+    <div class="prose">
+      <p>A <dfn>double atari</dfn> is one move that puts two separate enemy chains in atari at the same time. Your opponent can save only one of them, so you capture the other. It is the Go version of a fork in chess, where one knight move attacks two pieces at once.</p>
+      <p>To find a double atari, look for an empty point that is a liberty of two different enemy chains, each of which has only two liberties.</p>
+    </div>
+    <h3>Your turn: find the double atari</h3>
+    <div id="w-da-set"></div>
+  </section>
+
+  <section class="step" id="play">
+    <p class="eyebrow">Part 6</p>
+    <h2>Play: first to three captures</h2>
+    <div class="prose">
+      <p>This game is played on the full 9×9 board, and the goal is now harder: <b>the first player to capture three stones wins.</b> A single capture is no longer enough, so you have to think about the whole board, not just the nearest fight.</p>
+      <p>Use what you learned in this lesson:</p>
+      <ul>
+        <li>Before you start a ladder, follow the zigzag path with your eyes all the way to the edge. If a computer stone is in the way, don’t start it.</li>
+        <li>If one of your stones gets caught in a ladder that works, stop running. Every extra stone you add will be captured too.</li>
+        <li>When a single atari won’t work, look for a net.</li>
+        <li>Look for points that are a liberty of two weak computer chains at once. That is where a double atari lives.</li>
+      </ul>
+      <p>Win one game to complete the lesson.</p>
+    </div>
+    <div id="w-game"></div>
+  </section>
+
+  <section class="step" id="recap">
+    <p class="eyebrow">Summary</p>
+    <h2>What to remember</h2>
+    <ol class="recap">
+      <li>When you put a stone with two liberties in atari, choose the side that drives it toward the edge or toward your own stones.</li>
+      <li>A ladder keeps a chain in atari on every move until it reaches the edge and is captured. Read it all the way to the end before you start it.</li>
+      <li>A stone sitting on the ladder’s path is a ladder breaker. So is a stone that threatens the chasing stones. Either one makes the ladder fail.</li>
+      <li>A failed ladder leaves you with a line of weak stones that your opponent can pick off with double ataris.</li>
+      <li>When atari doesn’t work, a net can: a quiet move one point away that leaves the stone no way out.</li>
+      <li>A double atari threatens two chains at once, and your opponent can save only one.</li>
+    </ol>
+    <h3>Words from this lesson</h3>
+    <dl class="glossary">
+      <dt>Reading</dt><dd>Working out a sequence of moves in your head before you play them, the way you calculate a forcing line in chess.</dd>
+      <dt>Ladder</dt><dd>A chase in which a chain is put in atari on every move and zigzags across the board until it is captured at the edge.</dd>
+      <dt>Ladder breaker</dt><dd>A stone that stops a ladder, usually by sitting on its path so the running chain can connect to it and gain liberties.</dd>
+      <dt>Net</dt><dd>A move that loosely surrounds a stone without putting it in atari, so that every way it tries to run fails.</dd>
+      <dt>Double atari</dt><dd>One move that puts two separate chains in atari at once. The opponent can save only one of them.</dd>
+    </dl>
+    <nav class="lesson-nav">
+      <a href="{{L1}}"><small>Previous lesson</small>← 1 · Liberties and Capture</a>
+      <a href="{{L3}}"><small>Next lesson</small>3 · Suicide and Ko →</a>
+    </nav>
+  </section>
+</main>
+
+<script>
+(function () {
+  const ui = Go.ui;
+
+  // The ladder position used throughout Parts 2 and 3: White G7 can be laddered from H7.
+  const LADDER = ['.........', '......X..', '.....XO..', '.......X.', '.........', '.........', '.........', '.........', '.........'];
+  const withRow = (rows, idx, row) => rows.map((r, k) => (k === idx ? row : r));
+  const LADDER_D4 = withRow(LADDER, 5, '...O.....');
+  const LADDER_C3 = withRow(LADDER, 6, '..O......');
+  const LADDER_B5 = withRow(LADDER, 4, '.O.......');
+  const LADDER_E2 = withRow(LADDER, 7, '....O....');
+  const START_MARK = [{ at: 'H7', type: 'label', text: '1' }, { at: 'G7', type: 'tri' }];
+
+  ui.puzzleSet('#w-dir-set', {
+    id: 'dir', title: 'Which atari?',
+    puzzles: [
+      {
+        setup: ['.........', '.........', '.........', '.........', '.........', '.........', '...X.....', '..XO.....', '.........'],
+        toPlay: 'B', mode: 'kill', target: 'D2', showLibs: true,
+        prompt: '<p>Black to play. The white stone at D2 has two liberties, E2 and D1 (the green dots). Which one should Black fill?</p>',
+        wrong: { D1: 'If Black plays D1, White runs to E2 and heads toward the open centre of the board, where it has plenty of liberties.' },
+        explain: 'Playing E2 forces White to run along the first line, where the edge takes away liberties. On the edge, there is nowhere to run.',
+      },
+      {
+        setup: ['.........', '.........', '.........', '....X....', '...XO....', '.........', '....X....', '.........', '.........'],
+        toPlay: 'B', mode: 'kill', target: 'E5', showLibs: true,
+        prompt: '<p>Black to play. The white stone at E5 has two liberties, F5 and E4. One atari drives it toward Black’s stone at E3. Find it.</p>',
+        wrong: { E4: 'If Black plays E4, White runs to F5 and gets three liberties in the open. Drive the stone toward your own stones instead.' },
+        explain: 'After F5, White’s only way out is E4, right next to Black’s stone at E3. The black stone takes away a liberty, so White can be chased into a ladder.',
+      },
+    ],
+  });
+
+  ui.replay('#w-ladder', {
+    title: 'Example: a ladder', checkpoint: 'ladder-replay', setup: LADDER, speed: 1200,
+    intro: 'The white stone at G7 has two liberties, H7 and G6. Black is going to chase it all the way across the board.',
+    introMarks: [{ at: 'H7', type: 'lib' }, { at: 'G6', type: 'lib' }],
+    steps: [
+      { play: 'H7', libsOf: 'G7', text: 'Black plays H7. White is in atari, with one liberty at G6.' },
+      { play: 'G6', libsOf: 'G7', text: 'White runs to G6. The chain now has two liberties.' },
+      { play: 'G5', libsOf: 'G7', text: 'Black takes one of them away with G5. Atari again.' },
+      { play: 'F6', libsOf: 'G7', text: 'White runs to F6. Two liberties again.' },
+      { play: 'E6', libsOf: 'G7', text: 'Black blocks at E6. Atari again. See the pattern: Black always blocks from the side that keeps White heading down and to the left.' },
+      { play: 'F5', libsOf: 'G7', text: 'White runs to F5.' },
+      { play: 'F4', libsOf: 'G7', text: 'Black blocks at F4. Atari.' },
+      { play: 'E5', libsOf: 'G7', text: 'White runs to E5.' },
+      { play: 'D5', libsOf: 'G7', text: 'Black blocks at D5. Atari.' },
+      { play: 'E4', libsOf: 'G7', text: 'White runs to E4. The chain is getting longer, but it still has only two liberties.' },
+      { play: 'E3', libsOf: 'G7', text: 'Black blocks at E3. Atari.' },
+      { play: 'D4', libsOf: 'G7', text: 'White runs to D4.' },
+      { play: 'C4', libsOf: 'G7', text: 'Black blocks at C4. Atari.' },
+      { play: 'D3', libsOf: 'G7', text: 'White runs to D3.' },
+      { play: 'D2', libsOf: 'G7', text: 'Black blocks at D2. Atari. The edge of the board is getting close.' },
+      { play: 'C3', libsOf: 'G7', text: 'White runs to C3.' },
+      { play: 'B3', libsOf: 'G7', text: 'Black blocks at B3. Atari.' },
+      { play: 'C2', libsOf: 'G7', text: 'White runs to C2, the second line from the edge.' },
+      { play: 'B2', libsOf: 'G7', text: 'Black blocks at B2. Atari.' },
+      { play: 'C1', libsOf: 'G7', text: 'White runs onto the edge at C1. Two liberties, B1 and D1, and nowhere left to go.' },
+      { play: 'B1', libsOf: 'G7', text: 'Black plays B1. Atari.' },
+      { play: 'D1', libsOf: 'G7', text: 'White runs to D1, but the edge means the new stone brings only one liberty, at E1.' },
+      { play: 'E1', tone: 'good', text: 'Black plays E1 and captures all twelve white stones. Every one of Black’s moves was forced, and so was every one of White’s. That is what makes a ladder something you can read in advance.' },
+    ],
+  });
+
+  ui.puzzle('#w-ladder-try', {
+    title: 'Exercise', checkpoint: 'ladder-try', setup: LADDER,
+    toPlay: 'B', mode: 'kill', target: 'G7', showLibs: true,
+    prompt: '<p>Black to play. Capture the white stone at G7. Keep putting it in atari until it is captured.</p>',
+    explain: 'There were actually two ways to start. H7 is the long ladder you just watched. G6 is shorter: it drives White up toward the top-right corner, where the edges finish the job even faster.',
+  });
+
+  ui.replay('#w-breaker', {
+    title: 'Example: a ladder breaker', checkpoint: 'breaker-replay', setup: LADDER_D4, speed: 1500,
+    intro: 'This is the same position as before, except that White has a stone at D4. It sits right on the ladder’s path.',
+    introMarks: [{ at: 'D4', type: 'tri' }],
+    steps: [
+      { play: 'H7', libsOf: 'G7', text: 'Black starts the same ladder with H7.' },
+      { play: 'G6', libsOf: 'G7', text: 'White runs to G6.' },
+      { play: 'G5', libsOf: 'G7', text: 'Black blocks at G5.' },
+      { play: 'F6', libsOf: 'G7', text: 'White runs to F6.' },
+      { play: 'E6', libsOf: 'G7', text: 'Black blocks at E6.' },
+      { play: 'F5', libsOf: 'G7', text: 'White runs to F5.' },
+      { play: 'F4', libsOf: 'G7', text: 'Black blocks at F4.' },
+      { play: 'E5', libsOf: 'G7', text: 'White runs to E5.' },
+      { play: 'D5', libsOf: 'G7', text: 'Black blocks at D5. So far, everything looks the same as before.' },
+      { play: 'E4', libsOf: 'G7', tone: 'warn', text: 'White runs to E4 and connects to the stone at D4. The chain now has three liberties, so it is out of atari, and the ladder is over. Now look at what Black has left behind.' },
+      { play: 'G4', color: 'B', text: 'Black’s chasing stones are full of weaknesses. White was threatening G4, which would put both F4 and G5 in atari at once. Black defends by playing G4 first.', marks: [{ at: 'F4', type: 'ring', tone: 'warn' }, { at: 'G5', type: 'ring', tone: 'warn' }] },
+      { play: 'D6', color: 'W', text: 'But White has a second threat. D6 puts both D5 and E6 in atari at the same time.', marks: [{ at: 'D5', type: 'ring', tone: 'danger' }, { at: 'E6', type: 'ring', tone: 'danger' }] },
+      { play: 'E7', color: 'B', text: 'Black can save only one of them. Black connects E6 to the stones above by playing E7.' },
+      { play: 'C5', color: 'W', tone: 'bad', text: 'White captures D5. Black has lost a stone, and White’s chain sits strong in the middle of the board. One white stone at D4 turned Black’s attack into a loss.' },
+    ],
+  });
+
+  ui.choice('#w-q1', {
+    title: 'Question 1', checkpoint: 'ladder-q1', setup: LADDER_C3, marks: START_MARK.concat([{ at: 'C3', type: 'sq' }]),
+    prompt: '<p>White has a stone at C3, marked with a square. If Black starts the ladder with H7, does it capture White?</p>',
+    options: [
+      { text: 'Yes, the ladder still works.', why: 'Follow the path again. The running chain comes down through E4 and D4 and reaches D3. D3 is right next to C3, so the chain connects to it and gets three liberties.' },
+      { text: 'No, the ladder fails.', correct: true, why: 'Correct. C3 is on the ladder’s path. When White runs to D3, the chain connects to C3 and gets three liberties, and the chase is over.' },
+    ],
+  });
+
+  ui.choice('#w-q2', {
+    title: 'Question 2', checkpoint: 'ladder-q2', setup: LADDER_B5, marks: START_MARK.concat([{ at: 'B5', type: 'sq' }]),
+    prompt: '<p>Now White’s extra stone is at B5. If Black starts the ladder with H7, does it capture White?</p>',
+    options: [
+      { text: 'Yes, the ladder still works.', correct: true, why: 'Correct. B5 is close to the path, but not on it. The ladder runs past it through C4, C3 and B3 without ever touching B5, so it doesn’t help White at all.' },
+      { text: 'No, the ladder fails.', why: 'Look again. Trace the path from Part 2: it goes through D5, C4, D3, C3 and B3. None of those points touches B5, so the white stone never gets to help.' },
+    ],
+  });
+
+  ui.choice('#w-q3', {
+    title: 'Question 3', checkpoint: 'ladder-q3', setup: LADDER_E2, marks: START_MARK.concat([{ at: 'E2', type: 'sq' }]),
+    prompt: '<p>This one is harder. White’s extra stone is at E2, just below the path. If Black starts the ladder with H7, does it capture White?</p>',
+    options: [
+      { text: 'Yes. E2 is not on the path, so the ladder works.', why: 'Not this time. E2 doesn’t sit on White’s path, but it does sit next to one of Black’s chasing stones. Look at the black stone that will be played at E3.' },
+      { text: 'No. The stone at E2 breaks the ladder.', correct: true, why: 'Correct, and this is the subtle kind of breaker. When Black blocks at E3, that stone touches the white stone at E2. Two moves later, when White runs to D3, the black stone at E3 is left with only one liberty, at F3. Black cannot keep chasing and save E3 at the same time. If Black continues the ladder with D2, White captures E3 by playing F3, and the hole in Black’s wall lets the chain escape.' },
+    ],
+  });
+
+  ui.puzzle('#w-breaker-try', {
+    title: 'Exercise', checkpoint: 'breaker-try', setup: LADDER_C3,
+    toPlay: 'B', mode: 'kill', target: 'G7', showLibs: true,
+    marks: [{ at: 'C3', type: 'sq' }],
+    prompt: '<p>Black to play. The white stone at C3 breaks the long ladder toward the bottom left, so H7 no longer works. There is still a way to capture the stone at G7. Find it and finish the capture.</p>',
+    wrong: { H7: 'That is the ladder that runs into the breaker at C3. Try chasing White in the other direction.' },
+    explain: 'G6 sends White up toward the top-right corner instead. There is no white stone on that path, so the ladder works. Every ladder has a direction, and a breaker only stops the ladders that run into it.',
+  });
+
+  ui.replay('#w-net', {
+    title: 'Example: a net', checkpoint: 'net-replay',
+    setup: ['.........', '.O.....O.', '.........', '...X.....', '...XO....', '....XX...', '.........', '.O.....O.', '.........'],
+    intro: 'The white stone at E5 has two liberties, E6 and F5. An atari on either side would let it run out into the open, and the white corner stones would break the ladder.',
+    introMarks: [{ at: 'E6', type: 'lib' }, { at: 'F5', type: 'lib' }],
+    steps: [
+      { play: 'F6', libsOf: 'E5', text: 'Black plays F6. It is not an atari: White still has two liberties. But look at where each liberty leads. Both escape routes now end at black stones.' },
+      { play: 'F5', libsOf: 'E5', text: 'White tries to run out through F5. The new stone is surrounded by F6, F4 and the empty point G5.' },
+      { play: 'G5', libsOf: 'E5', text: 'Black blocks at G5, and White is in atari with one liberty, at E6.' },
+      { play: 'E6', libsOf: 'E5', text: 'White tries the other way, E6. But D6 and F6 are already there, so the chain still has only one liberty, at E7.' },
+      { play: 'E7', tone: 'good', text: 'Black plays E7 and captures three stones. If White had run to E6 first instead, Black would have blocked at E7 and caught it the same way.' },
+    ],
+  });
+
+  ui.puzzleSet('#w-net-set', {
+    id: 'net', title: 'Nets',
+    puzzles: [
+      {
+        setup: ['.........', '.O.....O.', '.........', '...X.....', '...XO....', '....XX...', '.........', '.O.....O.', '.........'],
+        toPlay: 'B', mode: 'kill', target: 'E5', showLibs: true,
+        prompt: '<p>Black to play. This is the position from the example. Capture the white stone at E5 without looking back at the answer.</p>',
+        explain: 'F6 covers both of White’s escape routes at once.',
+      },
+      {
+        setup: ['.........', '.O.....O.', '.........', '....X....', '..X.OX...', '.........', '....X....', '.O.....O.', '.........'],
+        toPlay: 'B', mode: 'kill', target: 'E5', showLibs: true,
+        prompt: '<p>Black to play. A different shape: the white stone at E5 has two liberties, D5 and E4. Capture it.</p>',
+        hint: 'Find the point that sits diagonally between White’s two escape routes.',
+        explain: 'D4 is the net. If White runs to D5, Black blocks at D6, and White’s last way out, E4, runs into the stone at E3. If White runs to E4 first, Black blocks at F4, and the way out at D5 runs into the stone at C5. Either way, White never gets more than two liberties.',
+      },
+    ],
+  });
+
+  ui.puzzleSet('#w-da-set', {
+    id: 'da', title: 'Double atari',
+    puzzles: [
+      {
+        setup: ['.........', '.........', '.........', '...X.X...', '..XO.OX..', '.........', '.........', '.........', '.........'],
+        toPlay: 'B', answers: ['E5'],
+        prompt: '<p>Black to play. Put both white stones in atari with one move.</p>',
+        wrong: {
+          D4: 'That puts only the stone at D5 in atari. White just runs, and the other stone is untouched.',
+          F4: 'That puts only the stone at F5 in atari. White just runs, and the other stone is untouched.',
+        },
+        defaultWrong: 'That doesn’t put both stones in atari. Look for the one empty point that is a liberty of both white stones.',
+        explain: 'E5 was a liberty of both stones. Now D5 has one liberty left, at D4, and F5 has one left, at F4. White can save only one of them.',
+      },
+      {
+        setup: ['.........', '.........', '.........', '..X.X....', '.XO.OX...', '.XO......', '..X......', '.........', '.........'],
+        toPlay: 'B', answers: ['D5'],
+        prompt: '<p>Black to play. This time one of the targets is a chain of two stones. Find the double atari.</p>',
+        wrong: {
+          D4: 'That puts only the two-stone chain in atari, so it is not a double atari. White answers by connecting everything at D5, and Black has to start reading a brand-new chase. Find the move that threatens both chains at once and wins a stone immediately.',
+          E4: 'That puts only the stone at E5 in atari, so it is not a double atari. White answers by connecting it to the chain at D5. Find the move that threatens both chains at once.',
+        },
+        defaultWrong: 'Count the liberties of the two-stone chain and of the single stone at E5. One empty point belongs to both.',
+        explain: 'D5 was a liberty of both the chain and the single stone, and it also stops them from connecting. White can save only one of them, and Black captures the other.',
+      },
+    ],
+  });
+
+  ui.captureGame('#w-game', {
+    size: 9, target: 3, title: 'First to three captures', checkpoint: 'l2-game-win', idPrefix: 'l2',
+    prompt: '<p>The first player to capture three stones wins. Win one game to complete the lesson.</p>',
+  });
+})();
+</script>

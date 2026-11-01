@@ -1,0 +1,86 @@
+<title>First Moves in Go</title>
+<!--HEAD-->
+<style>
+  .lessons { list-style: none; padding: 0; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .lessons a {
+    display: flex; flex-direction: column; gap: 8px; height: 100%;
+    padding: 18px 18px 20px; border: 1px solid var(--line); border-radius: 14px;
+    background: var(--surface); color: var(--ink); text-decoration: none;
+    transition: border-color .15s, transform .15s;
+  }
+  .lessons a:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .lessons .n { font: 800 44px/1 var(--display); color: var(--kaya); }
+  .lessons .t { font: 700 21px/1.2 var(--display); }
+  .lessons .d { color: var(--muted); font-size: 15.5px; }
+  .later { columns: 2 260px; column-gap: 32px; padding-left: 20px; max-width: 760px; color: var(--muted); }
+  .later li { margin-bottom: 6px; break-inside: avoid; }
+  .intro-board { width: min(340px, 100%); }
+</style>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">A course for chess and strategy-game players</p>
+      <h1>First Moves in Go</h1>
+      <p class="lede">Go is four thousand years old, has rules you can learn in ten minutes, and was the last classic board game that computers learned to play at a world-class level. These lessons teach you to play it, one idea at a time, on boards you can click.</p>
+    </div>
+    <div class="intro-board" id="w-hero-board"></div>
+  </header>
+
+  <section class="step">
+    <h2>The lessons</h2>
+    <ul class="lessons">
+      <li><a href="{{L1}}"><span class="n">1</span><span class="t">Liberties and Capture</span><span class="d">How stones stay alive and how they die. Ends with a game of Capture Go against the computer.</span></a></li>
+      <li><a href="{{L2}}"><span class="n">2</span><span class="t">Ladders and Nets</span><span class="d">Reading ahead: chasing a stone across the board, and knowing before you start whether the chase will work.</span></a></li>
+      <li><a href="{{L3}}"><span class="n">3</span><span class="t">Suicide and Ko</span><span class="d">The two rules that look strange at first, why Go needs them, and the tricks they make possible.</span></a></li>
+      <li><a href="{{L4}}"><span class="n">4</span><span class="t">Life and Territory</span><span class="d">Two eyes, the end of the game, and counting the score. Ends with a full 9×9 game against the computer.</span></a></li>
+    </ul>
+    <div class="prose">
+      <h3>How to use these lessons</h3>
+      <p>Do the lessons in order, because each one builds on the last. Every lesson mixes short explanations with boards you can play on, puzzles that tell you why a wrong answer fails, and a game against the computer at the end. A lesson takes about 30 to 45 minutes. The bar at the top of each lesson shows how many of its exercises you have finished; your progress is saved in this browser.</p>
+      <p>If you get a puzzle wrong, read the explanation before trying again. In Go, as in chess, understanding <em>why</em> a move fails teaches more than finding the right move by luck.</p>
+      <h3>Coming later</h3>
+      <ul class="later">
+        <li>The opening on a 9×9 board: corners, then sides, then the centre</li>
+        <li>Cutting and connecting</li>
+        <li>Sente and gote: who has the initiative</li>
+        <li>Common life-and-death shapes</li>
+        <li>Invading and reducing enemy territory</li>
+        <li>The endgame: how many points is each move worth?</li>
+        <li>Moving up to the full 19×19 board</li>
+        <li>Reviewing your own games</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  // A short game opening on loop, as a living picture of the board.
+  const host = document.getElementById('w-hero-board');
+  const view = new Go.ui.BoardView(host, { size: 9, coords: false });
+  const moves = ['C3', 'G7', 'G3', 'C7', 'E5', 'D3', 'C4', 'F3', 'G4', 'E7', 'C6', 'D6', 'D7', 'F5', 'E6'];
+  let b = new Go.Board(9), k = 0;
+  view.set(b, false);
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { moves.forEach(m => b.play(m)); view.set(b, false); return; }
+  setInterval(() => {
+    if (k === moves.length) { b = new Go.Board(9); k = 0; view.set(b, true); return; }
+    b.play(moves[k++]);
+    view.set(b, true);
+    view.mark([{ at: b.lastMove, type: 'last' }]);
+  }, 1100);
+})();
+</script>

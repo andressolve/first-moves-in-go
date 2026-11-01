@@ -1,0 +1,396 @@
+<title>Life and Territory</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'lesson-4' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}" aria-current="page">4 · Territory</a>
+    </nav>
+    <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lesson 4 of 4</p>
+      <h1>Life and Territory</h1>
+      <p class="lede">So far you have been fighting over stones. Now the real game begins. This lesson shows why some groups can never be captured, how those groups claim land, and how to count who won. By the end you will play and score a complete game on a 9×9 board.</p>
+      <ul class="goals">
+        <li>Tell whether a group is alive or dead by counting its eyes.</li>
+        <li>Make a second eye, or stop your opponent from making one.</li>
+        <li>Explain why the corners are the best land to claim first.</li>
+        <li>End a game, count it with area scoring and play a full game.</li>
+      </ul>
+    </div>
+    <!--HERO-->
+  </header>
+
+  <section class="step" id="goal">
+    <p class="eyebrow">Part 1</p>
+    <h2>Back to the real goal: territory</h2>
+    <div class="prose">
+      <p>In Lesson 1 you read that the player who controls more of the board wins. Here is what “control” means. Your <dfn>territory</dfn> is the empty points that are completely surrounded by your stones, so that no enemy stone can live there. At the end of the game, every point you surround counts for you.</p>
+      <p>Capturing is still important, but only as a means to an end. A capture is useful when it wins you land or saves your own stones. Capturing a stone that doesn’t matter, while your opponent fences off a whole corner, is a bad trade.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play Civilization or Polytopia</span>
+      <p>Think of territory as your borders. A city’s borders count for you only if the enemy can’t walk in and settle there. In Go, a wall of stones does the same job, and the score at the end is simply how much land sits inside your borders.</p>
+    </div>
+    <div id="w-terr"></div>
+  </section>
+
+  <section class="step" id="eyes">
+    <p class="eyebrow">Part 2</p>
+    <h2>Two eyes: the secret of life</h2>
+    <div class="prose">
+      <p>If a group of stones is completely surrounded, can it always be captured? Not always. Everything depends on the empty points inside the group, which are called <dfn>eyes</dfn>. An eye is an empty point (or a small empty area) that is surrounded by one player’s stones.</p>
+      <p>First, a group with only <b>one</b> eye. Black fills the outside liberties one at a time. The last liberty is inside the eye, and Black is allowed to play there because that stone captures the whole group.</p>
+    </div>
+    <div id="w-one-eye"></div>
+    <div class="prose">
+      <p>Now a group with <b>two</b> separate eyes. Black fills every outside liberty, just as before. But then Black is stuck: a stone in either eye would have no liberties, and it would capture nothing, because the other eye still gives White a liberty. From Lesson 3 you know that such a move is suicide, and suicide is not allowed.</p>
+    </div>
+    <div id="w-two-eyes"></div>
+    <div class="note key">
+      <span class="note-label">The rule of life</span>
+      <p>A group with <b>two separate eyes</b> can never be captured, no matter how many moves the opponent makes. Such a group is <dfn>alive</dfn>. A surrounded group that cannot make two eyes is <dfn>dead</dfn>: it will be captured eventually, so it counts as captured at the end of the game.</p>
+    </div>
+    <div class="prose">
+      <p>Check it for yourself. On the board below you play Black. The white group has two eyes, at A1 and C1. Try to capture it, and see what happens when you play inside an eye.</p>
+    </div>
+    <div id="w-try-capture"></div>
+    <h3>Alive or dead?</h3>
+    <div class="prose"><p>In both questions, White has no way to escape outward. Black is to play. Decide whether White’s group lives.</p></div>
+    <div id="w-q-alive"></div>
+    <div id="w-q-two-point"></div>
+  </section>
+
+  <section class="step" id="life-death">
+    <p class="eyebrow">Part 3</p>
+    <h2>Life and death: the vital point</h2>
+    <div class="prose">
+      <p>A surrounded group often has a small empty space that could become two eyes or only one, depending on who plays first. Inside that space there is usually a single key point, called the <dfn>vital point</dfn>. If the defender takes it, the space splits into two eyes. If the attacker takes it, the space can only ever make one eye.</p>
+      <p>This is where the reading you practised with ladders pays off. Before you play, work out what happens after each move, just as you would calculate a forcing line in chess.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>A life-and-death problem is Go’s version of a mate-in-two puzzle. Strong players solve thousands of them, and for the same reason chess players solve tactics: in a real game, you need to see the answer instantly.</p>
+    </div>
+    <div class="prose"><p>In problems 1 and 3 you play White and must make the group live. In problems 2 and 4 you play Black and must kill it. When you attack, the computer answers with White’s best defence, so keep going until the group is captured.</p></div>
+    <div id="w-ld-set"></div>
+  </section>
+
+  <section class="step" id="corners">
+    <p class="eyebrow">Part 4</p>
+    <h2>Corners first, then edges, then the centre</h2>
+    <div class="prose">
+      <p>Territory needs walls, and walls cost moves. The edge of the board is a free wall that you don’t have to build. A corner has two free walls. That makes the corner the cheapest place to claim land.</p>
+      <p>Step through the example. Each time, Black uses exactly six stones. Count how much land each set of six stones encloses.</p>
+    </div>
+    <div id="w-efficiency"></div>
+    <div class="note">
+      <span class="note-label">If you play Civilization or Polytopia</span>
+      <p>This is the same idea as choosing a good city site. A city on a coast or against mountains is easier to defend because nature guards one side for you. In Go, the corner is the best site on the map, so strong players almost always start there. On a large 19×19 board, the first four moves of a game are nearly always in the four corners.</p>
+    </div>
+    <div id="w-first-move"></div>
+  </section>
+
+  <section class="step" id="ending">
+    <p class="eyebrow">Part 5</p>
+    <h2>How a game ends</h2>
+    <div class="prose">
+      <p>There is no checkmate in Go. Instead, the game ends when both players agree that nothing useful is left to play.</p>
+      <ul>
+        <li><b>Passing.</b> On your turn, instead of placing a stone, you may <dfn>pass</dfn>. When both players pass one after the other, the game is over.</li>
+        <li><b>When to pass.</b> Pass when every border between your stones and your opponent’s is closed, and every neutral point (explained next) has been filled. At that stage, any move you could make would be either inside your own territory, where it gains nothing, or inside your opponent’s territory, where it would die.</li>
+        <li><b>Neutral points.</b> An empty point that touches both colours belongs to nobody. These points are called <dfn>dame</dfn> <span class="term-jp">(駄目)</span>. With the scoring method in this course, filling a neutral point earns you one point, so fill them before you pass.</li>
+        <li><b>Dead stones.</b> Stones that are surrounded and cannot make two eyes are dead. Nobody needs to spend moves capturing them one by one. At the end, both players agree they are dead and simply take them off the board.</li>
+      </ul>
+    </div>
+    <div id="w-end-replay"></div>
+  </section>
+
+  <section class="step" id="scoring">
+    <p class="eyebrow">Part 6</p>
+    <h2>Counting the score</h2>
+    <div class="prose">
+      <p>This course uses <dfn>area scoring</dfn>, the method used in China and in most computer Go. Each player’s score is:</p>
+      <p><b>your stones on the board + the empty points that only your stones surround.</b></p>
+      <p>Dead stones are removed first, so the points they stood on count for the player who surrounds them. Neutral points count for nobody.</p>
+      <p>Black has an advantage because Black moves first. To make the game fair, White receives extra points called <dfn>komi</dfn> <span class="term-jp">(込み)</span>. With area scoring, komi is 7.5 points. The half point means the game can never end in a tie. On a 9×9 board with no neutral points, there are 81 points in total, so Black needs at least 45 of them to beat White plus komi.</p>
+    </div>
+    <div class="prose"><p>Now count two finished games yourself. Type each side’s area into the boxes and press <b>Check</b>. Don’t add komi; the second exercise adds it for you.</p></div>
+    <div id="w-count1"></div>
+    <div id="w-count2"></div>
+    <div class="note">
+      <span class="note-label">The other way to count: territory scoring</span>
+      <p>In Japan and Korea, and on many online servers, players use <dfn>territory scoring</dfn> instead. You count only the empty points you surround, then add the prisoners you captured during the game and the dead stones you removed at the end. Stones on the board don’t count. Komi under these rules is 6.5.</p>
+      <p>The two methods almost always give the same winner, usually with the same margin or a margin that differs by one point. The one practical difference is that under territory scoring, playing a stone inside your own territory costs you a point, so players stop as soon as the borders are closed. You will meet territory scoring when you play on OGS, and you don’t need to change how you play.</p>
+    </div>
+  </section>
+
+  <section class="step" id="full-game">
+    <p class="eyebrow">Part 7</p>
+    <h2>Play a full game</h2>
+    <div class="prose">
+      <p>You now know every rule of Go. Play a complete game against the computer on a 9×9 board. Some advice before you start:</p>
+      <ul>
+        <li><b>Start in the corners.</b> Your first few stones should claim corners, or the points just inside them, before you build walls along the edges.</li>
+        <li><b>Don’t over-defend.</b> A territory needs a closed border, not a thick one. Each extra stone inside your own land is a move you didn’t spend claiming more.</li>
+        <li><b>Use your capturing skills.</b> Look for chains in atari, ladders and nets. A captured group usually turns into territory for the player who captured it.</li>
+        <li><b>Check your groups for two eyes.</b> If one of your groups is surrounded, make sure it has room for two eyes before you play anywhere else.</li>
+        <li><b>Pass when the borders are closed.</b> Fill any neutral points first, then press <b>Pass</b>. The computer will pass when it agrees.</li>
+        <li><b>Ask for a hint.</b> The <b>Who owns what?</b> button shades each point by who the computer thinks will end up owning it. It updates every time the computer moves.</li>
+      </ul>
+      <p>When both sides have passed, the board switches to the scoring screen. Stones the computer believes are dead are shown faded, and small squares show whose area each empty point is. If you disagree about a group, click it to switch it between alive and dead. The table shows both players’ areas and the result. Press <b>Accept the result</b> to finish, or <b>Keep playing</b> if you realise there is still something to fight over.</p>
+      <p>Start with the <b>Beginner</b> computer. If it is too strong at first, choose <b>Komi 0.5</b> to give yourself an easier game, and switch back to standard komi once you win.</p>
+    </div>
+    <div id="w-game"></div>
+  </section>
+
+  <section class="step" id="recap">
+    <p class="eyebrow">Summary</p>
+    <h2>What to remember</h2>
+    <ol class="recap">
+      <li>The goal of Go is territory: the empty points your stones surround.</li>
+      <li>A group with two separate eyes can never be captured, because filling either eye would be suicide. A surrounded group that can only make one eye is dead.</li>
+      <li>Inside a small eye space there is usually one vital point. Whoever plays there first decides whether the group lives.</li>
+      <li>The corner is the cheapest place to make territory, then the edge, then the centre.</li>
+      <li>The game ends when both players pass. Dead stones are removed, and each side counts stones plus surrounded empty points. White adds 7.5 points of komi.</li>
+    </ol>
+    <h3>Words from this lesson</h3>
+    <dl class="glossary">
+      <dt>Territory</dt><dd>Empty points surrounded by one player’s stones, where the opponent cannot live.</dd>
+      <dt>Eye</dt><dd>An empty point or small empty area surrounded by one player’s stones.</dd>
+      <dt>Alive</dt><dd>A group that cannot be captured, usually because it has two separate eyes.</dd>
+      <dt>Dead</dt><dd>A group that cannot avoid capture. Dead stones are removed at the end of the game.</dd>
+      <dt>Vital point</dt><dd>The key point inside an eye space that decides whether the group can make two eyes.</dd>
+      <dt>Dame</dt><dd>A neutral empty point that touches both colours and belongs to nobody.</dd>
+      <dt>Pass</dt><dd>Giving up your turn without placing a stone. Two passes in a row end the game.</dd>
+      <dt>Area scoring</dt><dd>Counting each player’s stones on the board plus the empty points they surround.</dd>
+      <dt>Komi</dt><dd>Extra points given to White to make up for Black moving first: 7.5 with area scoring.</dd>
+    </dl>
+    <h3>Where to play next</h3>
+    <div class="prose">
+      <p>You can now play real games against real people. The free server <a href="https://online-go.com" target="_blank" rel="noopener">online-go.com</a> (usually called OGS) lets you play on 9×9 boards against players of your own strength, or against computer opponents at many levels. Start with 9×9 games until you win about half of them, then try 13×13. More lessons in this course are coming. They will cover the opening, cutting and connecting, and how to fight inside your opponent’s territory.</p>
+    </div>
+    <nav class="lesson-nav">
+      <a href="{{L3}}"><small>Previous lesson</small>← 3 · Suicide and Ko</a>
+      <span></span>
+    </nav>
+  </section>
+</main>
+
+<script>
+(function () {
+  const ui = Go.ui;
+
+  // Lists every empty point a colour surrounds on the final board, as territory marks.
+  function territoryMarks(rows) {
+    const b = Go.Board.fromRows(rows);
+    const s = Go.scoreArea(b);
+    const marks = [];
+    for (let i = 0; i < b.grid.length; i++) if (!b.grid[i] && s.owner[i]) marks.push({ at: i, type: 'terr', color: s.owner[i] });
+    return marks;
+  }
+
+  ui.pickPoints('#w-terr', {
+    title: 'Exercise', checkpoint: 'terr-mark', allowStones: true,
+    setup: ['.......', '.......', 'OOOO...', 'XXXO...', '...XO..', '...XO..', '...XO..'],
+    prompt: '<p>Black has walled off the lower-left corner. Click every empty point that is Black’s territory, then press <b>Check</b>.</p>',
+    targets: ['A1', 'B1', 'C1', 'A2', 'B2', 'C2', 'A3', 'B3', 'C3'],
+    extraHint: 'Territory is made of empty points only, and only points that Black’s wall closes off from White.',
+    missHint: 'Every empty point inside Black’s wall counts, including the ones along the edges and in the corner.',
+    success: 'Correct: nine points. White cannot get in, because every path into the corner is blocked by a black stone or by the edge of the board.',
+  });
+
+  ui.replay('#w-one-eye', {
+    title: 'Example: one eye', checkpoint: 'one-eye',
+    setup: ['.......', '.......', '.......', '.......', 'XXXX...', 'OOO....', '.OO....'],
+    intro: 'White’s group has one eye, at A1. Its liberties are shown as green dots: one inside the eye and two outside.',
+    introMarks: [{ at: 'A1', type: 'lib' }, { at: 'D2', type: 'lib' }, { at: 'D1', type: 'lib' }],
+    steps: [
+      { play: 'D2', color: 'B', libsOf: 'A2', text: 'Black plays D2. White has two liberties left.' },
+      { play: 'D1', color: 'B', libsOf: 'A2', text: 'Black plays D1. Now White’s only liberty is the eye at A1, so the group is in atari.', marks: [{ at: 'A2', type: 'ring', tone: 'danger' }] },
+      { play: 'A1', color: 'B', text: 'Black plays inside the eye. The black stone has no liberties of its own, but it fills White’s last liberty, so it captures all five white stones. A capturing move is never suicide.', tone: 'good' },
+    ],
+  });
+
+  ui.replay('#w-two-eyes', {
+    title: 'Example: two eyes', checkpoint: 'two-eyes',
+    setup: ['.......', '.......', '.......', '.......', 'XXXXX..', 'OOOO...', '.O.O...'],
+    intro: 'This white group has two separate eyes, at A1 and C1. It also has two outside liberties, at E2 and E1.',
+    introMarks: [{ at: 'A1', type: 'lib' }, { at: 'C1', type: 'lib' }, { at: 'E2', type: 'lib' }, { at: 'E1', type: 'lib' }],
+    steps: [
+      { play: 'E2', color: 'B', libsOf: 'A2', text: 'Black plays E2.' },
+      { play: 'E1', color: 'B', libsOf: 'A2', text: 'Black plays E1. White is surrounded on the outside and has only its two eyes left.' },
+      { text: 'Black cannot play at A1 or at C1. A black stone in either eye would have no liberties, and it would not capture anything, because White would still have the other eye. That is suicide, which is illegal. White’s group can never be captured: it is alive.', marks: [{ at: 'A1', type: 'x', tone: 'danger' }, { at: 'C1', type: 'x', tone: 'danger' }], tone: 'good' },
+    ],
+  });
+
+  ui.explore('#w-try-capture', {
+    size: 7, title: 'Try it', toPlay: 'black', prisoners: false,
+    setup: ['.......', '.......', '.......', '.......', 'XXXXX..', 'OOOOX..', '.O.OX..'],
+    prompt: '<p>You play Black. Click A1 or C1 to try to capture the white group. You can also place stones anywhere else to check that nothing helps. Press <b>Reset</b> to start again.</p>',
+    status: 'Black to play. The white group has two liberties left, and both of them are eyes.',
+  });
+
+  ui.choice('#w-q-alive', {
+    title: 'Question 1', checkpoint: 'q-alive',
+    setup: ['.......', '.......', '.......', '.......', 'XXXXXXX', 'OOOOOOX', 'O.OO.OX'],
+    prompt: '<p>White’s group runs along the bottom edge. Is it alive or dead?</p>',
+    options: [
+      { text: 'Alive', correct: true, why: 'Correct. The empty points B1 and E1 are two separate eyes. Black can’t play in either one, because each move would be suicide. However many moves Black makes, this group will never be captured.' },
+      { text: 'Dead', why: 'Look again. Count the empty points inside the group and check whether they are separate. Could Black legally play in either one?' },
+    ],
+    after: [{ at: 'B1', type: 'circ', tone: 'good' }, { at: 'E1', type: 'circ', tone: 'good' }],
+  });
+
+  ui.choice('#w-q-two-point', {
+    title: 'Question 2', checkpoint: 'q-two-point',
+    setup: ['.......', '.......', '.......', '.......', 'XXXX...', 'OOOX...', '..OX...'],
+    prompt: '<p>This time White’s group has two empty points inside it, A1 and B1. Black is to play. Is the group alive or dead?</p>',
+    options: [
+      { text: 'Alive: it has two eyes.', why: 'Not quite. A1 and B1 are next to each other, so together they form one eye, not two. Black can play at A1, because that stone still has one liberty, at B1. Now White is in atari. If White captures the black stone by playing at B1, White is left with a single eye at A1, and Black plays there to capture the whole group.' },
+      { text: 'Dead: the two points make only one eye.', correct: true, why: 'Correct. Two empty points next to each other are one eye, not two. Black plays at A1 (legal, because the stone has a liberty at B1), and White is in atari. If White captures it with B1, only the single eye at A1 is left, and Black plays there to capture all five stones. Eyes must be <b>separate</b> to count as two.' },
+    ],
+    after: [{ at: 'A1', type: 'label', text: '1' }, { at: 'B1', type: 'label', text: '2' }],
+  });
+
+  ui.puzzleSet('#w-ld-set', {
+    id: 'ld', title: 'Life and death',
+    puzzles: [
+      {
+        setup: ['.......', '.......', '.......', '.......', 'XXXXXX.', 'OOOOOX.', 'O...OX.'],
+        toPlay: 'W',
+        prompt: '<p>White to play. White’s group has an eye space of three points in a row: B1, C1 and D1. Make the group alive with one move.</p>',
+        tree: { C1: { win: 'Alive!' } },
+        wrong: {
+          B1: 'After B1, the space that is left, C1 and D1, is two points next to each other. That is only one eye, so Black can kill the group.',
+          D1: 'After D1, the space that is left, B1 and C1, is two points next to each other. That is only one eye, so Black can kill the group.',
+        },
+        defaultWrong: 'That move doesn’t change the eye space, so Black can now take the vital point. Play inside the space.',
+        hint: 'Which point would split the space into two separate parts?',
+        explain: 'The stone on C1 splits the space into two separate eyes, B1 and D1. Black can’t play in either one, so the group is alive. C1 is the vital point of a straight three.',
+      },
+      {
+        setup: ['.......', '.......', '.......', '.......', 'XXXXXX.', 'OOOOOX.', 'O...OX.'],
+        toPlay: 'B',
+        prompt: '<p>The same position, but now Black is to play. Kill White’s group. You may need more than one move.</p>',
+        tree: {
+          C1: {
+            reply: 'B1', msg: 'White blocks at B1. Now the black stone and the whole white group each have one liberty left. Who captures first?',
+            next: { D1: { win: 'Captured!' } },
+          },
+        },
+        wrong: {
+          B1: 'White answers at C1, which captures your stone on B1 and leaves two separate eyes at B1 and D1. The group lives.',
+          D1: 'White answers at C1, which captures your stone on D1 and leaves two separate eyes at B1 and D1. The group lives.',
+        },
+        defaultWrong: 'That gives White time to play C1 and make two eyes. You must take the vital point yourself.',
+        explain: 'Playing the vital point at C1 means White can make only one eye. Taking the vital point is the key idea for both the attacker and the defender.',
+      },
+      {
+        setup: ['.......', '.......', '.......', 'XXX....', 'OOXX...', '.OOX...', '..OX...'],
+        toPlay: 'W',
+        prompt: '<p>White to play. Now the eye space is three points bent around the corner: A2, A1 and B1. Make the group alive with one move.</p>',
+        tree: { A1: { win: 'Alive!' } },
+        wrong: {
+          A2: 'After A2, the space left is A1 and B1, two points next to each other. That is only one eye, so Black can kill the group.',
+          B1: 'After B1, the space left is A1 and A2, two points next to each other. That is only one eye, so Black can kill the group.',
+        },
+        defaultWrong: 'That move doesn’t change the eye space, so Black can now take the vital point. Play inside the space.',
+        hint: 'Find the point that touches both of the other two.',
+        explain: 'The corner point A1 touches both A2 and B1, so a stone there splits the space into two separate eyes. The vital point of a bent three is the point in the bend, even when it is in the corner.',
+      },
+      {
+        setup: ['.......', '.......', '.......', 'XXX....', 'OOXX...', '.OOX...', '..OX...'],
+        toPlay: 'B',
+        prompt: '<p>The same corner position, with Black to play. Kill White’s group.</p>',
+        tree: {
+          A1: {
+            reply: 'B1', msg: 'White blocks at B1. Both your stone and the white group are down to one liberty, A2. It is your move.',
+            next: { A2: { win: 'Captured!' } },
+          },
+        },
+        wrong: {
+          A2: 'White answers at A1, which captures your stone and leaves two separate eyes, at A2 and B1. The group lives.',
+          B1: 'White answers at A1, which captures your stone and leaves two separate eyes, at A2 and B1. The group lives.',
+        },
+        defaultWrong: 'That gives White time to play A1 and make two eyes. Take the vital point yourself.',
+        explain: 'Black took the vital point in the corner, so White could only ever make one eye.',
+      },
+    ],
+  });
+
+  // Six stones in the corner, on the edge and in the centre.
+  const cornerT = ['A1', 'B1', 'C1', 'A2', 'B2', 'C2', 'A3', 'B3', 'C3'].map(p => ({ at: p, type: 'terr', color: 'B' }));
+  const edgeT = ['D9', 'E9', 'D8', 'E8'].map(p => ({ at: p, type: 'terr', color: 'B' }));
+  const centreT = ['E5', 'F5'].map(p => ({ at: p, type: 'terr', color: 'B' }));
+  ui.replay('#w-efficiency', {
+    title: 'Example: six stones each', checkpoint: 'efficiency', size: 9,
+    intro: 'An empty 9×9 board. Black will enclose land three times, each time with six stones.',
+    steps: [
+      { add: [['A4', 'B'], ['B4', 'B'], ['C4', 'B'], ['D3', 'B'], ['D2', 'B'], ['D1', 'B']], marks: cornerT,
+        text: '<b>Corner:</b> six stones enclose <b>9 points</b>. The two edges of the board do half of the work.' },
+      { add: [['C9', 'B'], ['C8', 'B'], ['D7', 'B'], ['E7', 'B'], ['F8', 'B'], ['F9', 'B']], marks: cornerT.concat(edgeT),
+        text: '<b>Edge:</b> six stones enclose only <b>4 points</b>. Only one side is protected by the board’s edge.' },
+      { add: [['D5', 'B'], ['E6', 'B'], ['F6', 'B'], ['G5', 'B'], ['F4', 'B'], ['E4', 'B']], marks: cornerT.concat(edgeT, centreT),
+        text: '<b>Centre:</b> six stones enclose just <b>2 points</b>. Every side needs a wall. The same six moves earned 9 points in the corner, 4 on the edge and 2 in the centre.' },
+    ],
+  });
+
+  ui.choice('#w-first-move', {
+    title: 'Question', checkpoint: 'first-move',
+    size: 9, setup: ['.........', '.........', '.........', '.........', '.........', '.........', '.........', '.........', '.........'],
+    marks: [{ at: 'C3', type: 'label', text: 'A' }, { at: 'E2', type: 'label', text: 'B' }, { at: 'E5', type: 'label', text: 'C' }],
+    prompt: '<p>It is Black’s first move. Which point makes it easiest to build territory with only a few more stones?</p>',
+    options: [
+      { text: 'A, near the corner', correct: true, why: 'Correct. A stone near the corner already has two edges helping it, so only a few more stones are needed to close off territory. (On a small 9×9 board, the centre point C is also a strong first move, because it is close to all four corners at once. On a 19×19 board, the corners are almost always played first.)' },
+      { text: 'B, on the edge', why: 'Not the best. A stone this low on the edge has only one edge helping it, and it is so close to the edge that the territory behind it is tiny. Look for the point that two edges help.' },
+      { text: 'C, in the centre', why: 'The centre is good for influence, but on its own it encloses very little. Every side of a centre territory needs a wall. Which point gets help from two edges?' },
+    ],
+  });
+
+  const endRows = ['.........', '......X..', '.........', 'OOOO.....', 'XXXOOOOOO', '...XXXXXX', '.O.......', '.........', '.........'];
+  const endFinal = ['.........', '.........', '.........', 'OOOO.....', 'XXXOOOOOO', '...XXXXXX', '.........', '.........', '.........'];
+  ui.replay('#w-end-replay', {
+    title: 'Example: the end of a game', checkpoint: 'end-replay',
+    setup: endRows,
+    intro: 'Every border between Black and White is closed. There is a black stone at G8, deep inside White’s area, and a white stone at B3, deep inside Black’s area. Neither stone has room to make two eyes, so both are dead.',
+    introMarks: [{ at: 'G8', type: 'tri' }, { at: 'B3', type: 'tri' }],
+    steps: [
+      { play: 'pass', color: 'B', text: 'Black has nothing useful left to play, so Black passes.', marks: [{ at: 'G8', type: 'tri' }, { at: 'B3', type: 'tri' }] },
+      { play: 'pass', color: 'W', text: 'White passes too. Two passes in a row: the game is over.', marks: [{ at: 'G8', type: 'tri' }, { at: 'B3', type: 'tri' }] },
+      { remove: ['G8', 'B3'], text: 'Both players agree that G8 and B3 are dead, so they are taken off the board. Nobody had to waste moves capturing them.' },
+      { marks: territoryMarks(endFinal), text: 'Now count. Black has 9 stones and surrounds 30 empty points: <b>39</b>. White has 10 stones and surrounds 32 empty points: 42, plus 7.5 komi, which makes <b>49.5</b>. White wins by 10.5 points.' },
+    ],
+  });
+
+  ui.countQuiz('#w-count1', {
+    title: 'Count the game', checkpoint: 'count-1', idPrefix: 'l4c1',
+    setup: ['...XO....', '...XO....', '..XXO....', '..XOO....', '..X.O....', '..XO.....', '..XXO....', '...XO....', '...XO....'],
+    prompt: '<p>This game is over and there are no dead stones. Count each player’s area: their stones plus the empty points only they surround. The point D5 touches both colours.</p>',
+    explain: 'The point D5 touches both colours, so it is neutral and counts for nobody.',
+  });
+
+  ui.countQuiz('#w-count2', {
+    title: 'Count the game, with dead stones', checkpoint: 'count-2', idPrefix: 'l4c2', komi: 7.5,
+    setup: ['..XO.....', '..XO.....', '.OXO.....', '..XXO....', '...XO....', '...XO....', '...XOO.X.', '...XO....', '...XO....'],
+    dead: ['B7', 'H3'],
+    prompt: '<p>This game is also over. The faded stones at B7 and H3 are dead, so remove them in your head first: their points belong to the player who surrounds them. Count each player’s area, without komi.</p>',
+    explain: 'With 7.5 komi, White’s total is 55.5 against Black’s 33, so White wins by 22.5 points.',
+  });
+
+  ui.fullGame('#w-game', {
+    size: 9, komi: 7.5, title: 'A full game against the computer', checkpoint: 'full-game', idPrefix: 'l4',
+    prompt: '<p>Play a complete 9×9 game and count it at the end. Finish one game, win or lose, to complete the lesson.</p>',
+  });
+})();
+</script>
