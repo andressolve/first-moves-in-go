@@ -19,12 +19,12 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were finished
 ## Files
 
 - `src/go-engine.js`: rules (capture, suicide, simple ko), capture reading (`attack`, `defend`, `bestResistance`), area and territory scoring, the Capture Go bot (`captureBotMove`) and the Monte Carlo bot for full games (`mcMove`, `estimate`, `guessDead`). It has no DOM code, so it runs under Node.
-- `src/go-ui.js`: the SVG board (`BoardView`) and the widgets under `Go.ui`: `explore`, `replay`, `pickPoints`, `choice`, `puzzle`, `puzzleSet`, `captureGame`, `fullGame`, `countQuiz`, plus progress tracking (`initLesson`, saved in localStorage per lesson).
+- `src/go-ui.js`: the SVG board (`BoardView`) and the widgets under `Go.ui`: `explore`, `replay`, `pickPoints`, `choice`, `puzzle`, `puzzleSet`, `captureGame`, `fullGame`, `friendGame` (two players on one screen, 9×9/13×13/19×19, komi, handicap, scoring, unfinished game saved in localStorage), `countQuiz`, plus progress tracking (`initLesson`, saved in localStorage per lesson).
 - `src/lesson.css`: shared styles with light and dark themes.
-- `src/lesson-N.html` and `src/index.html`: page sources. `<!--HEAD-->` is replaced by fonts, CSS and JS; `<!--HERO-->` by the lesson's illustration; `{{L1}}`…`{{L4}}` and `{{INDEX}}` by links.
+- `src/lesson-N.html`, `src/index.html` and `src/play.html` (the Play a Friend page): page sources. `<!--HEAD-->` is replaced by fonts, CSS and JS; `<!--HERO-->` by the lesson's illustration; `{{L1}}`…`{{L4}}`, `{{INDEX}}` and `{{PLAY}}` by links.
 - `build.py`: bundles every page into one self-contained HTML file in `docs/`.
 - `tests/verify-lesson.js`: loads a lesson's widget specs and checks every puzzle against the engine (answers legal and capturing, kill and save puzzles having exactly the intended solutions, replays legal).
-- `tests/ui-click.test.js`: clicks through a built page in headless Chrome. It needs `puppeteer-core`; install it somewhere and pass its path in the `PUPPETEER` environment variable.
+- `tests/ui-click.test.js`: clicks through a built page in headless Chrome, running a script such as `tests/l1-clicks.js` or `tests/play-clicks.js` (example: `node tests/ui-click.test.js docs/play.html tests/play-clicks.js`). It needs `puppeteer-core`; install it somewhere and pass its path in the `PUPPETEER` environment variable.
 
 ## Workflow for a change
 

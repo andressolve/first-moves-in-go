@@ -1,0 +1,67 @@
+<title>Play a Friend</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'play' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+      <a href="{{PLAY}}" aria-current="page">Play a friend</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Two players, one screen</p>
+      <h1>Play a Friend</h1>
+      <p class="lede">A full game of Go for two people sitting at the same screen. The board enforces every rule, including captures, suicide and ko, and counts the score when the game ends.</p>
+    </div>
+  </header>
+
+  <section class="step" id="board">
+    <div id="w-friend"></div>
+  </section>
+
+  <section class="step" id="how">
+    <h2>How a game goes</h2>
+    <div class="prose">
+      <ol>
+        <li><b>Choose the settings, then press “Start new game”.</b> Beginners should start on 9×9. A 9×9 game takes about 15 minutes, 13×13 about 40, and 19×19 an hour or more.</li>
+        <li><b>Decide who plays which colour.</b> Black moves first. If one of you is stronger, the weaker player takes Black.</li>
+        <li><b>Take turns clicking the board.</b> The last move is marked with a small circle. If you misclick, press “Undo” to take back the last move.</li>
+        <li><b>Pass when there is nothing useful left to play.</b> When both players pass one after the other, the game ends.</li>
+        <li><b>Agree on dead stones.</b> The board guesses which stones are dead and shows them faded. If you disagree, click a group to switch it between dead and alive. Then press “Accept the result”. If you can’t agree, press “Keep playing” and settle it on the board.</li>
+      </ol>
+      <p>The board saves an unfinished game in this browser, so you can close the page and carry on later.</p>
+    </div>
+
+    <h3>Komi and handicap stones</h3>
+    <div class="prose">
+      <p><b>Komi</b> is the number of points White receives for moving second. The standard is 7.5 with the area scoring used in these lessons. The half point means a game can never end in a tie.</p>
+      <p><b>Handicap stones</b> make a game fair between players of different strength. Black places 2 to 9 stones on the star points before the game starts, and then White moves first. With a handicap, komi is usually 0.5, and the board switches to that for you when you choose a handicap. A rough guide: give one extra stone for each game in a row the stronger player wins, and take one away for each game the weaker player wins.</p>
+    </div>
+
+    <h3>Need a reminder of the rules?</h3>
+    <div class="prose">
+      <ul>
+        <li>Capturing and liberties: <a href="{{L1}}">Lesson 1</a></li>
+        <li>Ladders, nets and double atari: <a href="{{L2}}">Lesson 2</a></li>
+        <li>Suicide and ko: <a href="{{L3}}">Lesson 3</a></li>
+        <li>Two eyes, ending the game and counting: <a href="{{L4}}">Lesson 4</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<script>
+Go.ui.friendGame('#w-friend', {
+  title: 'Two-player game',
+  prompt: '<p>Black and White take turns on this screen. Both players use the same mouse or finger.</p>',
+});
+</script>

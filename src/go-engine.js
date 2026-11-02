@@ -480,8 +480,8 @@
   }
 
   // Which stones look dead at the end of a game? Returns a Set of indices.
-  function guessDead(board, komi) {
-    const { ownership } = estimate(board, BLACK, 800, komi || 0);
+  function guessDead(board, komi, playouts) {
+    const { ownership } = estimate(board, BLACK, playouts || 800, komi || 0);
     const dead = new Set();
     for (const g of board.groups()) {
       let sum = 0;

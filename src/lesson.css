@@ -85,7 +85,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
 }
 .course { font: 700 17px/1 var(--display); color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
 .course span { color: var(--muted); font-weight: 600; }
-.lesson-tabs { display: flex; gap: 4px; }
+.lesson-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
 .lesson-tabs a {
   font: 500 13px/1 var(--mono); padding: 7px 10px; border-radius: 999px;
   color: var(--muted); text-decoration: none; border: 1px solid transparent;
@@ -154,6 +154,7 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
 }
 .widget.no-board { grid-template-columns: 1fr; max-width: 760px; }
 .widget.game { grid-template-columns: minmax(0, 480px) minmax(0, 1fr); }
+.widget.big { grid-template-columns: minmax(0, 660px) minmax(0, 1fr); }
 .w-board { min-width: 0; }
 .goban { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 6px; box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 10px 24px -14px rgba(40, 25, 5, .55); touch-action: manipulation; cursor: pointer; }
 .goban:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
@@ -288,7 +289,7 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
 .hero-art img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 12px; }
 
 @media (max-width: 760px) {
-  .widget, .widget.game { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
+  .widget, .widget.game, .widget.big { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
   .hero { grid-template-columns: 1fr; padding-block: 32px 24px; }
   .hero .numeral { display: none; }
   .hero-art { width: 100%; order: -1; }

@@ -776,6 +776,24 @@
     return w;
   }
 
+  // Score table shown at the end of a full game (area count, with the
+  // territory count for comparison).
+  function scoreHTML(board, dead, komi, s, resultLine) {
+    const terr = Go.scoreTerritory(board, dead, komi);
+    return `
+      <table class="score-table">
+        <thead><tr><th></th><th>Black</th><th>White</th></tr></thead>
+        <tbody>
+          <tr><th>Stones on the board</th><td>${s.blackStones}</td><td>${s.whiteStones}</td></tr>
+          <tr><th>Surrounded empty points</th><td>${s.blackTerritory}</td><td>${s.whiteTerritory}</td></tr>
+          <tr><th>Komi</th><td>–</td><td>${komi}</td></tr>
+          <tr class="total"><th>Area score</th><td>${s.black}</td><td>${s.white}</td></tr>
+        </tbody>
+      </table>
+      <p class="score-result">${resultLine}</p>
+      <p class="score-note">Counted the Japanese way (territory plus prisoners), the score would be Black ${terr.black}, White ${terr.white}: ${terr.winner === s.winner ? 'the same winner' : 'a different winner, which is rare'}.</p>`;
+  }
+
   /* ---------------- Full game on a small board ---------------- */
 
   function fullGame(host, spec) {
@@ -819,20 +837,8 @@
       w.view.hoverColor = phase === 'play' ? human : null;
     };
     function renderScore(s) {
-      const terr = Go.scoreTerritory(board, dead, komi);
       const res = s.winner === human ? 'You win' : 'The computer wins';
-      scoreBox.innerHTML = `
-        <table class="score-table">
-          <thead><tr><th></th><th>Black</th><th>White</th></tr></thead>
-          <tbody>
-            <tr><th>Stones on the board</th><td>${s.blackStones}</td><td>${s.whiteStones}</td></tr>
-            <tr><th>Surrounded empty points</th><td>${s.blackTerritory}</td><td>${s.whiteTerritory}</td></tr>
-            <tr><th>Komi</th><td>–</td><td>${komi}</td></tr>
-            <tr class="total"><th>Area score</th><td>${s.black}</td><td>${s.white}</td></tr>
-          </tbody>
-        </table>
-        <p class="score-result"><b>${res}</b> by ${s.margin} point${s.margin === 1 ? '' : 's'} (${s.winner === BLACK ? 'Black' : 'White'} wins).</p>
-        <p class="score-note">Counted the Japanese way (territory plus prisoners), the score would be Black ${terr.black}, White ${terr.white}: ${terr.winner === s.winner ? 'the same winner' : 'a different winner, which is rare'}.</p>`;
+      scoreBox.innerHTML = scoreHTML(board, dead, komi, s, `<b>${res}</b> by ${s.margin} point${s.margin === 1 ? '' : 's'} (${s.winner === BLACK ? 'Black' : 'White'} wins).`);
     }
     const toScoring = async () => {
       phase = 'score';
@@ -916,6 +922,186 @@
     return w;
   }
 
+
+  /* ---------------- Two players on one screen ---------------- */
+
+  // Standard handicap points, in placement order, as [x, y] from the top left.
+  function handicapPoints(n, count) {
+    const lo = n >= 13 ? 3 : 2, hi = n - 1 - lo, mid = (n - 1) / 2;
+    const corners = [[hi, lo], [lo, hi], [hi, hi], [lo, lo]];
+    const leftRight = [[lo, mid], [hi, mid]], topBottom = [[mid, lo], [mid, hi]], centre = [[mid, mid]];
+    if (count <= 4) return corners.slice(0, count);
+    if (count === 5) return corners.concat(centre);
+    if (count === 6) return corners.concat(leftRight);
+    if (count === 7) return corners.concat(leftRight, centre);
+    if (count === 8) return corners.concat(leftRight, topBottom);
+    return corners.concat(leftRight, topBottom, centre);
+  }
+
+  function friendGame(host, spec) {
+    spec = spec || {};
+    const KEY = 'go-first-moves:friend-game';
+    const w = shell(host, spec, 9);
+    w.host.classList.add('game', 'big');
+    const boardBox = w.view.root.parentNode;
+    let cfg = { size: 9, komi: 7.5, handicap: 0 }, moves = [], board, phase = 'play', dead = new Set(), resultText = '';
+
+    const opt = (v, t) => h('option', { value: String(v) }, t);
+    const sizeSel = h('select', { id: 'pf-size', 'aria-label': 'Board size' }, opt(9, '9×9 board'), opt(13, '13×13 board'), opt(19, '19×19 board'));
+    const komiSel = h('select', { id: 'pf-komi', 'aria-label': 'Komi' },
+      opt(7.5, 'Komi 7.5 (standard)'), opt(6.5, 'Komi 6.5 (Japanese rules)'), opt(0.5, 'Komi 0.5 (only breaks ties)'), opt(0, 'No komi'));
+    const hcSel = h('select', { id: 'pf-handicap', 'aria-label': 'Handicap stones' });
+    const fillHandicap = () => {
+      const max = +sizeSel.value === 9 ? 5 : 9, keep = +hcSel.value || 0;
+      hcSel.textContent = '';
+      hcSel.append(opt(0, 'No handicap'));
+      for (let k = 2; k <= max; k++) hcSel.append(opt(k, `Black gets ${k} handicap stones`));
+      hcSel.value = String(Math.min(keep, max));
+    };
+    sizeSel.addEventListener('change', fillHandicap);
+    hcSel.addEventListener('change', () => { if (+hcSel.value >= 2) komiSel.value = '0.5'; });
+    fillHandicap();
+    const opts = h('div', { class: 'w-opts' }, sizeSel, komiSel, hcSel);
+    const optNote = h('p', { class: 'w-tally' }, 'Changes to these settings take effect when you press “Start new game”.');
+    w.controls.before(opts, optNote);
+    const info = h('p', { class: 'w-tally' });
+    const scoreBox = h('div', { class: 'w-score' });
+    w.side.append(info, scoreBox);
+
+    const save = () => {
+      try { localStorage.setItem(KEY, JSON.stringify({ cfg, moves })); } catch (e) { /* storage unavailable */ }
+    };
+    // Rebuild the position from the settings and the list of moves.
+    const rebuild = () => {
+      board = new Board(cfg.size);
+      for (const [x, y] of handicapPoints(cfg.size, cfg.handicap)) board.grid[y * cfg.size + x] = BLACK;
+      board.toPlay = cfg.handicap >= 2 ? WHITE : BLACK;
+      for (const m of moves) board.play(m);
+    };
+    const setView = () => {
+      if (w.view.n === cfg.size) return;
+      boardBox.textContent = '';
+      const onClick = w.view.onClick;
+      w.view = new BoardView(boardBox, { size: cfg.size });
+      w.view.onClick = onClick;
+    };
+    const draw = (animate) => {
+      w.view.set(board, animate);
+      const marks = [];
+      if (phase === 'score' || phase === 'done') {
+        const s = Go.scoreArea(board, dead, cfg.komi);
+        for (const d of dead) marks.push({ at: d, type: 'dead' });
+        for (let i = 0; i < board.grid.length; i++) {
+          if ((!board.grid[i] || dead.has(i)) && s.owner[i]) marks.push({ at: i, type: 'terr', color: s.owner[i] });
+        }
+        resultText = s.winner ? `${Go.colorName(s.winner)} wins by ${s.margin} point${s.margin === 1 ? '' : 's'}` : 'The game is a draw';
+        scoreBox.innerHTML = scoreHTML(board, dead, cfg.komi, s, `<b>${resultText}.</b>`);
+      } else {
+        scoreBox.textContent = '';
+        if (board.lastMove != null && board.lastMove >= 0) marks.push({ at: board.lastMove, type: 'last' });
+      }
+      w.view.mark(marks);
+      w.view.hoverColor = phase === 'play' ? board.toPlay : null;
+      w.view.interactive = phase === 'play' || phase === 'score';
+      const played = moves.length;
+      info.textContent = `${cfg.size}×${cfg.size}, komi ${cfg.komi}${cfg.handicap ? `, ${cfg.handicap} handicap stones` : ''}. Moves played: ${played}. Captured so far: Black ${board.prisoners[BLACK]}, White ${board.prisoners[WHITE]}.`;
+      passB.hidden = resignB.hidden = phase !== 'play';
+      resumeB.hidden = acceptB.hidden = phase !== 'score';
+    };
+    const turnText = () => `<b>${Go.colorName(board.toPlay)}</b> to play.`;
+
+    const toScoring = async () => {
+      phase = 'score';
+      w.view.interactive = false;
+      w.say('Both players passed in a row, so the game is over. Working out which stones are dead…');
+      await wait(30);
+      const playouts = cfg.size === 9 ? 1000 : cfg.size === 13 ? 800 : 600;
+      dead = Go.guessDead(board, cfg.komi, playouts);
+      draw(false);
+      w.say('Faded stones are the computer’s guess at which stones are dead. Both players must agree. Click any group to switch it between dead and alive, then press “Accept the result”. Small squares show whose area each empty point is.', 'info');
+    };
+
+    w.view.onClick = i => {
+      if (phase === 'score') {
+        if (!board.grid[i]) return;
+        const isDead = dead.has(i);
+        board.group(i).stones.forEach(s => (isDead ? dead.delete(s) : dead.add(s)));
+        draw(false); return;
+      }
+      if (phase !== 'play') return;
+      const r = board.play(i);
+      if (!r.ok) { w.say(ILLEGAL[r.reason], 'bad'); return; }
+      moves.push(i); save();
+      draw(true);
+      w.say((r.captured.length ? `${Go.colorName(r.color)} captured ${r.captured.length} stone${r.captured.length > 1 ? 's' : ''}. ` : '') + turnText(), r.captured.length ? 'good' : '');
+    };
+
+    const passB = w.button('Pass', () => {
+      if (phase !== 'play') return;
+      const who = board.toPlay;
+      board.play(PASS); moves.push(PASS); save();
+      if (board.passes >= 2) { toScoring(); return; }
+      draw(false);
+      w.say(`${Go.colorName(who)} passed. If ${Go.colorName(opp(who))} passes too, the game ends and is scored. ` + turnText(), 'warn');
+    });
+    w.button('Undo', () => {
+      if (!moves.length || phase === 'done' || phase === 'over') return;
+      moves.pop(); phase = 'play'; dead = new Set(); save();
+      rebuild(); draw(false);
+      w.say('The last move was taken back. ' + turnText());
+    });
+    const resignB = w.button('Resign', () => {
+      if (phase !== 'play') return;
+      if (resignB.dataset.armed !== '1') {
+        resignB.dataset.armed = '1'; resignB.textContent = `Press again: ${Go.colorName(board.toPlay)} resigns`;
+        setTimeout(() => { resignB.dataset.armed = ''; resignB.textContent = 'Resign'; }, 3000);
+        return;
+      }
+      resignB.dataset.armed = ''; resignB.textContent = 'Resign';
+      const loser = board.toPlay;
+      phase = 'over'; draw(false);
+      try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
+      w.say(`${Go.colorName(loser)} resigned, so <b>${Go.colorName(opp(loser))} wins</b>. Press “Start new game” to play again.`, 'good');
+    });
+    const resumeB = w.button('Keep playing', () => {
+      // Take back the two passes and continue the game.
+      while (moves.length && moves[moves.length - 1] === PASS) moves.pop();
+      phase = 'play'; dead = new Set(); save();
+      rebuild(); draw(false);
+      w.say('Play continues. ' + turnText());
+    });
+    const acceptB = w.button('Accept the result', () => {
+      phase = 'done'; draw(false);
+      try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
+      w.complete();
+      w.say(`Game over. ${resultText}. Press “Start new game” to play again.`, 'good');
+    }, 'primary');
+    const newB = w.button('Start new game', () => {
+      if (phase === 'play' && moves.length && newB.dataset.armed !== '1') {
+        newB.dataset.armed = '1'; newB.textContent = 'Press again to abandon this game';
+        setTimeout(() => { newB.dataset.armed = ''; newB.textContent = 'Start new game'; }, 3000);
+        return;
+      }
+      newB.dataset.armed = ''; newB.textContent = 'Start new game';
+      start({ size: +sizeSel.value, komi: +komiSel.value, handicap: +hcSel.value }, []);
+    }, 'primary');
+
+    function start(c, mv, restored) {
+      cfg = c; moves = mv; phase = 'play'; dead = new Set();
+      sizeSel.value = String(cfg.size); fillHandicap(); hcSel.value = String(cfg.handicap); komiSel.value = String(cfg.komi);
+      setView(); rebuild(); save(); draw(false);
+      if (restored) w.say('Your unfinished game was restored, so you can carry on where you stopped. ' + turnText(), 'info');
+      else w.say((cfg.handicap >= 2 ? `Black’s ${cfg.handicap} handicap stones are already on the board, so White moves first. ` : 'Black moves first. ') + turnText());
+      if (board.passes >= 2) toScoring();
+    }
+
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { saved = null; }
+    if (saved && saved.cfg && Array.isArray(saved.moves) && saved.moves.length) start(saved.cfg, saved.moves, true);
+    else start(cfg, []);
+    return w;
+  }
+
   /* ---------------- Count the score yourself ---------------- */
 
   function countQuiz(host, spec) {
@@ -977,5 +1163,5 @@
     });
   }
 
-  Go.ui = { BoardView, explore, replay, pickPoints, choice, puzzle, puzzleSet, captureGame, fullGame, countQuiz, progress, initLesson, libMarks };
+  Go.ui = { BoardView, explore, replay, pickPoints, choice, puzzle, puzzleSet, captureGame, fullGame, friendGame, countQuiz, progress, initLesson, libMarks };
 })();

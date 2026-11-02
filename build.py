@@ -21,7 +21,7 @@ def head_block():
     return f'{FONTS}\n<style>\n{css}\n</style>\n<script>\n{js}\n</script>'
 
 def links(target):
-    local = {'INDEX': 'index.html', **{f'L{n}': f'lesson-{n}.html' for n in range(1, 5)}}
+    local = {'INDEX': 'index.html', 'PLAY': 'play.html', **{f'L{n}': f'lesson-{n}.html' for n in range(1, 5)}}
     if target == 'publish':
         f = ROOT / 'links.json'
         if f.exists():
@@ -48,7 +48,7 @@ def render(text, target, name=''):
 def main():
     for target in ('docs', 'publish'):
         (ROOT / target).mkdir(exist_ok=True)
-    pages = sorted(SRC.glob('lesson-*.html')) + sorted(SRC.glob('index.html'))
+    pages = sorted(SRC.glob('lesson-*.html')) + [SRC / 'index.html', SRC / 'play.html']
     for page in pages:
         text = page.read_text()
         body = render(text, 'publish', page.name)
