@@ -53,4 +53,13 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were finished
 
 When adding a lesson, also add its tab to the top bar of every page, a card on `src/index.html`, a `{{L5}}` link entry in `build.py` and in `links.json`, and an illustration in `assets/hero-5.jpg` with alt text in `assets/hero-5.txt`.
 
+## Illustrations for new lessons
+
+Generate each hero image with the OpenAI image API (model `gpt-image-2`, key in `OPENAI_API_KEY`) at 1536×1024. Then shrink it to 900 px wide and under about 150 KB with `sips`, and save it as `assets/hero-N.jpg`, with a one-sentence alt text in `assets/hero-N.txt`. Keep the style of lessons 1–4: an ink-and-wash (sumi-e) illustration in black ink, warm kaya-wood gold and a little deep jade green, on textured paper, with lots of quiet space and no text, letters, logos or faces. Never show a readable Go board position; use a metaphor instead (lesson 2 is a zigzag mountain path ending at a cliff, lesson 4 is fields enclosed by stone walls). Look at every image before using it.
+
+## How lessons 1–4 were built (a pattern that worked)
+
+- One builder agent per lesson ran in parallel. Each one wrote only its own `src/lesson-N.html`, verified every puzzle with `tests/verify-lesson.js` and extra Node checks, and reported any change it wanted in the shared files instead of making it. The main session then made those shared changes.
+- Before publishing, every page was checked in headless Chrome for page errors, for overflow at a 390 px phone width, and with click-through scripts. Use Chrome's real viewport through puppeteer for the phone-width check: a plain `--window-size=400` screenshot falsely shows overflow, because headless Chrome has a minimum window width.
+
 The built-in 9×9 opponent is weak: flat Monte Carlo with 1,000, 3,000 or 10,000 playouts. Once learners outgrow it, point them to online-go.com (OGS).
