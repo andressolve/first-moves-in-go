@@ -12,9 +12,8 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were finished
 
 ## Where things live
 
-- Public site (send this link to learners): https://andressolve.github.io/first-moves-in-go/
-- Repo: https://github.com/andressolve/first-moves-in-go (public, branch `main`). GitHub Pages serves the `docs/` folder.
-- Private claude.ai copies also exist (home page https://claude.ai/artifact/3DMxoQgME51Fg9tnQe3NET). Their URLs are in `links.json`, which is gitignored; `python3 build.py` writes artifact-ready bodies to `publish/` (also gitignored). The GitHub Pages site is the version to share, because each artifact has to be shared by hand.
+- **Main copy: claude.ai artifacts** (Andres decided this on 2026-11-01). Send learners the home page: https://claude.ai/artifact/3DMxoQgME51Fg9tnQe3NET. Every page's artifact URL is in `links.json` (gitignored, keys `INDEX`, `L1`…`L4`, `PLAY`). Index, lessons 1–4 and Play a Friend are set to "Anyone with the link"; a newly published artifact starts private and Andres must share it from its Share menu (Claude cannot change sharing), so tell him whenever a new page is published.
+- Mirror: GitHub Pages at https://andressolve.github.io/first-moves-in-go/, from the public repo https://github.com/andressolve/first-moves-in-go (branch `main`, serves `docs/`). Keep it in sync, but the artifacts come first.
 
 ## Files
 
@@ -30,8 +29,9 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were finished
 
 1. Edit files in `src/`.
 2. Run `node tests/verify-lesson.js src/lesson-N.html` until it reports "All checks passed". Check any extra claim in the text (stone counts, scores, ladder results) with a short Node script against the engine.
-3. Run `python3 build.py`.
-4. Commit `src/` and `docs/` together and push. The site updates in a minute or two.
+3. Run `python3 build.py`. It writes `publish/` (artifact bodies with artifact links) and `docs/` (GitHub Pages files with relative links).
+4. Republish every changed page from `publish/` to its existing artifact URL (pass `url` from `links.json` when working in a new session). For a new page: publish it, add its URL to `links.json`, rebuild, and republish every page so all the top bars link to it.
+5. Commit `src/` and `docs/` together and push, so the GitHub Pages mirror stays in sync.
 
 ## Writing puzzles
 
@@ -51,6 +51,6 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were finished
 11. Moving up to 19×19.
 12. Reviewing your own games.
 
-When adding a lesson, also add its tab to the top bar of every page, a card on `src/index.html`, a `{{L5}}` link entry in `build.py`, and an illustration in `assets/hero-5.jpg` with alt text in `assets/hero-5.txt`.
+When adding a lesson, also add its tab to the top bar of every page, a card on `src/index.html`, a `{{L5}}` link entry in `build.py` and in `links.json`, and an illustration in `assets/hero-5.jpg` with alt text in `assets/hero-5.txt`.
 
 The built-in 9×9 opponent is weak: flat Monte Carlo with 1,000, 3,000 or 10,000 playouts. Once learners outgrow it, point them to online-go.com (OGS).
