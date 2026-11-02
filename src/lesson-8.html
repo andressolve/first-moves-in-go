@@ -1,0 +1,502 @@
+<title>Life-and-Death Shapes</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'lesson-8' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+      <a href="{{L5}}">5 · Opening</a>
+      <a href="{{L6}}">6 · Cutting</a>
+      <a href="{{L7}}">7 · Sente</a>
+      <a href="{{L8}}" aria-current="page">8 · Shapes</a>
+      <a href="{{PLAY}}">Play a friend</a>
+    </nav>
+    <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lesson 8 of 8</p>
+      <h1>Life-and-Death Shapes</h1>
+      <p class="lede">In Lesson 4 you learned that a group needs two eyes to live. This lesson teaches you to look at the empty space inside a surrounded group and tell, often at a glance, whether it can make two eyes. A handful of shapes come up again and again. Once you know them, you will stop wasting moves on groups that are already safe, and you will find the one move that kills a group that only looks safe.</p>
+      <ul class="goals">
+        <li>Tell which eye spaces of three, four, five and six points live, die, or depend on who plays first.</li>
+        <li>Find the vital point of a shape by looking for the point that touches the most others.</li>
+        <li>Recognise a false eye, and make your opponent’s eye false.</li>
+        <li>Shrink an eye space from the outside before you play inside it.</li>
+        <li>Recognise seki, where neither side can attack, and count it correctly.</li>
+      </ul>
+    </div>
+    <!--HERO-->
+  </header>
+
+  <section class="step" id="eye-space">
+    <p class="eyebrow">Part 1</p>
+    <h2>Eye space: the room inside a group</h2>
+    <div class="prose">
+      <p>First, a short reminder of Lesson 4. A group that has two separate eyes can never be captured, because the opponent cannot fill either eye without committing suicide. Two empty points next to each other make only one eye, not two. A space of three points in a row, or three points bent around a corner, can become two eyes or only one, depending on who plays first at its middle point, which is called the <b>vital point</b>.</p>
+      <p>In this lesson we look at the whole empty area inside a surrounded group, which is called its <dfn>eye space</dfn>. The size of the eye space matters, and so does its shape. You will see that some shapes are alive however the opponent attacks, some are dead even if the owner plays first, and some are <dfn>unsettled</dfn>: they live if the owner plays first and die if the opponent does.</p>
+      <p>To count an eye space, include every empty point that is surrounded by the group’s stones and the edge of the board. Try it on the board below.</p>
+    </div>
+    <div id="w-space"></div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>Chess players don’t calculate king and rook against king from scratch every time; they know the technique by heart. The shapes in this lesson are Go’s basic endgames. You will still need to read ahead in your games, but knowing that a shape is alive, dead or unsettled saves you most of the work and tells you where to look.</p>
+    </div>
+  </section>
+
+  <section class="step" id="four">
+    <p class="eyebrow">Part 2</p>
+    <h2>Eye spaces of four points</h2>
+    <div class="prose">
+      <p>There are four shapes that four points can make. Two of them are alive, one is dead, and one is unsettled. Every group in this part is completely surrounded by Black, so the eye space is all that White has.</p>
+      <h3>Straight four: alive</h3>
+      <p>Four points in a row along the edge are alive, even if Black plays first. Step through the example to see why.</p>
+    </div>
+    <div id="w-straight4"></div>
+    <div class="prose">
+      <p>The two middle points of the straight four work as a pair. If Black takes one of them, White takes the other, and White always ends up with two eyes. Two points that work like this, so that whichever one your opponent takes you can take the other, are called <dfn>miai</dfn> <span class="term-jp">(見合い)</span>. When a group has miai for its second eye, you don’t need to add a move to it. Save your move and play somewhere else.</p>
+      <h3>Bent four: alive</h3>
+    </div>
+    <div id="w-bent4"></div>
+    <div class="prose"><h3>Square four: dead</h3>
+      <p>Four points in a 2×2 square look roomy, but they can only make one eye. Even if White plays first inside the square, the three points that are left form a bent three, and Black takes its vital point.</p>
+    </div>
+    <div id="w-square4"></div>
+    <div class="prose"><h3>Pyramid four: unsettled</h3>
+      <p>The last shape of four points looks like a T. It has one point in the middle that touches all three of the others. Use what you learned about straight three and bent three to answer the question.</p>
+    </div>
+    <div id="w-pyramid"></div>
+  </section>
+
+  <section class="step" id="five-six">
+    <p class="eyebrow">Part 3</p>
+    <h2>Five and six points: look for the busiest point</h2>
+    <div class="prose">
+      <p>Larger eye spaces are usually alive. Five points in a row, for example, are alive whoever plays first. But a few compact shapes of five and six points are unsettled. They are worth learning, because they appear in real games again and again.</p>
+      <p>There is a simple way to find the vital point of a compact shape. For each point of the eye space, count how many other points of the space it touches (along the lines, not diagonally). The point that touches the most is usually the vital point. A stone there touches the whole shape, so it stops White from dividing the space into two separate eyes.</p>
+    </div>
+    <div class="note key">
+      <span class="note-label">How to find the vital point</span>
+      <p>Count, for every point of the eye space, how many other points of the space it touches. Look first at the point with the highest number. If the owner plays there, the space can usually be split into two eyes. If the opponent plays there, it usually cannot.</p>
+    </div>
+    <div class="prose"><p>Step through the three shapes below. The numbers show how many points of the space each point touches. In each shape Black plays the point with the highest number, and after that White cannot make two eyes, whatever White does next.</p></div>
+    <div id="w-shapes"></div>
+    <div class="note key">
+      <span class="note-label">The shapes to remember</span>
+      <p><b>Dead</b> even if the owner plays first: any space of one or two points, and the square four.</p>
+      <p><b>Unsettled</b>, so whoever plays the vital point first decides: straight three, bent three, pyramid four, bulky five and cross five. The flower six (also called rabbitty six) belongs here too: if the attacker plays first, its centre kills.</p>
+      <p><b>Alive</b> however the opponent attacks: straight four, bent four on the side, and most spaces of five or more points that are long rather than compact.</p>
+    </div>
+  </section>
+
+  <section class="step" id="false-eyes">
+    <p class="eyebrow">Part 4</p>
+    <h2>False eyes</h2>
+    <div class="prose">
+      <p>Not every empty point that is surrounded by your stones is a real eye. Sometimes the stones around the eye are not connected to each other, except through the eye itself. The opponent can then put some of those stones in atari, and to save them you must fill the eye. An eye like this is called a <dfn>false eye</dfn>.</p>
+      <p>Step through the example. White seems to have two eyes, at A1 and D1. But look at the white stone on E1. It is connected to the rest of the group only through E2 or through the eye at D1.</p>
+    </div>
+    <div id="w-false-demo"></div>
+    <div class="note key">
+      <span class="note-label">The diagonal rule</span>
+      <p>To check whether an eye is real, look at the points diagonally next to it.</p>
+      <ul>
+        <li>In the <b>centre</b> of the board an eye has four diagonal points. If the opponent holds two of them, the eye is false.</li>
+        <li>On the <b>edge</b> an eye has only two diagonal points on the board. If the opponent holds even one, the eye is false.</li>
+        <li>In the <b>corner</b> an eye has one diagonal point. If the opponent holds it, the eye is false.</li>
+      </ul>
+      <p>“Holds” means the opponent has a stone there, or can play there safely whenever they want. So when you attack, playing on an eye’s diagonal point is often the move that kills. When you defend, that same point is often the one you must take first.</p>
+    </div>
+    <div id="w-false-q"></div>
+  </section>
+
+  <section class="step" id="reduce">
+    <p class="eyebrow">Part 5</p>
+    <h2>Make the space smaller first</h2>
+    <div class="prose">
+      <p>When an eye space is too big to kill by playing inside it, the attacker starts from the outside. A move that wraps around the end of the opponent’s line of stones, touching the last stone and sitting diagonally next to one of your own stones, is called a <dfn>hane</dfn> <span class="term-jp">(ハネ)</span>. On the first line, a hane pushes into the eye space and takes a point away from it, and it is safe because it is connected to your own wall. A stone played inside the eye space, away from your own stones, is called a <dfn>placement</dfn> <span class="term-jp">(置き oki)</span>.</p>
+      <p>A good habit when you attack: first make the space smaller with hane from the outside, then play the placement on the vital point of what is left. A placement played too early, while the space is still big, usually just gives the defender a target to capture.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play Civilization or Polytopia</span>
+      <p>This is like taking border tiles before attacking a city. A rushed attack on a well-supplied city fails; first you squeeze its territory and cut its supply, and then the city falls with little resistance. In Go, a hane is a cheap, safe move that takes land from the group, and the placement is the final assault once the group no longer has room.</p>
+    </div>
+    <div id="w-reduce"></div>
+    <div class="note">
+      <span class="note-label">The corner is special</span>
+      <p>In the corner, a group has the least room of all, because two edges cut its eye space short. In the replay above, Black could also have killed at once with B1, the point on the first line next to the corner. That point is often the vital point of a corner group. Strong players also learn a few famous corner shapes by name, such as the “carpenter’s square”, the same way chess players learn named endgames. You can meet those later, in problem books and on OGS.</p>
+    </div>
+  </section>
+
+  <section class="step" id="seki">
+    <p class="eyebrow">Part 6</p>
+    <h2>Seki: when neither side can attack</h2>
+    <div class="prose">
+      <p>Sometimes two groups of opposite colours are tangled together, neither one has two eyes, and they share their last liberties. If either player fills a shared liberty, that player’s own group is left in atari, and the opponent captures it. So neither player wants to move there, and both groups stay on the board until the end of the game. This is called <dfn>seki</dfn> <span class="term-jp">(セキ)</span>, which means mutual life.</p>
+      <p>In the example below, at the bottom left, a black group of six stones (A2 to E2 and E1) is surrounded by White, and a white group of two stones (B1 and C1) is surrounded by Black. Neither has an eye. Both groups have exactly the same two liberties: A1 and D1.</p>
+    </div>
+    <div id="w-seki"></div>
+    <div class="prose">
+      <p>Seki can also happen when each group has one eye and the two groups share a liberty: neither side can fill the shared liberty without putting its own group in atari. Whatever form it takes, the rule for players is the same: leave a seki alone. Don’t fill a shared liberty yourself, and pass when only shared liberties are left.</p>
+      <p><b>How seki is counted.</b> With area scoring, the stones in a seki are alive, so each player counts their own seki stones. The shared liberties touch both colours, so, like any neutral point, they count for nobody.</p>
+    </div>
+    <div id="w-seki-count"></div>
+  </section>
+
+  <section class="step" id="problems">
+    <p class="eyebrow">Part 7</p>
+    <h2>Problems</h2>
+    <div class="prose">
+      <p>Here are eight problems that use everything in this lesson. Some shapes from Parts 2 and 3 appear again, but turned around or moved to another side of the board. Recognising a shape from any direction is part of the skill.</p>
+      <p>Each problem says whether you play Black or White and whether your goal is to kill or to live. A problem is solved when the group is certainly dead or certainly alive. You don’t have to play until every stone is captured.</p>
+    </div>
+    <div id="w-set"></div>
+  </section>
+
+  <section class="step" id="full-game">
+    <p class="eyebrow">Part 8</p>
+    <h2>Play a full game</h2>
+    <div class="prose">
+      <p>Play a complete 9×9 game against the computer, and this time check the life of every group as you go. Some advice before you start:</p>
+      <ul>
+        <li><b>Check your groups before you play elsewhere.</b> When one of your groups is surrounded, count its eye space and look at its shape. If the shape is unsettled, take the vital point now, before your opponent does.</li>
+        <li><b>Don’t add moves to groups that are already alive.</b> A straight four, a bent four on the side, or a group with two eyes that are miai needs no more stones. Play the biggest move somewhere else.</li>
+        <li><b>Look at the diagonal points of your eyes.</b> If your opponent can take one on the edge, or two in the centre, your eye may be false.</li>
+        <li><b>When you attack, squeeze first.</b> Use hane from the outside to make the space smaller, then play the placement on the vital point.</li>
+        <li><b>Leave a seki alone.</b> If two groups share their last liberties and neither has two eyes, don’t fill those liberties. Pass when only they are left.</li>
+      </ul>
+      <p>If the <b>Beginner</b> computer is easy for you now, try <b>Club</b>. You complete this exercise when you finish one game and accept the result, whether you win or lose.</p>
+    </div>
+    <div id="w-game"></div>
+  </section>
+
+  <section class="step" id="recap">
+    <p class="eyebrow">Summary</p>
+    <h2>What to remember</h2>
+    <ol class="recap">
+      <li>The eye space of a group is all the empty points inside it. Its size and its shape decide whether the group can make two eyes.</li>
+      <li>Straight four and bent four on the side are alive. Square four is dead, even if the owner plays first.</li>
+      <li>Straight three, bent three, pyramid four, bulky five and cross five are unsettled: whoever takes the vital point first decides. The flower six dies if the attacker takes its centre first.</li>
+      <li>The vital point is usually the point of the space that touches the most other points.</li>
+      <li>An eye is false if the opponent holds one of its diagonal points on the edge, or two of them in the centre.</li>
+      <li>To kill a big group, make its space smaller from the outside with hane first, then play the placement.</li>
+      <li>In a seki, neither side can fill a shared liberty without losing its own group. Leave it alone. Seki stones count for their owner, and shared liberties count for nobody.</li>
+    </ol>
+    <h3>Words from this lesson</h3>
+    <dl class="glossary">
+      <dt>Eye space</dt><dd>All the empty points inside a surrounded group, where it might make its eyes.</dd>
+      <dt>Unsettled</dt><dd>A group that lives if its owner plays first and dies if the opponent plays first.</dd>
+      <dt>Miai</dt><dd>Two points that work as a pair: if your opponent takes one, you take the other and are still fine.</dd>
+      <dt>False eye</dt><dd>An eye that the opponent can force you to fill, because the stones around it are not safely connected.</dd>
+      <dt>Hane</dt><dd>A move that wraps around the end of the opponent’s line of stones, touching it and sitting diagonally next to one of your own stones.</dd>
+      <dt>Placement</dt><dd>A stone played inside the opponent’s eye space, usually on its vital point.</dd>
+      <dt>Seki</dt><dd>Two groups that share liberties so that neither side can attack: both stay alive, and the shared liberties count for nobody.</dd>
+    </dl>
+    <h3>Where to go from here</h3>
+    <div class="prose">
+      <p>This is the last lesson for now. The best way to improve is to play many games and to solve many small life-and-death problems, a few every day, the way chess players solve tactics. You can play your friends on the <a href="{{PLAY}}">Play a Friend</a> board, on 9×9, 13×13 or 19×19. When the computer here is no longer a challenge, play real opponents of your own strength on <a href="https://online-go.com" target="_blank" rel="noopener">online-go.com</a> (OGS), which also has a large free collection of puzzles.</p>
+    </div>
+    <nav class="lesson-nav">
+      <a href="{{L7}}"><small>Previous lesson</small>← 7 · Sente and Gote</a>
+      <span></span>
+    </nav>
+  </section>
+</main>
+
+<script>
+(function () {
+  const ui = Go.ui;
+  const E7 = '.......';
+
+  // Every point of a 7×7 board, so a replay step can clear the board before drawing a new shape.
+  const ALL7 = [];
+  for (let y = 1; y <= 7; y++) for (const c of 'ABCDEFG') ALL7.push(c + y);
+  function morph(rows) {
+    const b = Go.Board.fromRows(rows), add = [];
+    b.grid.forEach((v, i) => { if (v) add.push([b.name(i), v === Go.BLACK ? 'B' : 'W']); });
+    return { remove: ALL7, add };
+  }
+  const labels = obj => Object.entries(obj).map(([at, n]) => ({ at, type: 'label', text: String(n) }));
+
+  /* ---------- Part 1 ---------- */
+
+  ui.pickPoints('#w-space', {
+    title: 'Exercise', checkpoint: 'space-count',
+    setup: [E7, E7, E7, 'XXXXXXX', 'OOOOOXX', 'O...OOX', 'O....OX'],
+    prompt: '<p>White’s group is completely surrounded. Click every empty point of its eye space, then press <b>Check</b>.</p>',
+    targets: ['B1', 'C1', 'D1', 'E1', 'B2', 'C2', 'D2'],
+    stoneMessage: 'The eye space is made of empty points. Click the empty points inside White’s group, not the stones.',
+    extraHint: 'Only count empty points that White’s stones and the edge of the board enclose.',
+    missHint: 'Check the second row as well as the edge.',
+    success: 'Correct: seven points, B1 to E1 and B2 to D2. A space this big and this long is alive, even if Black plays first. Black cannot stop White from splitting it into two eyes.',
+  });
+
+  /* ---------- Part 2 ---------- */
+
+  ui.replay('#w-straight4', {
+    title: 'Example: straight four', checkpoint: 'straight4',
+    setup: [E7, E7, E7, E7, 'XXXXXXX', 'OOOOOOX', 'O....OX'],
+    intro: 'White’s eye space is four points in a row: B1, C1, D1 and E1. Black plays first and tries to kill.',
+    introMarks: ['B1', 'C1', 'D1', 'E1'].map(at => ({ at, type: 'circ' })),
+    steps: [
+      { play: 'C1', color: 'B', text: 'Black plays C1, one of the two middle points.' },
+      { play: 'D1', color: 'W', text: 'White answers at D1, the other middle point. Now White has an eye at E1. The black stone on C1 has one liberty, at B1, so White can capture it whenever it likes. Black cannot play at B1 or E1, because both moves would be suicide. White has two eyes and is alive.',
+        marks: [{ at: 'B1', type: 'x', tone: 'danger' }, { at: 'E1', type: 'x', tone: 'danger' }], tone: 'good' },
+      { remove: ['C1', 'D1'], text: 'Back to the start. If Black had played D1 instead, White would answer at C1, and the result would be the same with the sides swapped.', marks: [{ at: 'C1', type: 'circ' }, { at: 'D1', type: 'circ' }] },
+    ],
+  });
+
+  ui.choice('#w-bent4', {
+    title: 'Question 1', checkpoint: 'q-bent4',
+    setup: [E7, E7, E7, '.XXXXX.', 'XXOOOX.', 'OOO.OX.', 'O...OX.'],
+    prompt: '<p>White’s eye space is four points in an L: B1, C1, D1 and D2. This shape is called a bent four. Black is to play. Is White’s group alive?</p>',
+    options: [
+      { text: 'Alive, even though Black plays first', correct: true, why: 'Correct. C1 and D1 are miai. If Black plays C1, White plays D1; if Black plays D1, White plays C1. Either way White is left with two separate eyes. A bent four on the side is alive.' },
+      { text: 'Dead, if Black finds the right move', why: 'Try each of Black’s moves in your head. If Black plays C1, White answers at D1. If Black plays D1, White answers at C1. Does White end up with two eyes each time?' },
+    ],
+    after: [{ at: 'C1', type: 'circ', tone: 'good' }, { at: 'D1', type: 'circ', tone: 'good' }],
+  });
+
+  ui.replay('#w-square4', {
+    title: 'Example: square four', checkpoint: 'square4',
+    setup: [E7, E7, E7, 'XXXXX..', 'OOOOX..', 'O..OX..', 'O..OX..'],
+    intro: 'White’s eye space is a 2×2 square: B1, C1, B2 and C2. This time White plays first, to try to make two eyes.',
+    introMarks: ['B1', 'C1', 'B2', 'C2'].map(at => ({ at, type: 'circ' })),
+    steps: [
+      { play: 'B1', color: 'W', text: 'White plays B1. The space that is left, C1, B2 and C2, is three points bent around a corner: a bent three.', marks: ['C1', 'B2', 'C2'].map(at => ({ at, type: 'circ' })) },
+      { play: 'C2', color: 'B', text: 'Black plays C2, the vital point of the bent three, because it touches both other points. White can now make only one eye, so the group is dead. It makes no difference where White starts: any point of the square leaves a bent three, and Black takes its middle.', tone: 'good' },
+    ],
+  });
+
+  ui.choice('#w-pyramid', {
+    title: 'Question 2', checkpoint: 'q-pyramid',
+    setup: [E7, E7, E7, 'XXXXX..', 'XOOOXX.', 'OO.OOX.', 'O...OX.'],
+    marks: [{ at: 'B1', type: 'label', text: 'A' }, { at: 'C1', type: 'label', text: 'B' }, { at: 'C2', type: 'label', text: 'C' }],
+    prompt: '<p>White’s eye space is B1, C1, D1 and C2, a pyramid four. Black is to play. Which point kills White’s group?</p>',
+    options: [
+      { text: 'A (B1)', why: 'After Black B1, White plays C1. That splits the rest of the space into D1 and C2, two separate eyes, and the black stone on B1 can be captured at any time. White lives.' },
+      { text: 'B (C1)', correct: true, why: 'Correct. C1 touches all three other points of the space, so it is the vital point. With a black stone there, White cannot divide the space into two eyes. If White plays first, C1 is also White’s only living move.' },
+      { text: 'C (C2)', why: 'After Black C2, White plays C1. Now B1 and D1 are two separate eyes, and the black stone on C2 is trapped. White lives.' },
+    ],
+    after: [{ at: 'C1', type: 'ring', tone: 'good' }],
+  });
+
+  /* ---------- Part 3 ---------- */
+
+  const bulky = [E7, E7, E7, 'XXXXXX.', 'OOOOXX.', 'O..OOX.', 'O...OX.'];
+  const cross = [E7, E7, 'XXXXXX.', 'XOOOXX.', 'OO.OOX.', 'O...OX.', 'OO.OOX.'];
+  const flower = [E7, E7, 'XXXXXX.', 'XOOOOX.', 'OO..OX.', 'O...OX.', 'OO.OOX.'];
+  ui.replay('#w-shapes', {
+    title: 'Example: three unsettled shapes', checkpoint: 'shapes',
+    setup: bulky,
+    intro: '<b>Bulky five:</b> a 2×2 square with one extra point, B1, C1, D1, B2 and C2. The point C1 touches three others; every other point touches two or fewer.',
+    introMarks: labels({ B1: 2, C1: 3, D1: 1, B2: 2, C2: 2 }),
+    steps: [
+      { play: 'C1', color: 'B', text: 'Black plays C1, the busiest point. Whatever White does now, it cannot make two separate eyes. (If White plays first, White can live, for example at C1.)', tone: 'good' },
+      Object.assign(morph(cross), { marks: labels({ C2: 4, B2: 1, D2: 1, C1: 1, C3: 1 }),
+        text: '<b>Cross five:</b> a centre point with four arms. The centre, C2, touches all four other points.' }),
+      { play: 'C2', color: 'B', text: 'Black plays the centre. No arm can become an eye while the black stone touches it, and if White fills the arms to capture the stone, the space that is left is too small for two eyes. The group is dead. If White had played C2 first, the four arms would have been four separate eyes.', tone: 'good' },
+      Object.assign(morph(flower), { marks: labels({ C2: 4, B2: 1, C1: 1, D2: 2, C3: 2, D3: 2 }),
+        text: '<b>Flower six:</b> a 2×2 square with two extra points, B2 and C1. Again one point, C2, touches four others.' }),
+      { play: 'C2', color: 'B', text: 'Black plays C2, and White can no longer make two eyes. In all three shapes the vital point was the point with the highest number.', tone: 'good' },
+    ],
+  });
+
+  /* ---------- Part 4 ---------- */
+
+  ui.replay('#w-false-demo', {
+    title: 'Example: a false eye', checkpoint: 'false-demo',
+    setup: [E7, E7, E7, E7, 'XXXXXX.', 'OOOO.X.', '.OO.OX.'],
+    intro: 'White has two empty points inside its group, A1 and D1. A1 is a real eye. Is D1 one too?',
+    introMarks: [{ at: 'A1', type: 'circ' }, { at: 'D1', type: 'circ' }, { at: 'E2', type: 'tri' }],
+    steps: [
+      { play: 'E2', color: 'B', text: 'Black plays E2, a diagonal point of the eye at D1. The white stone on E1 is now cut off from the rest of the group, and its only liberty is D1. It is in atari.', marks: [{ at: 'E1', type: 'ring', tone: 'danger' }] },
+      { play: 'D1', color: 'W', text: 'White saves the stone by connecting at D1, but that fills the eye. White has only one eye left, at A1, and A1 is the group’s last liberty.', marks: [{ at: 'A1', type: 'lib' }] },
+      { play: 'A1', color: 'B', text: 'Black plays A1 and captures all eight white stones. If White had not connected at D1, Black would simply have captured the stone on E1, and White would still have only one eye. D1 was a false eye. Had White played E2 first, D1 would have been a real eye and the group would live.', tone: 'good' },
+    ],
+  });
+
+  ui.choice('#w-false-q', {
+    title: 'Question 3', checkpoint: 'q-false',
+    setup: [E7, E7, E7, E7, 'XXXXXXX', 'XOOXOOX', 'XO.O.OX'],
+    prompt: '<p>White has two empty points inside its group, C1 and E1. Black has a stone on D2. Is White’s group alive?</p>',
+    options: [
+      { text: 'Alive: it has two eyes', why: 'Look at the diagonal points. C1 and E1 are on the edge, and both have D2 as a diagonal point. Black holds D2, so both eyes are false. The white stones on the left (B1, B2, C2) have only one liberty, C1, so Black can capture them right away.' },
+      { text: 'Dead: both eyes are false', correct: true, why: 'Correct. On the edge, one enemy stone on a diagonal point is enough to make an eye false, and the black stone on D2 is diagonal to both C1 and E1. The white group is split into three pieces that touch only through the eyes, and Black can capture them one after another. Even if White plays first, White cannot repair both eyes.' },
+    ],
+    after: [{ at: 'D2', type: 'ring', tone: 'danger' }, { at: 'C1', type: 'x', tone: 'danger' }, { at: 'E1', type: 'x', tone: 'danger' }],
+  });
+
+  /* ---------- Part 5 ---------- */
+
+  const corner = [E7, E7, E7, 'XXX....', 'OOXXXX.', 'OOOOOX.', '.....X.'];
+  ui.replay('#w-reduce', {
+    title: 'Example: hane first, then the placement', checkpoint: 'reduce',
+    setup: corner,
+    intro: 'White’s group in the corner has an eye space of five points along the edge, A1 to E1. Black is to play and wants to kill it.',
+    introMarks: ['A1', 'B1', 'C1', 'D1', 'E1'].map(at => ({ at, type: 'circ' })),
+    steps: [
+      { play: 'C1', color: 'B', text: 'First, the wrong way. Black plays a placement at C1, in the middle of the space.' },
+      { play: 'B1', color: 'W', text: 'White answers at B1. Now A1 is a real eye. On the right, the black stone on C1 has only one liberty, so White can capture it and make a second eye there. The space was too big for a placement, and White lives.', tone: 'bad' },
+      { remove: ['C1', 'B1'], text: 'Back to the start. This time Black begins from the outside.', marks: [{ at: 'E1', type: 'circ' }] },
+      { play: 'E1', color: 'B', text: 'Black plays the hane at E1. The stone is safe, because it is connected to Black’s stone on F1, and it takes a point away from White’s space.' },
+      { play: 'D1', color: 'W', text: 'White blocks at D1 to stop Black from pushing further. White’s space is now only A1, B1 and C1: a straight three in the corner.', marks: ['A1', 'B1', 'C1'].map(at => ({ at, type: 'circ' })) },
+      { play: 'B1', color: 'B', text: 'Black plays the placement at B1, the vital point of the straight three. White can make only one eye, and the group is dead. (Black could also have killed by playing B1 at the very start. Try it in your head: White has no good answer.)', tone: 'good' },
+    ],
+  });
+
+  /* ---------- Part 6 ---------- */
+
+  const seki = ['....XO...', '....XO...', '....XO...', '....XO...', '....XO...', 'XXXXXO...', 'OOOOOO...', 'XXXXXO...', '.OO.XO...'];
+  ui.replay('#w-seki', {
+    title: 'Example: seki', checkpoint: 'seki',
+    setup: seki,
+    intro: 'The black group from A2 to E2 and the white stones on B1 and C1 each have two liberties, A1 and D1, and they share both of them.',
+    introMarks: [{ at: 'A1', type: 'lib' }, { at: 'D1', type: 'lib' }],
+    steps: [
+      { play: 'D1', color: 'B', text: 'Suppose Black plays D1 to put the white stones in atari. But D1 was also one of Black’s own liberties. Now both groups have one liberty, A1, and it is White’s turn.', marks: [{ at: 'A1', type: 'lib' }] },
+      { play: 'A1', color: 'W', text: 'White plays A1 and captures seven black stones. Black attacked first and lost. If White had started instead, by playing at A1 or D1, Black would have captured White’s stones in the same way.', tone: 'bad' },
+      { remove: ['D1', 'A1'], add: [['A2', 'B'], ['B2', 'B'], ['C2', 'B'], ['D2', 'B'], ['E2', 'B'], ['E1', 'B'], ['B1', 'W'], ['C1', 'W']],
+        text: 'So the right play for both sides is to leave the position alone. Both groups survive to the end of the game. This is seki.', marks: [{ at: 'A1', type: 'x' }, { at: 'D1', type: 'x' }], tone: 'good' },
+    ],
+  });
+
+  ui.countQuiz('#w-seki-count', {
+    title: 'Count a game with a seki', checkpoint: 'seki-count', idPrefix: 'l8c1',
+    setup: seki,
+    prompt: '<p>The game above has ended, and both players have passed. There are no dead stones. Count each player’s area: their stones, including the stones in the seki, plus the empty points that only they surround.</p>',
+    explain: 'The shared liberties A1 and D1 touch both colours, so they count for nobody. With 7.5 komi, White has 50.5 against Black’s 36, so White wins by 14.5 points.',
+  });
+
+  /* ---------- Part 7 ---------- */
+
+  ui.puzzleSet('#w-set', {
+    id: 'set', title: 'Life and death',
+    puzzles: [
+      {
+        setup: ['OOXX...', '.OOX...', '..OX...', '.OOX...', 'OOXX...', 'XXX....', E7],
+        toPlay: 'W', ld: { target: 'A7', wall: 'C7' },
+        prompt: '<p><b>White to play and live.</b> White’s eye space is A6, A5, B5 and A4, on the left edge.</p>',
+        tree: { A5: { win: 'Alive!' } },
+        wrong: {
+          A6: 'Black answers at A5, the point that touches all the others, and White can make only one eye.',
+          A4: 'Black answers at A5, the point that touches all the others, and White can make only one eye.',
+          B5: 'Black answers at A5, the point that touches all the others. What is left of the space cannot become two eyes.',
+        },
+        defaultWrong: 'Black answers at A5, and White can no longer make two eyes. Play inside the space.',
+        hint: 'This is a pyramid four, turned on its side. Which point touches all three others?',
+        explain: 'This is the pyramid four from Part 2, turned on its side. A5 touches the other three points, so a white stone there splits the space into two separate eyes.',
+      },
+      {
+        setup: [E7, E7, E7, '.XXXXXX', '.XXOOOO', '.XOO..O', '.XO...O'],
+        toPlay: 'B', ld: { target: 'D3', wall: 'B4' },
+        prompt: '<p><b>Black to play and kill.</b> White’s eye space is D1, E1, F1, E2 and F2.</p>',
+        tree: { E1: { win: 'Dead!' } },
+        wrong: {},
+        defaultWrong: 'White answers at E1, the point that touches three others, and makes two eyes.',
+        hint: 'Count, for each point of the space, how many other points of the space it touches.',
+        explain: 'This is the bulky five, reflected. E1 touches three other points of the space, more than any other point. With a black stone there, White can make only one eye, whatever White plays next.',
+      },
+      {
+        setup: [E7, '..XXXXX', '..XXOOO', '..XOO.O', '..XO...', '..XOO.O', '..XXOOO'],
+        toPlay: 'W', ld: { target: 'E5', wall: 'C6' },
+        prompt: '<p><b>White to play and live.</b> White’s eye space is F4, E3, F3, G3 and F2.</p>',
+        tree: { F3: { win: 'Alive!' } },
+        wrong: {},
+        defaultWrong: 'Black answers at F3, the centre, and White can make only one eye.',
+        hint: 'Which point touches all four of the others?',
+        explain: 'This is the cross five, turned on its side. The centre point F3 touches all four arms, so a white stone there turns the four arms into four separate eyes.',
+      },
+      {
+        setup: ['.XOO.OO', '.XO...O', '.XO..OO', '.XOOOOX', '.XXXXXX', E7, E7],
+        toPlay: 'B', ld: { target: 'C7', wall: 'B7' },
+        prompt: '<p><b>Black to play and kill.</b> White’s eye space at the top is E7, D6, E6, F6, D5 and E5.</p>',
+        tree: { E6: { win: 'Dead!' } },
+        wrong: {},
+        defaultWrong: 'White answers at E6, the busiest point of the space, and makes two eyes.',
+        hint: 'One point of the space touches four others.',
+        explain: 'This is the flower six, upside down. E6 touches four other points of the space. With a black stone there, White cannot make two eyes.',
+      },
+      {
+        setup: [E7, E7, E7, E7, 'XXXXXXX', 'XOO.OO.', 'XO.O.O.'],
+        toPlay: 'W', ld: { target: 'B2', wall: 'A3' },
+        prompt: '<p><b>White to play and live.</b> White has two empty points inside its group, C1 and E1.</p>',
+        tree: { D2: { win: 'Alive!' } },
+        wrong: {
+          G2: 'Black answers at D2. On the edge, one enemy stone on a diagonal point is enough to make an eye false, and D2 is diagonal to both C1 and E1. White’s stones fall apart into pieces that Black can capture.',
+          G1: 'Black answers at D2. On the edge, one enemy stone on a diagonal point is enough to make an eye false, and D2 is diagonal to both C1 and E1. White’s stones fall apart into pieces that Black can capture.',
+          C1: 'That fills one of your own eyes. Black then plays D2, and White cannot make two eyes.',
+          E1: 'That fills one of your own eyes. Black then plays D2, and White cannot make two eyes.',
+        },
+        defaultWrong: 'Black answers at D2, and both of White’s eyes become false.',
+        hint: 'Look at the diagonal points of both eyes.',
+        explain: 'D2 is a diagonal point of both eyes. With a white stone there, all of White’s stones are connected, so C1 and E1 are two real eyes.',
+      },
+      {
+        setup: [E7, E7, E7, E7, 'XXXXXXX', 'OO.OOX.', '.OO.O.X'],
+        toPlay: 'B', ld: { target: 'A2', wall: 'A3' },
+        prompt: '<p><b>Black to play and kill.</b> White has empty points at A1 and D1 inside its group, and a liberty at F1.</p>',
+        tree: { C2: { win: 'Dead!' } },
+        wrong: {
+          F1: 'White answers at C2 and connects all its stones. Then A1 and D1 are two real eyes, and the group lives.',
+        },
+        defaultWrong: 'White answers at C2 and connects all its stones. Then A1 and D1 are two real eyes, and the group lives.',
+        hint: 'Which point holds White’s two halves together?',
+        explain: 'C2 is a diagonal point of the eye at D1, and it is where White’s two halves join. After Black C2, the stones D2, E2 and E1 can only connect to the rest through D1. White must fill D1 sooner or later to save them, so D1 is a false eye, and A1 alone is not enough.',
+      },
+      {
+        setup: corner,
+        toPlay: 'W', ld: { target: 'A2', wall: 'A4' },
+        prompt: '<p><b>White to play and live.</b> This is the corner position from Part 5, but now White moves first. There are two correct answers; find either one.</p>',
+        tree: { E1: { win: 'Alive!' }, B1: { win: 'Alive!' } },
+        wrong: {
+          C1: 'Black plays the hane at E1. White’s space shrinks, and Black can then take its vital point.',
+          D1: 'Black answers at B1, the point next to the corner, and White cannot make two eyes in what is left.',
+          A1: 'Black answers at B1 or E1, and White cannot make two eyes.',
+        },
+        defaultWrong: 'Black plays B1 or E1, and White cannot make two eyes.',
+        hint: 'In Part 5, Black had two killing moves. A killing move for Black is often a living move for White.',
+        explain: 'E1 makes the space a straight four in the corner, which is alive. B1 also works: it makes A1 an eye, and White can still make a second eye on the right. These were exactly the two points where Black could kill.',
+      },
+      {
+        setup: [E7, E7, E7, E7, 'XXXXXXX', 'OOOOOOX', 'O.....X'],
+        toPlay: 'B', ld: { target: 'A2', wall: 'A3' },
+        prompt: '<p><b>Black to play and kill.</b> White’s eye space is five points in a row, B1 to F1. You will need two moves. There are two correct ways to start; find either one.</p>',
+        tree: {
+          F1: {
+            reply: 'E1', msg: 'White blocks at E1. White’s space is now B1, C1 and D1. What next?',
+            next: { C1: { win: 'Dead!' } },
+          },
+          C1: {
+            reply: 'D1', msg: 'White blocks at D1. Now look at the right side of the space. What next?',
+            next: { F1: { win: 'Dead!' } },
+          },
+        },
+        wrong: {
+          D1: 'White answers at C1. Now B1 is an eye, and on the right White can capture your stone to make a second one. A placement in the middle of a big space fails.',
+          E1: 'White answers at F1 and keeps a space that is too big to kill.',
+          B1: 'White answers at C1 or F1, and the space is still big enough for two eyes.',
+        },
+        defaultWrong: 'That gives White time to make its eye space safe.',
+        hint: 'Black’s stone on G1 lets you push into the space from the outside.',
+        explain: 'Pushing in from the outside at F1 leaves a straight three, and C1 is its vital point. Starting with the placement at C1 also works here, as long as you follow it with F1. Five points in a row would be alive if White’s stones closed both ends; here Black’s stone on G1 makes the difference.',
+      },
+    ],
+  });
+
+  /* ---------- Part 8 ---------- */
+
+  ui.fullGame('#w-game', {
+    size: 9, komi: 7.5, title: 'A full game against the computer', checkpoint: 'full-game', idPrefix: 'l8',
+    prompt: '<p>Play a complete 9×9 game and count it at the end. Before each move, check whether any group, yours or the computer’s, is unsettled.</p>',
+  });
+})();
+</script>

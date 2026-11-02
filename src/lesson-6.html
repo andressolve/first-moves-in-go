@@ -1,0 +1,408 @@
+<title>Cutting and Connecting</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'lesson-6' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+      <a href="{{L5}}">5 · Opening</a>
+      <a href="{{L6}}" aria-current="page">6 · Cutting</a>
+      <a href="{{L7}}">7 · Sente</a>
+      <a href="{{L8}}">8 · Shapes</a>
+      <a href="{{PLAY}}">Play a friend</a>
+    </nav>
+    <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lesson 6 of 8</p>
+      <h1>Cutting and Connecting</h1>
+      <p class="lede">Most fights in Go start with one question: are these stones connected, or can they be split apart? A player who keeps their stones together and splits the opponent’s stones apart usually wins the fight, often without capturing anything at first. This lesson teaches you to see the links between stones, to protect your own and to break your opponent’s.</p>
+      <ul class="goals">
+        <li>Explain why one connected group is stronger than two separate ones.</li>
+        <li>Protect a weak point with a solid connection or a hanging connection.</li>
+        <li>Find every cutting point in a position, yours and your opponent’s.</li>
+        <li>Cut when the cut wins something, and know when a cut will backfire.</li>
+      </ul>
+    </div>
+    <!--HERO-->
+  </header>
+
+  <section class="step" id="why">
+    <p class="eyebrow">Part 1</p>
+    <h2>Why connected stones are strong</h2>
+    <div class="prose">
+      <p>Stones that touch along a line form one chain, and a chain shares all of its liberties. A chain of three stones in the open might have seven or eight liberties. Three single stones scattered around have only a few liberties each, and each one has to be defended separately.</p>
+      <p>Playing a stone that splits your opponent’s stones apart is called a <dfn>cut</dfn> <span class="term-jp">(切り kiri)</span>. The empty point where a cut can be played is a <dfn>cutting point</dfn>. A cut does not capture anything by itself. What it does is turn one group into two, and two weak groups are much harder to look after than one strong group, because you can only play one move at a time.</p>
+      <p>Step through the example. Black’s stones at C3 and D4 touch only at a corner. White already has a stone at D3, so the only point that still links them is C4.</p>
+    </div>
+    <div id="w-two-weak"></div>
+    <div class="note key">
+      <span class="note-label">The idea of this lesson</span>
+      <p>One strong group is better than two weak groups. When your opponent has two weak groups, you can threaten both of them, and they can save only one with each move. That is why players fight so hard over the points that join or split groups.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>You already know that pieces which defend each other are hard to win, and that a loose, undefended piece is a target. A cut in Go is like a move that breaks the chain of protection between two pieces. The instinct that helps: look for undefended targets. The instinct that misleads: in chess, a defended piece is still a separate piece. In Go, stones that connect become a single unit with shared liberties, so connecting does more than protect. It makes one stronger thing out of two weaker ones.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play Civilization or Polytopia</span>
+      <p>Think of an army that has been cut off from its cities. It cannot be reinforced, it cannot retreat, and it has to survive on its own. A cut-off group of stones is in the same position: it must either make two eyes by itself or run until it reaches friendly stones. The instinct that misleads is spreading out to grab more land. Spreading out is good in Go too, but every gap you leave is a place where your opponent might cut your empire into pieces.</p>
+    </div>
+  </section>
+
+  <section class="step" id="connections">
+    <p class="eyebrow">Part 2</p>
+    <h2>Two ways to connect</h2>
+    <div class="prose">
+      <p>When your opponent threatens to cut, you can protect the cutting point in two ways.</p>
+      <ul>
+        <li>The <dfn>solid connection</dfn> <span class="term-jp">(堅ツギ katatsugi)</span> fills the cutting point with your own stone. The stones now touch along lines and form one chain. It can never be cut, but it is slow, because it adds a stone right next to stones you already have.</li>
+        <li>The <dfn>hanging connection</dfn> <span class="term-jp">(カケツギ kaketsugi)</span> leaves the cutting point empty and puts a stone one point away, so that three of your stones surround the cutting point. If your opponent plays into that point, their stone has only one liberty, and you capture it on your next move. This shape is called a <dfn>tiger’s mouth</dfn> <span class="term-jp">(虎の口 tora no kuchi)</span>: a stone that walks in gets eaten.</li>
+      </ul>
+      <p>In the example, Black has already made a tiger’s mouth around the point D3. Watch what happens when White tries to cut there.</p>
+    </div>
+    <div id="w-tiger"></div>
+    <div class="prose">
+      <p>The hanging connection is often better than the solid one, because it reaches further and claims more of the board. But it has one weakness to check every time: the fourth side of the tiger’s mouth. A tiger’s mouth works only if a stone played inside it would be in atari. If your opponent already has a stone touching the inside point, a stone played there joins that stone, gets more liberties and cuts you after all.</p>
+    </div>
+    <h3>Your turn: connect against a threat</h3>
+    <div class="prose"><p>You are Black in both problems. Each time, White is threatening to cut at D3. Play one move that stops the cut.</p></div>
+    <div id="w-connect-set"></div>
+  </section>
+
+  <section class="step" id="shapes">
+    <p class="eyebrow">Part 3</p>
+    <h2>Shapes that hold and shapes that can be cut</h2>
+    <div class="prose">
+      <p>You don’t have to connect every pair of stones solidly. Some shapes are already safe, because whenever your opponent tries to cut, you have an answer. The key idea is that the shape has <b>two</b> ways to connect. If your opponent takes one of them, you take the other. Two points that work like this, where taking one lets the other player take the other, are called <dfn>miai</dfn> <span class="term-jp">(見合い)</span>.</p>
+      <ul>
+        <li>The <dfn>diagonal connection</dfn>: two stones that touch at a corner. There are two empty points between them. If White plays on one, Black plays on the other.</li>
+        <li>The <dfn>bamboo joint</dfn> <span class="term-jp">(竹フ takefu)</span>: two pairs of stones side by side with a gap between them. Again there are two points that link them, and they are miai.</li>
+      </ul>
+    </div>
+    <div id="w-uncut"></div>
+    <div class="prose">
+      <p>Faster shapes, where your stones are further apart, cover more of the board but can be cut. The <dfn>one-point jump</dfn> (two stones on the same line with one empty point between them) and the <dfn>knight’s move</dfn> (two stones placed like a knight’s move in chess) can both be broken by a stone that pushes into the gap. Pushing a stone into a gap between two enemy stones is called a <dfn>wedge</dfn>.</p>
+    </div>
+    <div id="w-cuttable"></div>
+    <div class="prose">
+      <p>So are the jump and the knight’s move bad? Not at all. The wedging stone always lands between two enemy stones with few liberties, so it is weak too. If you have even one more stone nearby, the wedge usually gets captured. Strong players use these fast shapes when the area is already friendly, and switch to solid shapes when the opponent is strong nearby.</p>
+    </div>
+    <div id="w-wedge"></div>
+    <div id="w-which-shape"></div>
+  </section>
+
+  <section class="step" id="cutting-points">
+    <p class="eyebrow">Part 4</p>
+    <h2>Finding cutting points</h2>
+    <div class="prose">
+      <p>Before every move in a real game, strong players glance over the board for cutting points, in their own stones and in their opponent’s. Here is a simple way to find them.</p>
+      <ol>
+        <li>Look for two of your stones that touch only at a corner (diagonally).</li>
+        <li>Look at the two empty points between them. If both are empty, the stones are safe: the two points are miai.</li>
+        <li>If your opponent already has a stone on one of the two points, the other point is a cutting point, unless a stone played there would be in atari straight away, as in a tiger’s mouth.</li>
+      </ol>
+    </div>
+    <div id="w-pick-cuts"></div>
+  </section>
+
+  <section class="step" id="cut-capture">
+    <p class="eyebrow">Part 5</p>
+    <h2>Cut, then capture</h2>
+    <div class="prose">
+      <p>A cut is at its strongest when it leaves one of the separated stones short of liberties. Then the cut is the first move of a capture: you cut, and the cut-off stone falls into a ladder or a net, or into a double atari.</p>
+      <p>To find these cuts, look at your opponent’s stones the way you looked at your own in Part 4. Find a diagonal pair where you already hold one of the two points between them. Then ask: if I cut at the other point, how many liberties will each of the separated stones have?</p>
+    </div>
+    <h3>Your turn: cut and capture</h3>
+    <div class="prose"><p>You are Black in all three problems. In the first two, capture the marked white stone. If White runs, the computer answers for White, and you keep going until the stone is captured. In the third, find one move that puts two white stones in atari at once.</p></div>
+    <div id="w-cut-set"></div>
+  </section>
+
+  <section class="step" id="crosscut">
+    <p class="eyebrow">Part 6</p>
+    <h2>When a cut backfires, and the crosscut</h2>
+    <div class="prose">
+      <p>A cut also creates something new: your cutting stone. It sits between enemy stones, and it is often short of liberties. Before you cut, ask the same question you asked about your opponent’s stones: how many liberties will <b>my</b> cutting stone have, and can my opponent capture it? If the cutting stone can be captured, the cut has given your opponent a free target, and the two stones you tried to separate end up stronger than before.</p>
+      <p>In the next example, Black cuts without asking that question.</p>
+    </div>
+    <div id="w-backfire"></div>
+    <div class="prose">
+      <p>When a cut is answered by a cut, four stones end up meeting in a square, two of each colour, each pair touching only at the corner. This is called a <dfn>crosscut</dfn> <span class="term-jp">(切り違い kirichigai)</span>. Each player’s stones are cut apart, and every one of the four stones is weak.</p>
+    </div>
+    <div class="note key">
+      <span class="note-label">A Go proverb</span>
+      <p>“When in doubt, extend from a crosscut.” In a crosscut, the tempting move is an atari. But an atari usually just makes your opponent extend, and leaves you with one more weak stone to look after. Extending one of your own crosscut stones, so that it becomes a chain of two with more liberties, is usually stronger. Extend the stone that is in more danger, and extend away from the opponent’s strength.</p>
+    </div>
+    <div id="w-crosscut"></div>
+  </section>
+
+  <section class="step" id="full-game">
+    <p class="eyebrow">Part 7</p>
+    <h2>Play a full game</h2>
+    <div class="prose">
+      <p>Play a complete 9×9 game against the computer. This time, pay special attention to cuts and connections:</p>
+      <ul>
+        <li><b>Check your own cutting points after every computer move.</b> Look for pairs of your stones that touch only at a corner where the computer already holds one of the two points between them.</li>
+        <li><b>Connect when the cut would hurt.</b> If a cut would leave one of your stones short of liberties, connect first. A hanging connection is often better than a solid one, but check that the fourth side of the tiger’s mouth is not touched by a computer stone.</li>
+        <li><b>Look for the computer’s cutting points too.</b> Before you cut, count the liberties of the stones you would separate and of your own cutting stone. Cut when the cut wins something; don’t cut if your cutting stone would be captured.</li>
+        <li><b>Don’t let your stones split into two weak groups.</b> If you have to choose, keep one group strong rather than two groups half-safe.</li>
+        <li><b>In a crosscut, extend.</b> Make the weaker of your two crosscut stones into a chain with more liberties, instead of giving an atari.</li>
+      </ul>
+      <p>Finish one game, win or lose, to complete the lesson. If the <b>Beginner</b> computer is too strong at first, choose <b>Komi 0.5</b> for an easier game.</p>
+    </div>
+    <div id="w-game"></div>
+  </section>
+
+  <section class="step" id="recap">
+    <p class="eyebrow">Summary</p>
+    <h2>What to remember</h2>
+    <ol class="recap">
+      <li>One strong group is better than two weak groups. A cut turns one group into two, and your opponent can save only one of them at a time.</li>
+      <li>You can protect a cutting point with a solid connection, which fills the point, or a hanging connection, which makes a tiger’s mouth around it.</li>
+      <li>A tiger’s mouth works only if a stone played inside it would be in atari. Check the fourth side.</li>
+      <li>The diagonal connection and the bamboo joint cannot be cut, because they have two ways to connect (miai). The one-point jump and the knight’s move can be cut by a wedge, but the wedging stone is weak too.</li>
+      <li>A cutting point is the second point between two diagonal stones when the opponent already holds the first.</li>
+      <li>Cut when the cut leaves enemy stones short of liberties. Don’t cut when your own cutting stone would be captured.</li>
+      <li>In a crosscut, extend the stone in more danger rather than giving an atari.</li>
+    </ol>
+    <h3>Words from this lesson</h3>
+    <dl class="glossary">
+      <dt>Cut</dt><dd>A move that separates enemy stones that could otherwise have been joined.</dd>
+      <dt>Cutting point</dt><dd>An empty point where a stone would cut two enemy stones apart.</dd>
+      <dt>Solid connection</dt><dd>Filling a cutting point with your own stone, so that the stones form one chain.</dd>
+      <dt>Hanging connection</dt><dd>Protecting a cutting point by surrounding it on three sides, so that an enemy stone played there would be in atari.</dd>
+      <dt>Tiger’s mouth</dt><dd>The shape of three stones around an empty point, made by a hanging connection.</dd>
+      <dt>Miai</dt><dd>Two points that work as a pair: if your opponent takes one, you take the other.</dd>
+      <dt>Diagonal connection</dt><dd>Two stones that touch at a corner, with two empty points between them that are miai.</dd>
+      <dt>Bamboo joint</dt><dd>Two pairs of stones side by side with a one-point gap. It cannot be cut.</dd>
+      <dt>One-point jump</dt><dd>Two stones on the same line with one empty point between them.</dd>
+      <dt>Knight’s move</dt><dd>Two stones placed like a chess knight’s move: two points along and one across.</dd>
+      <dt>Wedge</dt><dd>A stone pushed into the gap between two enemy stones.</dd>
+      <dt>Crosscut</dt><dd>Four stones in a square, two of each colour, with each colour’s pair touching only at the corner.</dd>
+    </dl>
+    <nav class="lesson-nav">
+      <a href="{{L5}}"><small>Previous lesson</small>← 5 · The Opening</a>
+      <a href="{{L7}}"><small>Next lesson</small>7 · Sente and Gote →</a>
+    </nav>
+  </section>
+</main>
+
+<script>
+(function () {
+  const ui = Go.ui;
+
+  ui.replay('#w-two-weak', {
+    title: 'Example: one group or two', checkpoint: 'two-weak',
+    setup: ['.........', '.........', '.........', '.........', '..O......', '...X.....', '..XO.....', '...O.....', '.........'],
+    intro: 'Black’s stones at C3 and D4 touch only at a corner. White holds D3, so C4 is the only point that still links them.',
+    introMarks: [{ at: 'C4', type: 'sq' }],
+    steps: [
+      { play: 'C4', color: 'B', libsOf: 'C3', text: 'If Black plays C4, the three stones become one chain with <b>5 liberties</b>, shown as green dots. That chain is in no danger at all.' },
+      { remove: ['C4'], text: 'Now go back to the start, and suppose Black played somewhere else and it is White’s turn instead.', marks: [{ at: 'C4', type: 'sq' }] },
+      { play: 'C4', color: 'W', libsOf: ['C3', 'D4'], text: 'White cuts at C4. The new stone joins White’s stone at C5, so it has four liberties and is in no danger. Black now has two single stones, and each one has only <b>2 liberties</b>.' },
+      { play: 'D5', color: 'B', libsOf: 'D4', text: 'Black can save only one of them. Black runs with D4 by playing D5, and that chain now has 3 liberties.' },
+      { play: 'B3', color: 'W', libsOf: 'C3', text: 'White turns to the other stone. B3 puts C3 in atari.', marks: [{ at: 'C3', type: 'ring', tone: 'danger' }] },
+      { play: 'C2', color: 'B', libsOf: 'C3', text: 'Black runs to C2, but White’s stone at D2 is already there. The chain has only two liberties.' },
+      { play: 'B2', color: 'W', libsOf: 'C3', text: 'White blocks at B2. Atari again.' },
+      { play: 'C1', color: 'B', libsOf: 'C3', text: 'Black runs onto the edge at C1.' },
+      { play: 'B1', color: 'W', libsOf: 'C3', text: 'White blocks at B1. Atari again, with one liberty at D1.' },
+      { play: 'D1', color: 'B', libsOf: 'C3', text: 'Black runs to D1, but the edge leaves the chain only one liberty, at E1.' },
+      { play: 'E1', color: 'W', tone: 'good', text: 'White captures four stones. Whichever stone Black had chosen to save, White could have captured the other one. One white move at C4 decided the fight, because it turned one group into two.' },
+    ],
+  });
+
+  ui.replay('#w-tiger', {
+    title: 'Example: the tiger’s mouth', checkpoint: 'tiger',
+    setup: ['.........', '.........', '.........', '.........', '.........', '.OOX.....', '..X.X....', '.........', '.........'],
+    intro: 'Black’s stones at C3, D4 and E3 surround the empty point D3 on three sides. That shape is a tiger’s mouth. The fourth side of D3, the point D2, is empty.',
+    introMarks: [{ at: 'D3', type: 'sq' }, { at: 'D2', type: 'circ' }],
+    steps: [
+      { play: 'D3', color: 'W', libsOf: 'D3', text: 'White tries to cut at D3. But the new stone has only one liberty, at D2. It is in atari the moment it lands.', marks: [{ at: 'D3', type: 'ring', tone: 'danger' }] },
+      { play: 'D2', color: 'B', tone: 'good', text: 'Black captures it by playing D2. Black’s stones now surround D3 on all four sides. White can’t play there again, because a stone at D3 would have no liberties, unless it captured one of Black’s stones. White’s attempt to cut only gave Black a prisoner.' },
+    ],
+  });
+
+  ui.puzzleSet('#w-connect-set', {
+    id: 'connect', title: 'Connect',
+    puzzles: [
+      {
+        setup: ['.........', '.........', '.........', '.........', '..OXO....', '..OXO....', '..X......', '..X......', '.........'],
+        toPlay: 'B',
+        marks: [{ at: 'D3', type: 'sq' }],
+        prompt: '<p>Black to play. Black’s two stones at D4 and D5 are squeezed between White’s stones and have two liberties, D3 and D6. If White cuts at D3 (the square), those stones are cut off from C3 and also fall into atari. Play one move that protects D3. There are three good answers.</p>',
+        answers: {
+          D3: 'Good: the solid connection. All of Black’s stones are now one chain, and nothing can cut it.',
+          E3: 'Good: a hanging connection. If White plays D3 now, the white stone has one liberty, at D2, and Black captures it straight away. E3 also blocks White’s stones on the right from coming down.',
+          D2: 'Good: a hanging connection. If White plays D3 now, the white stone has one liberty, at E3, and Black captures it straight away.',
+        },
+        wrong: {
+          D6: 'That gives D4 and D5 more liberties, but White can still cut at D3. Black’s stones are then split into two groups with White in between. Protect the cutting point itself.',
+        },
+        defaultWrong: 'After that move, White can still cut at D3. Play on D3, or make a tiger’s mouth around it.',
+        explain: 'All three answers stop the cut: one fills the cutting point, and the other two make a tiger’s mouth around it.',
+      },
+      {
+        setup: ['.........', '.........', '.........', '.........', '..OXO....', '..OXO....', '..X.O....', '..X......', '.........'],
+        toPlay: 'B',
+        marks: [{ at: 'D3', type: 'sq' }],
+        prompt: '<p>Black to play. Almost the same position, but now White has a stone at E3. White is again threatening to cut at D3 (the square). This time only one move protects it. Find it.</p>',
+        answers: ['D3'],
+        wrong: {
+          D2: 'Check the fourth side. D2 and C3 and D4 surround D3 on three sides, but the fourth side, E3, is a white stone. If White plays D3, that stone joins E3 and has plenty of liberties. The cut works, and D4 and D5 are in atari.',
+          D6: 'That gives D4 and D5 more liberties, but White can still cut at D3, and Black is split into two groups.',
+        },
+        defaultWrong: 'After that move, White can still cut at D3. Look at what White’s stone at E3 does to a hanging connection.',
+        explain: 'When the opponent already has a stone touching the cutting point, a tiger’s mouth doesn’t work, because a stone played inside it isn’t in atari. Only the solid connection is safe.',
+      },
+    ],
+  });
+
+  ui.replay('#w-uncut', {
+    title: 'Example: shapes that can’t be cut', checkpoint: 'uncut',
+    setup: ['.........', '.........', '.........', '.........', '.........', '...X.X.X.', '..X..X.X.', '.........', '.........'],
+    intro: 'On the left, Black has a diagonal connection: C3 and D4. On the right, Black has a bamboo joint: F3 and F4, then H3 and H4. The points marked with circles are the points that link each shape.',
+    introMarks: [{ at: 'C4', type: 'circ' }, { at: 'D3', type: 'circ' }, { at: 'G3', type: 'circ' }, { at: 'G4', type: 'circ' }],
+    steps: [
+      { play: 'D3', color: 'W', text: 'White takes one of the two points between C3 and D4.', marks: [{ at: 'C4', type: 'circ' }] },
+      { play: 'C4', color: 'B', tone: 'good', text: 'Black takes the other one. C3, C4 and D4 are now one chain. The two points were miai: White could never have both.' },
+      { play: 'G4', color: 'W', text: 'White pushes into the bamboo joint at G4.', marks: [{ at: 'G3', type: 'circ' }] },
+      { play: 'G3', color: 'B', tone: 'good', text: 'Black connects at G3. All five stones on the right are one chain, and White’s stone at G4 is now in atari, with one liberty at G5. If White had played G3 first, Black would have connected at G4 instead.', marks: [{ at: 'G4', type: 'ring', tone: 'danger' }] },
+    ],
+  });
+
+  ui.replay('#w-cuttable', {
+    title: 'Example: shapes that can be cut', checkpoint: 'cuttable',
+    setup: ['.........', '.........', '..X.X....', '.........', '......X..', '.........', '.....X...', '.........', '.........'],
+    intro: 'At the top, Black has a one-point jump: C7 and E7. At the bottom right, Black has a knight’s move: F3 and G5. No other stones are nearby.',
+    steps: [
+      { play: 'D7', color: 'W', libsOf: 'D7', text: 'White wedges into the jump at D7. The wedging stone has two liberties, D8 and D6.' },
+      { play: 'D8', color: 'B', libsOf: 'D7', text: 'Black puts it in atari from above.' },
+      { play: 'D6', color: 'W', libsOf: 'D7', text: 'White runs out to D6 and gets three liberties. Black’s stones at C7 and E7 are now separated by a white wall. The jump has been cut.' },
+      { play: 'G4', color: 'W', text: 'Now the knight’s move. There are two points between F3 and G5: F4 and G4. White pushes in at G4.' },
+      { play: 'F4', color: 'B', text: 'Black connects F3 to F4. But F4 and G5 touch only at a corner, and White already holds G4, one of the two points between them.' },
+      { play: 'F5', color: 'W', libsOf: ['F5', 'G5'], tone: 'warn', text: 'White cuts at F5. Black’s stones are split in two. White’s cutting stones are weak too, with two liberties each, so this is now a fight. A knight’s move holds only when you are the stronger player in that area.' },
+    ],
+  });
+
+  ui.puzzle('#w-wedge', {
+    title: 'Exercise: punish the wedge', checkpoint: 'wedge',
+    setup: ['.........', '.........', '.........', '.........', '.........', '..XOX....', '.........', '...X.....', '.........'],
+    toPlay: 'B', mode: 'kill', target: 'D4', showLibs: true,
+    prompt: '<p>Black to play. White has wedged into Black’s one-point jump at D4. This time Black has a stone at D2 below. Capture the wedging stone. If it runs, keep going until it is captured.</p>',
+    wrong: {
+      D3: 'That atari drives White upward, toward the open centre. White runs to D5 and gets three liberties. Drive the stone toward your stone at D2 instead.',
+    },
+    hint: 'Which atari makes White run toward your stone at D2?',
+    explain: 'D5 forces White to run down toward D2, where Black’s stones are waiting. Every escape route stays short of liberties, and the chain is captured at the edge. With one extra stone nearby, the jump could not be cut.',
+  });
+
+  ui.choice('#w-which-shape', {
+    title: 'Question', checkpoint: 'which-shape',
+    setup: ['.........', '...X.X.X.', '..X..X.X.', '.........', '...X.....', '......X..', '..X..X.X.', '.........', '.........'],
+    marks: [{ at: 'B7', type: 'label', text: 'A' }, { at: 'J8', type: 'label', text: 'B' }, { at: 'B3', type: 'label', text: 'C' }, { at: 'J3', type: 'label', text: 'D' }],
+    prompt: '<p>Here are four Black shapes. A is a diagonal connection, B is a bamboo joint, C is a knight’s move and D is a tiger’s mouth. Black always answers White’s move as well as possible. Which shape can White cut apart?</p>',
+    options: [
+      { text: 'A: the diagonal connection', why: 'Not this one. C7 and D8 have two empty points between them, C8 and D7. If White takes one, Black takes the other.' },
+      { text: 'B: the bamboo joint', why: 'Not this one. The two linking points, G7 and G8, are miai. If White plays on one, Black plays on the other.' },
+      { text: 'C: the knight’s move', correct: true, why: 'Correct. White pushes in at C4 or D4, and after Black answers, White cuts at the other weak point, just like the example. The knight’s move is fast, but it can be cut.' },
+      { text: 'D: the tiger’s mouth', why: 'Not this one. A white stone at G3 would have only one liberty, G2, and Black would capture it. If White first plays at G2 to prepare the cut, Black simply connects at G3.' },
+    ],
+  });
+
+  ui.pickPoints('#w-pick-cuts', {
+    title: 'Exercise: find the cutting points', checkpoint: 'pick-cuts',
+    setup: ['.........', '...X.....', '..XOOX...', '.O..X.O..', '...X.....', '..OX.OX..', '..X.OX.X.', '.........', '.........'],
+    prompt: '<p>Black has stones all over the board. Find every empty point where White could play to cut two black stones apart, with a stone that would not be in atari straight away. There are exactly <b>three</b>. Click each one, then press <b>Check</b>. To remove a mark, click it again.</p>',
+    stoneMessage: 'Cutting points are empty points. Click the empty intersections, not the stones.',
+    targets: ['C8', 'F6', 'D3'],
+    extraHint: 'Remember: if both points between two diagonal stones are empty, there is no cutting point there, because Black can answer on the other point. And a point inside a tiger’s mouth is not a cutting point.',
+    missHint: 'Look for every pair of black stones that touch only at a corner, and check whether White already holds one of the two points between them.',
+    success: 'Correct. C8 cuts C7 from D8, because White holds D7. F6 cuts E6 from F7, because White holds E7. D3 cuts C3 from D4, because White holds C4. G3 is not a cutting point, even though White holds F4: G3 is inside a tiger’s mouth, so a white stone there would be in atari. The diagonals D5 and E6, and G4 and H3, have both points between them empty, so they are safe.',
+  });
+
+  ui.puzzleSet('#w-cut-set', {
+    id: 'cut', title: 'Cut and capture',
+    puzzles: [
+      {
+        setup: ['.........', '.........', '.........', '.........', '.........', '.XXO.....', '..O......', '..X......', '.........'],
+        toPlay: 'B', mode: 'kill', target: 'C3', showLibs: true,
+        marks: [{ at: 'C3', type: 'tri' }],
+        prompt: '<p>Black to play. White’s stones at C3 and D4 touch at a corner, and Black already holds C4, one of the two points between them. Capture the white stone at C3 (marked with a triangle).</p>',
+        wrong: {
+          B3: 'That puts C3 in atari, but White connects at D3, joining D4. The chain then has plenty of liberties.',
+        },
+        defaultWrong: 'White connects at D3 and the stones are joined. Cut them apart first.',
+        hint: 'Where is the cutting point between C3 and D4?',
+        explain: 'Cutting at D3 separates C3 from D4 and puts it in atari at the same time. It can run to B3, but the edge and your stones are too close, and it is captured.',
+      },
+      {
+        setup: ['.........', '.........', '.........', '....XO...', '...XO....', '.........', '..X.X....', '.........', '.........'],
+        toPlay: 'B', mode: 'kill', target: 'E5', showLibs: true,
+        marks: [{ at: 'E5', type: 'tri' }],
+        prompt: '<p>Black to play. White’s stones at E5 and F6 touch at a corner, and Black holds E6. Capture the white stone at E5 (marked with a triangle). You will need to read a ladder after the cut.</p>',
+        wrong: {
+          E4: 'That puts E5 in atari, but White connects at F5, joining F6. Cut them apart first.',
+        },
+        defaultWrong: 'That gives White time to connect at F5. Cut first.',
+        hint: 'Cut between the two white stones. After White runs, choose the atari that drives the stones toward your stones at C3 and E3.',
+        explain: 'The cut at F5 put E5 in atari. When it ran to E4, F4 was the right atari, because it drove White toward Black’s stones at C3 and E3. The other atari, at D4, would have let White run to F4. The chain would then have two liberties, and Black’s own cutting stone at F5 would be in atari.',
+      },
+      {
+        setup: ['.........', '.........', '.........', '.........', '...X.....', '..XO.....', '.XO......', '.........', '.........'],
+        toPlay: 'B', answers: ['D3'],
+        prompt: '<p>Black to play. White’s stones at C3 and D4 each have two liberties. Find the cut that puts both of them in atari at once.</p>',
+        wrong: {
+          C2: 'That puts only C3 in atari. White connects at D3, and the joined chain has three liberties. Cut between them first.',
+          E4: 'That puts only D4 in atari. White connects at D3, and the joined chain has three liberties. Cut between them first.',
+        },
+        defaultWrong: 'Find the point that is a liberty of both white stones and also cuts them apart.',
+        explain: 'D3 cuts the two stones apart and takes a liberty from each. C3 has one liberty left, at C2, and D4 has one left, at E4. White can save only one of them, and you capture the other. A cut that is also a double atari is the best kind of cut.',
+      },
+    ],
+  });
+
+  ui.replay('#w-backfire', {
+    title: 'Example: a cut that backfires', checkpoint: 'backfire',
+    setup: ['.........', '.........', '.........', '.........', '.........', '..XO.....', '..O..O...', '....O....', '.........'],
+    intro: 'White’s stones at C3 and D4 touch at a corner, and Black holds C4. D3 looks like a cutting point. But White also has stones at E2 and F3, close to D3.',
+    introMarks: [{ at: 'D3', type: 'sq' }],
+    steps: [
+      { play: 'D3', color: 'B', libsOf: 'D3', text: 'Black cuts at D3. The cutting stone has only two liberties, D2 and E3, and both are next to White’s stones.' },
+      { play: 'E3', color: 'W', libsOf: 'D3', text: 'White puts the cutting stone in atari with E3.', marks: [{ at: 'D3', type: 'ring', tone: 'danger' }] },
+      { play: 'D2', color: 'B', libsOf: 'D3', text: 'Black runs to D2. Two liberties.' },
+      { play: 'C2', color: 'W', libsOf: 'D3', text: 'White blocks at C2, which also strengthens the stone at C3. Black is in atari again.' },
+      { play: 'D1', color: 'B', libsOf: 'D3', text: 'Black runs onto the edge at D1.' },
+      { play: 'C1', color: 'W', libsOf: 'D3', text: 'White blocks at C1. Atari again, with one liberty at E1.' },
+      { play: 'E1', color: 'B', libsOf: 'D3', text: 'Black runs to E1, but the chain still has only one liberty, at F1.' },
+      { play: 'F1', color: 'W', tone: 'bad', text: 'White captures four stones. White answered the cut with an atari, so Black never had time to attack C3 or D4. Black should have counted the cutting stone’s liberties before cutting, and played somewhere else.' },
+    ],
+  });
+
+  ui.choice('#w-crosscut', {
+    title: 'Question: the crosscut', checkpoint: 'crosscut',
+    setup: ['.........', '.........', '.........', '.........', '..OOX....', '.O.XO....', '.........', '.........', '.........'],
+    marks: [{ at: 'D3', type: 'label', text: 'A' }, { at: 'E3', type: 'label', text: 'B' }, { at: 'C4', type: 'label', text: 'C' }, { at: 'E6', type: 'label', text: 'D' }],
+    prompt: '<p>Black’s stones at D4 and E5 and White’s stones at E4 and D5 form a crosscut. White is strong on the left, with stones at B4 and C5. It is Black’s turn. Which move is best?</p>',
+    options: [
+      { text: 'A: extend D4 downward to D3', correct: true, why: 'Correct. D4 was the stone in more danger, because it sits next to White’s strength on the left. After D3, the chain D4 and D3 has four liberties, and neither of Black’s stones can be captured. White’s stone at E4 is now the one with only two liberties.' },
+      { text: 'B: atari on E4 from E3', why: 'That is the tempting atari. White simply extends to F4, and the chain E4 and F4 has three liberties. Now Black has three weak stones, at D4, E5 and E3, and whatever Black plays next, White can capture one of them.' },
+      { text: 'C: extend D4 to the left at C4', why: 'That extends toward White’s strength. The chain D4 and C4 has only two liberties, C3 and D3. White plays D3, and Black is caught in a ladder that runs into the corner.' },
+      { text: 'D: extend E5 upward to E6', why: 'That extends the wrong stone. E5 was not in danger. White plays D3, and the stone at D4 is in atari. If it runs to C4, the chain still has only one liberty, at C3, and White captures both stones.' },
+    ],
+  });
+
+  ui.fullGame('#w-game', {
+    size: 9, komi: 7.5, title: 'A full game against the computer', checkpoint: 'full-game', idPrefix: 'l6',
+    prompt: '<p>Play a complete 9×9 game and count it at the end. Before each move, check your own stones for cutting points. Finish one game, win or lose, to complete the lesson.</p>',
+  });
+})();
+</script>

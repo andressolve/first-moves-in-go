@@ -21,7 +21,7 @@ def head_block():
     return f'{FONTS}\n<style>\n{css}\n</style>\n<script>\n{js}\n</script>'
 
 def links(target):
-    local = {'INDEX': 'index.html', 'PLAY': 'play.html', **{f'L{n}': f'lesson-{n}.html' for n in range(1, 5)}}
+    local = {'INDEX': 'index.html', 'PLAY': 'play.html', **{f'L{n}': f'lesson-{n}.html' for n in range(1, 9)}}
     if target == 'publish':
         f = ROOT / 'links.json'
         if f.exists():

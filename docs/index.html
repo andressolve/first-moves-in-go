@@ -299,6 +299,12 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
 .hero-art { margin: 0; width: min(380px, 34vw); }
 .hero-art img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 12px; }
 
+@media (max-width: 640px) {
+  /* One row of tabs that scrolls sideways, so the sticky bar stays short on phones. */
+  .lesson-tabs { flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .lesson-tabs::-webkit-scrollbar { display: none; }
+  .lesson-tabs a { flex: none; white-space: nowrap; }
+}
 @media (max-width: 760px) {
   .widget, .widget.game, .widget.big { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
   .hero { grid-template-columns: 1fr; padding-block: 32px 24px; }
@@ -2067,6 +2073,12 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
     });
   }
 
+  // On phones the tab row scrolls sideways; start it with the current page in view.
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelector('.lesson-tabs'), cur = tabs && tabs.querySelector('[aria-current]');
+    if (tabs && cur && tabs.scrollWidth > tabs.clientWidth) tabs.scrollLeft = cur.offsetLeft - tabs.offsetLeft - (tabs.clientWidth - cur.offsetWidth) / 2;
+  });
+
   Go.ui = { BoardView, explore, replay, pickPoints, choice, puzzle, puzzleSet, captureGame, fullGame, friendGame, countQuiz, progress, initLesson, libMarks };
 })();
 
@@ -2096,6 +2108,10 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
       <a href="lesson-2.html">2 · Ladders</a>
       <a href="lesson-3.html">3 · Ko</a>
       <a href="lesson-4.html">4 · Territory</a>
+      <a href="lesson-5.html">5 · Opening</a>
+      <a href="lesson-6.html">6 · Cutting</a>
+      <a href="lesson-7.html">7 · Sente</a>
+      <a href="lesson-8.html">8 · Shapes</a>
       <a href="play.html">Play a friend</a>
     </nav>
   </div>
@@ -2118,6 +2134,10 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
       <li><a href="lesson-2.html"><span class="n">2</span><span class="t">Ladders and Nets</span><span class="d">Reading ahead: chasing a stone across the board, and knowing before you start whether the chase will work.</span></a></li>
       <li><a href="lesson-3.html"><span class="n">3</span><span class="t">Suicide and Ko</span><span class="d">The two rules that look strange at first, why Go needs them, and the tricks they make possible.</span></a></li>
       <li><a href="lesson-4.html"><span class="n">4</span><span class="t">Life and Territory</span><span class="d">Two eyes, the end of the game, and counting the score. Ends with a full 9×9 game against the computer.</span></a></li>
+      <li><a href="lesson-5.html"><span class="n">5</span><span class="t">The Opening</span><span class="d">Where to put your first stones: corners, sides and the centre, low moves versus high moves, and the mistakes that lose a game early.</span></a></li>
+      <li><a href="lesson-6.html"><span class="n">6</span><span class="t">Cutting and Connecting</span><span class="d">Keeping your stones together and splitting your opponent’s apart: connections, cutting points and the crosscut.</span></a></li>
+      <li><a href="lesson-7.html"><span class="n">7</span><span class="t">Sente and Gote</span><span class="d">Which moves your opponent must answer and which they can ignore, when to play elsewhere, and how to finish a fight so that the next big move is yours.</span></a></li>
+      <li><a href="lesson-8.html"><span class="n">8</span><span class="t">Life-and-Death Shapes</span><span class="d">Which eye spaces live, which die, and which depend on who plays first: vital points, false eyes, seki, and eight problems to test them.</span></a></li>
     </ul>
     <div class="prose">
       <p><b>Want to play each other?</b> <a href="play.html">Play a Friend</a> is a board for two players on one screen, on 9×9, 13×13 or 19×19, with full rules and scoring.</p>
@@ -2126,10 +2146,6 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
       <p>If you get a puzzle wrong, read the explanation before trying again. In Go, as in chess, understanding <em>why</em> a move fails teaches more than finding the right move by luck.</p>
       <h3>Coming later</h3>
       <ul class="later">
-        <li>The opening on a 9×9 board: corners, then sides, then the centre</li>
-        <li>Cutting and connecting</li>
-        <li>Sente and gote: who has the initiative</li>
-        <li>Common life-and-death shapes</li>
         <li>Invading and reducing enemy territory</li>
         <li>The endgame: how many points is each move worth?</li>
         <li>Moving up to the full 19×19 board</li>

@@ -288,6 +288,12 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
 .hero-art { margin: 0; width: min(380px, 34vw); }
 .hero-art img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 12px; }
 
+@media (max-width: 640px) {
+  /* One row of tabs that scrolls sideways, so the sticky bar stays short on phones. */
+  .lesson-tabs { flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .lesson-tabs::-webkit-scrollbar { display: none; }
+  .lesson-tabs a { flex: none; white-space: nowrap; }
+}
 @media (max-width: 760px) {
   .widget, .widget.game, .widget.big { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
   .hero { grid-template-columns: 1fr; padding-block: 32px 24px; }

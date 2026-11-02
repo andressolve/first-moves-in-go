@@ -1,0 +1,30 @@
+// Click-through for Lesson 5: node tests/ui-click.test.js docs/lesson-5.html tests/l5-clicks.js
+module.exports = async () => {
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const btn = (sel, text) => page.evaluate((sel, text) => { const b = [...document.querySelectorAll(sel + ' button')].find(b => b.textContent === text); if (b) b.click(); return !!b; }, sel, text);
+  const steps = async (sel, n) => { for (let k = 0; k < n; k++) await btn(sel, 'Next'); console.log(sel, ':', (await status(sel)).slice(0, 90)); };
+  await steps('#w-overview', 6); await steps('#w-lines', 4); await steps('#w-starts', 3);
+  await steps('#w-enclose', 2); await steps('#w-extend', 5); await steps('#w-crawl', 7);
+  for (const p of ['C4', 'D3', 'F3', 'G4', 'G6', 'F7', 'D7', 'C6']) await clickPoint('#w-34', p);
+  await btn('#w-34', 'Check'); console.log('3-4:', await status('#w-34'));
+  await btn('#w-q-secure', 'B, the 3-4 point'); console.log('secure wrong:', (await status('#w-q-secure')).slice(0, 60));
+  await page.evaluate(() => [...document.querySelectorAll('#w-q-secure .choice')][0].click()); console.log('secure:', (await status('#w-q-secure')).slice(0, 60));
+  await clickPoint('#w-corner-set', 'C6'); console.log('corner1 wrong:', await status('#w-corner-set')); await wait(1500);
+  await clickPoint('#w-corner-set', 'E3'); console.log('corner1:', await status('#w-corner-set'));
+  await btn('#w-corner-set', 'Next problem');
+  await clickPoint('#w-corner-set', 'C6'); console.log('corner2 wrong:', await status('#w-corner-set')); await wait(1500);
+  await clickPoint('#w-corner-set', 'E4'); console.log('corner2:', await status('#w-corner-set'));
+  await clickPoint('#w-extend-try', 'G3'); console.log('ext wrong:', await status('#w-extend-try')); await wait(1500);
+  await clickPoint('#w-extend-try', 'H3'); console.log('ext:', await status('#w-extend-try'));
+  await page.evaluate(() => [...document.querySelectorAll('#w-q-wall .choice')][1].click()); console.log('wall:', (await status('#w-q-wall')).slice(0, 60));
+  await clickPoint('#w-big-set', 'B7'); console.log('big1 wrong:', await status('#w-big-set')); await wait(1500);
+  await clickPoint('#w-big-set', 'C7'); console.log('big1:', await status('#w-big-set'));
+  await btn('#w-big-set', 'Next problem');
+  await clickPoint('#w-big-set', 'E5'); console.log('big2:', await status('#w-big-set'));
+  await clickPoint('#w-game', 'E5'); await wait(4000); console.log('game:', await status('#w-game'));
+  console.log('progress:', await page.evaluate(() => document.querySelector('[data-progress-text]').textContent));
+  await page.screenshot({ path: (process.env.SHOT_DIR || require('os').tmpdir()) + '/l5-desktop.png', fullPage: true });
+  await page.setViewport({ width: 390, height: 844 });
+  await wait(500);
+  console.log('overflow at 390:', await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]));
+};

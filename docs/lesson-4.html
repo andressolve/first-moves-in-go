@@ -299,6 +299,12 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
 .hero-art { margin: 0; width: min(380px, 34vw); }
 .hero-art img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 12px; }
 
+@media (max-width: 640px) {
+  /* One row of tabs that scrolls sideways, so the sticky bar stays short on phones. */
+  .lesson-tabs { flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .lesson-tabs::-webkit-scrollbar { display: none; }
+  .lesson-tabs a { flex: none; white-space: nowrap; }
+}
 @media (max-width: 760px) {
   .widget, .widget.game, .widget.big { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
   .hero { grid-template-columns: 1fr; padding-block: 32px 24px; }
@@ -2067,6 +2073,12 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
     });
   }
 
+  // On phones the tab row scrolls sideways; start it with the current page in view.
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelector('.lesson-tabs'), cur = tabs && tabs.querySelector('[aria-current]');
+    if (tabs && cur && tabs.scrollWidth > tabs.clientWidth) tabs.scrollLeft = cur.offsetLeft - tabs.offsetLeft - (tabs.clientWidth - cur.offsetWidth) / 2;
+  });
+
   Go.ui = { BoardView, explore, replay, pickPoints, choice, puzzle, puzzleSet, captureGame, fullGame, friendGame, countQuiz, progress, initLesson, libMarks };
 })();
 
@@ -2081,6 +2093,10 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
       <a href="lesson-2.html">2 · Ladders</a>
       <a href="lesson-3.html">3 · Ko</a>
       <a href="lesson-4.html" aria-current="page">4 · Territory</a>
+      <a href="lesson-5.html">5 · Opening</a>
+      <a href="lesson-6.html">6 · Cutting</a>
+      <a href="lesson-7.html">7 · Sente</a>
+      <a href="lesson-8.html">8 · Shapes</a>
       <a href="play.html">Play a friend</a>
     </nav>
     <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
@@ -2090,7 +2106,7 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
 <main class="page">
   <header class="hero">
     <div>
-      <p class="eyebrow">Lesson 4 of 4</p>
+      <p class="eyebrow">Lesson 4 of 8</p>
       <h1>Life and Territory</h1>
       <p class="lede">So far you have been fighting over stones. Now the real game begins. This lesson shows why some groups can never be captured, how those groups claim land, and how to count who won. By the end you will play and score a complete game on a 9×9 board.</p>
       <ul class="goals">
@@ -2250,11 +2266,11 @@ dfn { font-style: normal; font-weight: 700; color: var(--accent); }
     </dl>
     <h3>Where to play next</h3>
     <div class="prose">
-      <p>You can now play real games against real people. The free server <a href="https://online-go.com" target="_blank" rel="noopener">online-go.com</a> (usually called OGS) lets you play on 9×9 boards against players of your own strength, or against computer opponents at many levels. Start with 9×9 games until you win about half of them, then try 13×13. More lessons in this course are coming. They will cover the opening, cutting and connecting, and how to fight inside your opponent’s territory.</p>
+      <p>You can now play real games against real people. The free server <a href="https://online-go.com" target="_blank" rel="noopener">online-go.com</a> (usually called OGS) lets you play on 9×9 boards against players of your own strength, or against computer opponents at many levels. Start with 9×9 games until you win about half of them, then try 13×13. The next lessons in this course cover the opening, cutting and connecting, keeping the initiative, and the shapes that decide life and death.</p>
     </div>
     <nav class="lesson-nav">
       <a href="lesson-3.html"><small>Previous lesson</small>← 3 · Suicide and Ko</a>
-      <span></span>
+      <a href="lesson-5.html"><small>Next lesson</small>5 · The Opening →</a>
     </nav>
   </section>
 </main>

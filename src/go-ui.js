@@ -1163,5 +1163,11 @@
     });
   }
 
+  // On phones the tab row scrolls sideways; start it with the current page in view.
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelector('.lesson-tabs'), cur = tabs && tabs.querySelector('[aria-current]');
+    if (tabs && cur && tabs.scrollWidth > tabs.clientWidth) tabs.scrollLeft = cur.offsetLeft - tabs.offsetLeft - (tabs.clientWidth - cur.offsetWidth) / 2;
+  });
+
   Go.ui = { BoardView, explore, replay, pickPoints, choice, puzzle, puzzleSet, captureGame, fullGame, friendGame, countQuiz, progress, initLesson, libMarks };
 })();

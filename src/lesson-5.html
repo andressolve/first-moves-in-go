@@ -1,0 +1,465 @@
+<title>The Opening</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'lesson-5' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+      <a href="{{L5}}" aria-current="page">5 · Opening</a>
+      <a href="{{L6}}">6 · Cutting</a>
+      <a href="{{L7}}">7 · Sente</a>
+      <a href="{{L8}}">8 · Shapes</a>
+      <a href="{{PLAY}}">Play a friend</a>
+    </nav>
+    <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lesson 5 of 8</p>
+      <h1>The Opening</h1>
+      <p class="lede">In Lesson 4 you played your first full game, and you probably wondered where to put your first few stones. This lesson answers that question. Unlike chess, Go has no opening book you need to memorise. A handful of principles tell you where the big points are, and on a 9×9 board a good or bad opening can decide the whole game.</p>
+      <ul class="goals">
+        <li>Choose a good first move in a corner or at the centre, and say what it gains and what it gives up.</li>
+        <li>Explain the difference between low moves, which take territory, and high moves, which build influence.</li>
+        <li>Enclose your own corner, approach your opponent’s, and extend along a side by the right distance.</li>
+        <li>Recognise four common opening mistakes, and find the biggest point on the board.</li>
+      </ul>
+    </div>
+    <!--HERO-->
+  </header>
+
+  <section class="step" id="purpose">
+    <p class="eyebrow">Part 1</p>
+    <h2>What the opening is for</h2>
+    <div class="prose">
+      <p>The <dfn>opening</dfn> <span class="term-jp">(布石 fuseki)</span> is the first part of the game, while the board is still mostly empty. Nobody is captured yet. Instead, both players stake out the areas they hope to turn into territory later, a little like explorers planting flags on an unmapped continent.</p>
+      <p>Because a stone never moves once it is played, every opening move is a long-term investment. A good opening move does three things: it claims a lot of land, it works together with your other stones, and it makes it harder for your opponent to claim land of their own.</p>
+      <p>In Lesson 4 you saw that six stones enclose 9 points in a corner, 4 on the edge and only 2 in the centre. That is why the traditional order of the opening is <b>corners first, then the sides, then the centre</b>. Step through this example to see the order in a real-looking 9×9 opening.</p>
+    </div>
+    <div id="w-overview"></div>
+    <div class="note key">
+      <span class="note-label">The order of the opening</span>
+      <p>Claim the corners first, then the sides, then the centre. A 9×9 board has one exception: the centre point is so close to all four corners that it is often worth playing very early, even as the first move. You will see why in Part 3.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>Chess players memorise opening lines because one inaccurate move can lose a pawn or walk into a fast mate. A Go opening move is almost never a blunder like that. It is better or worse by a few points, so instead of memorising sequences you learn to ask one question: <em>which move claims the most and leaves my opponent the least?</em></p>
+      <p>Some chess habits carry over well. “Develop every piece” becomes “give every stone a job”. “Don’t move the same piece twice in the opening” becomes “don’t add stones to a group that is already safe”. “Control the centre” is good advice on a 9×9 board, though less so on the big 19×19 board. One chess habit misleads: chasing a piece early to gain time. In chess, a harassed piece has to move. In Go, a lone stone in open space cannot be captured, and chasing it usually just helps it grow stronger.</p>
+    </div>
+  </section>
+
+  <section class="step" id="lines">
+    <p class="eyebrow">Part 2</p>
+    <h2>Low and high: the lines of the board</h2>
+    <div class="prose">
+      <p>Go players describe a point by how far it is from the nearest edge. The edge itself is the <dfn>first line</dfn>, the row just inside it is the second line, and so on. On a 9×9 board there are only five lines: the fifth line runs through the centre point, E5. Step through the example to see what a stone does on each line.</p>
+    </div>
+    <div id="w-lines"></div>
+    <div class="prose">
+      <p>A stone on the third line or lower is called <b>low</b>. A stone on the fourth line or higher is called <b>high</b>. Low stones take land now. High stones build <dfn>influence</dfn>: strength that faces the centre and helps you in later fights. Influence is not territory yet, but it can turn into territory, or help you attack your opponent’s stones, later in the game.</p>
+    </div>
+    <div class="note key">
+      <span class="note-label">Low and high</span>
+      <p>The third line is the line of territory. The fourth line is the line of influence. A good opening mixes the two, depending on what you need. The first and second lines are almost always too low early in the game, because a stone there claims only a thin strip along the edge.</p>
+    </div>
+    <h3>The corner points</h3>
+    <div class="prose">
+      <p>Most opening moves are made on a few special points near the corners. The point on the third line from both edges is called the <dfn>3-3 point</dfn> <span class="term-jp">(三々 san-san)</span>. On a 9×9 board, the four 3-3 points are C3, G3, C7 and G7: they are the dots printed on the board, apart from the one in the centre.</p>
+      <p>A point on the third line from one edge and the fourth line from the other edge is called a <dfn>3-4 point</dfn> <span class="term-jp">(小目 komoku)</span>. Each corner has two of them. In the lower-left corner they are C4 (third line from the left edge, fourth line from the bottom edge) and D3 (fourth line from the left edge, third line from the bottom edge).</p>
+    </div>
+    <div id="w-34"></div>
+  </section>
+
+  <section class="step" id="first-move">
+    <p class="eyebrow">Part 3</p>
+    <h2>The first move: corner or centre?</h2>
+    <div class="prose">
+      <p>On a 9×9 board, three first moves are common: a 3-3 point, a 3-4 point, and the centre point. Each one makes a different trade between security and influence. None of them is a mistake. Step through the example to compare them.</p>
+    </div>
+    <div id="w-starts"></div>
+    <div class="prose">
+      <p>The centre point has its own name: <dfn>tengen</dfn> <span class="term-jp">(天元)</span>, which means “origin of heaven”. On a big 19×19 board, tengen is far from every corner and is rarely played first. On a 9×9 board, it is only two lines away from every 3-3 point in both directions, so it helps in all four corners at once. Strong players and computer programs often start 9×9 games there.</p>
+      <p>You may also read about the 4-4 point, which is the most popular first move on 19×19 boards. On a 9×9 board the 4-4 point is D4: so close to the centre that it behaves more like a centre move than a corner move, and it leaves the 3-3 point underneath it open for your opponent. It is less common on 9×9 than the other three choices.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play Civilization or Polytopia</span>
+      <p>Choosing your first move is like founding your first city. A city tucked into a corner of the map, with coast on two sides, is safe and quick to develop: that is the 3-3 point. A city in the middle of the map can expand in every direction, but it has no natural defences: that is tengen.</p>
+      <p>The instinct that helps is expanding fast: claim the good sites before your opponent does, and don’t spend early turns on things that can wait. The instinct that misleads is the early rush. In Polytopia, a quick attack on a nearby city can win the game. In Go, attacking a stone at the start of the game rarely works, because there is so much empty space around it that it can always run or settle.</p>
+    </div>
+    <div id="w-q-secure"></div>
+  </section>
+
+  <section class="step" id="corners">
+    <p class="eyebrow">Part 4</p>
+    <h2>Enclosing and approaching a corner</h2>
+    <div class="prose">
+      <p>A stone on a 3-4 point claims a corner, but not completely. One side of the corner is still open. If you add a second stone that closes the open side, the two stones form an <dfn>enclosure</dfn> <span class="term-jp">(締まり shimari)</span>, and the corner is yours. If your opponent plays near your corner stone first, so that you can no longer enclose it, that move is called an <dfn>approach</dfn> <span class="term-jp">(掛かり kakari)</span>.</p>
+    </div>
+    <div id="w-enclose"></div>
+    <div class="prose">
+      <p>Which is better, enclosing your own corner or approaching your opponent’s? Both moves are big, and strong players often disagree. This is a judgement call, not a calculation. What matters most is the <b>direction</b> of the approach: approach from the side where you already have stones, so that your approaching stone has a friend nearby and is hard to attack.</p>
+      <p>Try both ideas. In problem 1 you play Black and enclose your corner. In problem 2 you play White and approach Black’s corner. Each problem has two good answers; find either of them.</p>
+    </div>
+    <div id="w-corner-set"></div>
+  </section>
+
+  <section class="step" id="extend">
+    <p class="eyebrow">Part 5</p>
+    <h2>Extending along the side</h2>
+    <div class="prose">
+      <p>After the corners, the next big points are on the sides. An <dfn>extension</dfn> <span class="term-jp">(開き hiraki)</span> is a move along the side, usually on the third line, a few points away from your other stones. It claims the land in between, and it gives your group room along the edge to make two eyes if it is ever attacked. A group with that kind of room is said to have a <dfn>base</dfn>.</p>
+      <p>The hard part is the distance. If you extend too little, your stones are safe but claim very little. If you extend too far, your opponent can play in the gap, and instead of one strong group you have two weak ones. Players use a rule of thumb for this:</p>
+    </div>
+    <div class="note key">
+      <span class="note-label">How far to extend</span>
+      <p>From a single stone on the third line, extend <b>two</b> spaces. From a wall two stones tall, extend <b>three</b> spaces. From a wall three stones tall, extend <b>four</b> spaces. The stronger the stones behind you, the further you may go, because a strong wall helps you attack anything that lands in the gap.</p>
+    </div>
+    <div class="prose">
+      <p>The rule is easiest to see on a bigger board, so the next example uses a 13×13 board. A “space” is an empty point left between your stones along the line.</p>
+    </div>
+    <div id="w-extend"></div>
+    <div class="prose">
+      <p>On a 9×9 board, each side has only five points on the third line between the two 3-3 points, so the distances shrink. An extension from one corner often reaches all the way to the next corner. The idea is the same, though: extend as far as your stones can safely defend, and no further.</p>
+    </div>
+    <div id="w-extend-try"></div>
+  </section>
+
+  <section class="step" id="mistakes">
+    <p class="eyebrow">Part 6</p>
+    <h2>Four common opening mistakes</h2>
+    <h3>Mistake 1: crawling along the second line</h3>
+    <div class="prose">
+      <p>When an opponent’s stones press down on yours from above, it is tempting to keep pushing along underneath them, gaining one point at a time. Players call this <dfn>crawling</dfn>. On the second line it is almost always a bad trade, as the example shows.</p>
+    </div>
+    <div id="w-crawl"></div>
+    <div class="prose">
+      <p>An old proverb puts it in three lines: the second line is the line of defeat, the third line is the line of territory, and the fourth line is the line of influence. If you are being pushed along the second line, stop crawling and play somewhere big, or jump out toward the centre before it is too late.</p>
+    </div>
+    <h3>Mistake 2: overconcentration</h3>
+    <div class="prose">
+      <p>A strong group doesn’t need more stones. Adding stones right next to a group that is already safe is called <dfn>overconcentration</dfn> <span class="term-jp">(凝り形 korigatachi)</span>: too many stones in one place, doing work that one stone could do. The best way to use a strong wall is to play some distance away from it, so that the wall and the new stone together claim a large area.</p>
+    </div>
+    <div id="w-q-wall"></div>
+    <h3>Mistake 3: touching your opponent’s stones too early</h3>
+    <div class="prose">
+      <p>When you play a stone directly next to an enemy stone, your opponent usually answers by adding a stone next to yours. Each of those answers makes their group stronger, and your stone, with its few liberties, is the one that ends up under pressure. A Go proverb says: <b>don’t touch the stones you want to attack.</b> In the opening, approach from a distance, as you did in Part 4. Contact moves are for fights that have already started, or for defending your own stones.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>In chess, attacking a piece with a pawn gains time, because the piece has to move away. In Go, nothing moves. A stone that you touch simply gets a reinforcement next to it on your opponent’s next turn. Touching an enemy stone is how you help it become strong, not how you hurt it.</p>
+    </div>
+    <h3>Mistake 4: ignoring a big point</h3>
+    <div class="prose">
+      <p>The most common mistake of all is playing a move that is good but small while a much bigger point is still empty. Before every opening move, look over the whole board and ask: is there still an empty corner? Has anyone taken the centre? Is there a side where neither player has a stone? Small local moves, such as blocking one point on the edge, can almost always wait. The next part is practice at exactly this.</p>
+    </div>
+  </section>
+
+  <section class="step" id="biggest">
+    <p class="eyebrow">Part 7</p>
+    <h2>Find the biggest point</h2>
+    <div class="prose">
+      <p>In each problem, look at the whole board before you click. Then play one move: the biggest point on the board. In problem 1 you play White; in problem 2 you play Black.</p>
+    </div>
+    <div id="w-big-set"></div>
+  </section>
+
+  <section class="step" id="full-game">
+    <p class="eyebrow">Part 8</p>
+    <h2>Play a game, and watch your opening</h2>
+    <div class="prose">
+      <p>Play a complete 9×9 game against the computer. This time, pay special attention to your first eight or ten moves. Some advice:</p>
+      <ul>
+        <li><b>Start with a big point.</b> As Black, open at the centre point E5, at a 3-3 point or at a 3-4 point. As White, take a corner the computer hasn’t touched.</li>
+        <li><b>Count the empty corners.</b> Before each of your first few moves, check whether any corner is still empty. If one is, it is probably the biggest point on the board.</li>
+        <li><b>Stay on the third and fourth lines.</b> Early in the game, a move on the first or second line claims almost nothing.</li>
+        <li><b>Don’t crowd your own stones.</b> If one of your groups is already safe, play somewhere else. Leave space between your stones, as in an extension.</li>
+        <li><b>Don’t touch the computer’s stones too early.</b> Approach from a distance, from the side where you already have stones.</li>
+        <li><b>Check your opening.</b> After about ten moves, press <b>Who owns what?</b> to see how the computer thinks the board is divided. If most of the board is already shaded in the computer’s colour, think about which of your moves were too low, too close together or too small.</li>
+      </ul>
+      <p>The game ends and is scored exactly as in Lesson 4. Finish one game, win or lose, to complete the lesson.</p>
+    </div>
+    <div id="w-game"></div>
+  </section>
+
+  <section class="step" id="recap">
+    <p class="eyebrow">Summary</p>
+    <h2>What to remember</h2>
+    <ol class="recap">
+      <li>The opening is about claiming land efficiently. Every move should claim a lot, work with your other stones and make your opponent’s job harder.</li>
+      <li>Corners first, then sides, then the centre. On a 9×9 board, the centre point is also big from the very start, because it is close to every corner.</li>
+      <li>The third line is the line of territory, the fourth line is the line of influence, and the second line is the line of defeat.</li>
+      <li>A 3-3 stone secures a corner on its own. A 3-4 stone needs a second stone, an enclosure, to secure it, and your opponent may approach it first. Approach from the side where you already have stones.</li>
+      <li>Extend two spaces from a single stone, three from a wall two stones tall and four from a wall three stones tall.</li>
+      <li>Avoid crawling on the second line, adding stones to groups that are already safe, touching enemy stones too early and playing small moves while a big point is still empty.</li>
+    </ol>
+    <h3>Words from this lesson</h3>
+    <dl class="glossary">
+      <dt>Opening (fuseki)</dt><dd>The first part of the game, when players stake out areas of the empty board.</dd>
+      <dt>Line</dt><dd>A row of points at the same distance from the nearest edge. The edge is the first line.</dd>
+      <dt>Influence</dt><dd>Strength that faces the centre. It is not territory yet, but it helps in fights and can become territory later.</dd>
+      <dt>3-3 point (san-san)</dt><dd>The point on the third line from both edges of a corner. It secures the corner with one stone.</dd>
+      <dt>3-4 point (komoku)</dt><dd>A corner point on the third line from one edge and the fourth line from the other.</dd>
+      <dt>Tengen</dt><dd>The centre point of the board. On a 9×9 board it is E5.</dd>
+      <dt>Enclosure (shimari)</dt><dd>A second stone that closes off the open side of your corner.</dd>
+      <dt>Approach (kakari)</dt><dd>A stone played near your opponent’s corner stone, so that they can no longer enclose the corner.</dd>
+      <dt>Extension (hiraki)</dt><dd>A move along the side, a few points away from your other stones, that claims land and gives the group a base.</dd>
+      <dt>Base</dt><dd>Room along the edge where a group could make two eyes if it were attacked.</dd>
+      <dt>Crawling</dt><dd>Pushing along a low line underneath the opponent’s stones, gaining a point each time while they build a wall.</dd>
+      <dt>Overconcentration (korigatachi)</dt><dd>Too many stones crowded together, doing work that fewer stones could do.</dd>
+    </dl>
+    <nav class="lesson-nav">
+      <a href="{{L4}}"><small>Previous lesson</small>← 4 · Life and Territory</a>
+      <a href="{{L6}}"><small>Next lesson</small>6 · Cutting and Connecting →</a>
+    </nav>
+  </section>
+</main>
+
+<script>
+(function () {
+  const ui = Go.ui;
+
+  // Builds board rows (top row first) from lists of black and white points.
+  function pos(black, white, size) {
+    const n = size || 9, cols = 'ABCDEFGHJKLMNOPQRST';
+    const g = Array.from({ length: n }, () => Array(n).fill('.'));
+    const put = (p, c) => { g[n - parseInt(p.slice(1), 10)][cols.indexOf(p[0])] = c; };
+    (black || []).forEach(p => put(p, 'X'));
+    (white || []).forEach(p => put(p, 'O'));
+    return g.map(r => r.join(''));
+  }
+  const terr = (pts, c) => pts.map(p => ({ at: p, type: 'terr', color: c }));
+  const label = (at, text) => ({ at, type: 'label', text });
+  const ruler = ['1', '2', '3', '4', '5'].map(k => label('A' + k, k));
+  const threeThree = ['C3', 'G3', 'C7', 'G7'].map(p => ({ at: p, type: 'circ', tone: 'good' }));
+
+  /* Part 1: an example opening */
+  ui.replay('#w-overview', {
+    title: 'Example: the order of the opening', checkpoint: 'overview', size: 9,
+    intro: 'An empty 9×9 board. Step through six moves and watch how the two players divide it.',
+    steps: [
+      { play: 'C4', color: 'B', text: 'Black starts in the lower-left corner, at C4. A corner is the cheapest place to make territory, as you saw in Lesson 4.' },
+      { play: 'G6', color: 'W', text: 'White takes the opposite corner, at G6.' },
+      { play: 'G3', color: 'B', text: 'Black takes a second corner, at G3.' },
+      { play: 'C7', color: 'W', text: 'White takes the last empty corner, at C7. Four moves have claimed four corners.' },
+      { play: 'E5', color: 'B', text: 'Black takes the centre point, E5. On a small board the centre is close to every corner, so this one stone supports both of Black’s corners and pushes the border between the colours up toward White’s side.' },
+      { play: 'E7', color: 'W', text: 'White answers on the top side, at E7, linking its two corners along the top. The board is now roughly divided: Black is building the bottom and White the top. The rest of the game will decide exactly where the border runs, mostly on the left and right sides, where the two colours meet.' },
+    ],
+  });
+
+  /* Part 2: the lines */
+  ui.replay('#w-lines', {
+    title: 'Example: the lines', checkpoint: 'lines', size: 9,
+    intro: 'The numbers along the left edge count the lines up from the bottom edge. The bottom edge is the first line, and the fifth line runs through the centre.',
+    introMarks: ruler,
+    steps: [
+      { add: [['C2', 'B']], marks: ruler.concat(terr(['C1'], 'B')), text: 'A black stone on the <b>second line</b>, at C2. It can claim only the first line underneath it, which is hardly any land. If White blocks it from above, it is stuck crawling along the edge.' },
+      { add: [['E3', 'B']], marks: ruler.concat(terr(['C1', 'E1', 'E2'], 'B')), text: 'A black stone on the <b>third line</b>, at E3. The land underneath it is two lines deep, and it is hard for White to slip in below it. This is the standard height for taking territory.' },
+      { add: [['G4', 'B']], marks: ruler.concat(terr(['C1', 'E1', 'E2'], 'B')), text: 'A black stone on the <b>fourth line</b>, at G4. It sits higher, so White can slide in underneath it on the third line, and the land below it is not yet safe. In exchange, it faces the centre, which makes it stronger in fights and better for claiming land toward the middle later.' },
+      { marks: ruler.concat(terr(['C1', 'E1', 'E2'], 'B')), text: 'No line is best in every situation. Lower stones take land now; higher stones give up some certain land for speed and power toward the centre. The small squares show the land each low stone can count on.' },
+    ],
+  });
+
+  ui.pickPoints('#w-34', {
+    title: 'Exercise: find the 3-4 points', checkpoint: 'find-34', size: 9,
+    marks: threeThree,
+    prompt: '<p>The four 3-3 points are circled. Click all eight 3-4 points on the board, two in each corner, then press <b>Check</b>.</p>',
+    targets: ['C4', 'D3', 'F3', 'G4', 'G6', 'F7', 'D7', 'C6'],
+    stoneMessage: 'Click empty points.',
+    extraHint: 'Each 3-4 point is exactly one step away from a circled 3-3 point, in the direction away from its corner.',
+    missHint: 'Each circled 3-3 point has two 3-4 points next to it: one step along each edge, away from the corner.',
+    success: 'Correct. Each 3-4 point is one step from a 3-3 point, along one of the edges: C4 and D3, F3 and G4, G6 and F7, D7 and C6.',
+  });
+
+  /* Part 3: first moves */
+  ui.replay('#w-starts', {
+    title: 'Example: three first moves', checkpoint: 'starts', size: 9,
+    intro: 'Here are the three common first moves on a 9×9 board, one at a time.',
+    steps: [
+      { add: [['C3', 'B']], text: '<b>The 3-3 point, C3.</b> It is on the third line from both edges, so it claims the corner in a single move, and it is very hard for White to take that corner away. The price: it is low on both sides, so it does little toward the centre.' },
+      { remove: ['C3'], add: [['C4', 'B']], text: '<b>A 3-4 point, C4.</b> It is low toward the left edge and high toward the bottom edge: a balance between territory and influence. The corner is not yet completely safe, because the bottom side next to it is still open. A second stone can close it, as you will see in Part 4.' },
+      { remove: ['C4'], add: [['E5', 'B']], marks: threeThree, text: '<b>The centre point, E5.</b> It claims no territory of its own yet. But it is only two lines from every 3-3 point (circled) in both directions, so it will help Black in whichever corner the fighting starts. It is the most flexible first move on a 9×9 board.' },
+    ],
+  });
+
+  ui.choice('#w-q-secure', {
+    title: 'Question', checkpoint: 'q-secure',
+    setup: pos(['E5'], []),
+    marks: [label('C3', 'A'), label('C4', 'B'), label('D4', 'C')],
+    prompt: '<p>Black has opened at the centre point. Now White chooses a corner. Black’s centre stone will help Black attack in any corner, so White wants the corner stone that is <b>hardest to attack</b>. Which point is the most secure?</p>',
+    options: [
+      { text: 'A, the 3-3 point', correct: true, why: 'Correct. The 3-3 point is the most secure first stone in a corner. It is low on both sides, so it already has room along both edges to make eyes, and there is no space underneath it for Black to slip into. White gives up influence toward the centre, but Black’s stone already controls the centre anyway.' },
+      { text: 'B, the 3-4 point', why: 'This is a perfectly good move, and strong players use it. But it is not the most secure. A 3-4 stone leaves one side of the corner open until it is enclosed, and with Black’s centre stone nearby, Black can approach it with help. Which point is low on both sides?' },
+      { text: 'C, the 4-4 point', why: 'This is the least secure of the three. D4 sits diagonally next to Black’s centre stone, it is high on both sides, and it leaves the 3-3 point at C3 empty, so Black could slide in underneath it. Look for the point that is low on both sides.' },
+    ],
+  });
+
+  /* Part 4: enclosures and approaches */
+  ui.replay('#w-enclose', {
+    title: 'Example: enclosure or approach', checkpoint: 'enclose', setup: pos(['C4'], []),
+    intro: 'Black has a stone on the 3-4 point at C4. It claims the lower-left corner, but the bottom side to its right is still open.',
+    steps: [
+      { add: [['E3', 'B']], marks: terr(['A1', 'B1', 'C1', 'D1', 'A2', 'B2', 'C2', 'D2', 'A3', 'B3', 'C3', 'D3'], 'B'), text: 'Black adds a stone at E3. The two stones form an <b>enclosure</b>. There is no longer enough room in the corner for a white stone to live, so the corner, roughly the area marked with small squares, belongs to Black.' },
+      { remove: ['E3'], add: [['E3', 'W']], marks: [{ at: 'E3', type: 'tri' }], text: 'Now suppose White plays at E3 first. This is an <b>approach</b>. Black can no longer enclose the corner on that side, and the corner is now shared: it could end up Black’s, White’s, or split between them, depending on what happens next.' },
+    ],
+  });
+
+  const contact = 'That stone touches Black’s stone. In the opening, touching a stone helps it: Black answers next to your stone, which makes the corner stronger, and your stone is the one left with few liberties.';
+  ui.puzzleSet('#w-corner-set', {
+    id: 'corner', title: 'Enclose and approach',
+    puzzles: [
+      {
+        setup: pos(['C4'], ['G6']), toPlay: 'B',
+        prompt: '<p>You play Black. Your stone at C4 has not been enclosed yet. Play one move that forms an enclosure with it.</p>',
+        answers: {
+          E3: 'Correct. E3 is the low enclosure: both stones are on the third line from the bottom, so the land underneath them is very secure.',
+          E4: 'Correct. E4 is the high enclosure: it faces the centre, so it trades a little security for more influence.',
+        },
+        wrong: {
+          C3: 'C3 makes the corner very solid, but the two stones claim hardly more than one stone did. The open side, along the bottom, is still open.',
+          D3: 'D3 is solid but cramped. Both stones hug the corner, and the bottom side to the right stays open. A good enclosure reaches a little further along the open side.',
+          D4: 'D4 sits right beside your stone. Two stones side by side claim almost nothing extra, and the corner underneath them is still open.',
+          C5: 'C5 sits directly above your stone. It strengthens the left side, but the open side of this corner is the bottom, where White could still approach at E3.',
+          F3: 'F3 is a looser shape. On a small board it leaves enough room at D3 and E3 for White to slip in between, so the corner is not closed yet.',
+        },
+        defaultWrong: 'That move doesn’t enclose the corner. An enclosure is a second stone, one or two points from the first, along the open side of the corner. Here the open side is the bottom.',
+        hint: 'Look along the bottom side, one or two points to the right of C4.',
+        explain: 'There are two standard enclosures for a 3-4 stone like C4: the low one at E3 and the high one at E4. Either way, the corner is closed.',
+      },
+      {
+        setup: pos(['C4', 'G7'], ['G3']), toPlay: 'W',
+        prompt: '<p>You play White. Black has an unenclosed stone at C4. Approach it, from the side where White already has a stone.</p>',
+        answers: {
+          E3: 'Correct. E3 is the low approach.',
+          E4: 'Correct. E4 is the high approach.',
+        },
+        wrong: {
+          C6: 'C6 does approach the corner, but from above, along the left side, where White has no stones. Your new stone would be alone, and Black could answer at E3, which encloses the corner and also comes close to your stone at G3.',
+          C5: contact, D4: contact, B4: contact, C3: contact,
+          D3: 'D3 is very close to Black’s stone and deep inside Black’s corner. Black can block it from the outside, and your stone is squeezed against the edge with little room to make eyes.',
+          F3: 'F3 stays too close to home. It makes your stone at G3 stronger, but it is far enough from C4 that Black can still close the corner, for example at D3.',
+          F4: 'F4 stays close to home. It makes your stone at G3 stronger, but Black can still close the corner, for example at E3 or D3.',
+        },
+        defaultWrong: 'That isn’t an approach. An approach is a stone one or two points from the corner stone, along an open side of the corner, so that Black can no longer enclose it.',
+        hint: 'White’s stone is at G3, on the bottom side. Approach C4 from the bottom.',
+        explain: 'Both E3 and E4 approach from the bottom, toward your own stone at G3, so the approaching stone has a friend nearby. Black can no longer enclose the corner on that side.',
+      },
+    ],
+  });
+
+  /* Part 5: extensions, shown on 13×13 */
+  ui.replay('#w-extend', {
+    title: 'Example: how far to extend', checkpoint: 'extend', setup: pos(['D3'], [], 13),
+    intro: 'A 13×13 board. Black has a single stone on the third line at D3, near the lower-left corner, and wants to claim more of the bottom side.',
+    steps: [
+      { add: [['G3', 'B']], marks: [{ at: 'E3', type: 'dot' }, { at: 'F3', type: 'dot' }], text: 'From one stone, extend <b>two spaces</b>: to G3, leaving E3 and F3 empty (the small dots). If a white stone lands at E3 or F3, it has a black stone very close on each side and no room to make a base, so Black can attack it.' },
+      { remove: ['G3'], add: [['K3', 'B']], marks: ['E3', 'F3', 'G3', 'H3', 'J3'].map(p => ({ at: p, type: 'dot' })), text: 'Suppose Black is greedy and extends five spaces, to K3, leaving E3, F3, G3, H3 and J3 empty.' },
+      { play: 'G3', color: 'W', text: 'White plays in the gap, at G3. There is room on both sides of the white stone, so Black cannot squeeze it from both sides at once. Now Black has two separate stones to look after instead of one secure group, and White has a foothold right in the middle of “Black’s” side.', tone: 'warn' },
+      { remove: ['G3', 'K3'], add: [['D4', 'B'], ['H3', 'B']], marks: ['E3', 'F3', 'G3'].map(p => ({ at: p, type: 'dot' })), text: 'Back to the start, but now Black has a wall two stones tall, D3 and D4. A wall like this is strong, so it can extend <b>three spaces</b>, to H3.' },
+      { remove: ['H3'], add: [['D5', 'B'], ['J3', 'B']], marks: ['E3', 'F3', 'G3', 'H3'].map(p => ({ at: p, type: 'dot' })), text: 'With a wall three stones tall, D3, D4 and D5, Black can extend <b>four spaces</b>, to J3. The taller the wall, the more power it has over the gap, and the further it can reach.' },
+    ],
+  });
+
+  ui.puzzle('#w-extend-try', {
+    title: 'Exercise', checkpoint: 'extend-try', setup: pos(['D3', 'D4'], [], 13), toPlay: 'B',
+    prompt: '<p>You play Black on the 13×13 board. You have a wall two stones tall at D3 and D4. Use the rule of thumb: play one move that extends along the bottom side, on the third line, by the right distance.</p>',
+    answers: { H3: 'Correct. From a wall two stones tall, extend three spaces: E3, F3 and G3 are left empty between your stones.' },
+    wrong: {
+      E3: 'E3 is right next to your wall. It claims almost nothing new. That is overconcentration.',
+      F3: 'F3 is a one-space extension. It is very safe, but far too narrow for a strong wall.',
+      G3: 'G3 is a two-space extension, the right distance from a single stone. Your wall is two stones tall, so it can safely reach one point further.',
+      J3: 'J3 is a four-space extension, the right distance from a wall three stones tall. Your wall is only two stones tall, so this leaves a gap White could use.',
+      K3: 'K3 is much too far. White can play in the middle of the gap, with room on both sides.',
+      H4: 'H4 is the right distance, but it is on the fourth line. An extension that claims the side should be on the third line, where the land underneath it is secure.',
+      H2: 'H2 is the right distance, but it is on the second line, which is too low: it claims only a thin strip along the edge.',
+    },
+    defaultWrong: 'Extend along the bottom side, on the third line (row 3), to the right of your wall.',
+    hint: 'Count the empty points you leave between the wall and your new stone.',
+    explain: 'The wall at D3 and D4 is strong, so it can protect a gap of three points.',
+  });
+
+  /* Part 6: mistakes */
+  const crawlEnd = pos(['C2', 'D2', 'E2', 'F2', 'G2'], ['C3', 'D3', 'E3', 'F3', 'G3']);
+  const wallShade = [];
+  for (const c of 'BCDEFGH') for (const r of [4, 5, 6]) wallShade.push({ at: c + r, type: 'shade', color: 'W', alpha: 0.35 });
+  ui.replay('#w-crawl', {
+    title: 'Example: crawling', checkpoint: 'crawl', setup: pos(['C2'], ['C3', 'D3']),
+    intro: 'White’s stones at C3 and D3 sit on the third line, right above Black’s stone at C2. Black decides to push along the second line.',
+    steps: [
+      { play: 'D2', color: 'B', text: 'Black pushes along the second line, at D2.' },
+      { play: 'E3', color: 'W', text: 'White blocks on the third line, at E3.' },
+      { play: 'E2', color: 'B', text: 'Black pushes again.' },
+      { play: 'F3', color: 'W', text: 'White blocks again.' },
+      { play: 'F2', color: 'B', text: 'And again.' },
+      { play: 'G3', color: 'W', text: 'And White blocks again.' },
+      { play: 'G2', color: 'B', marks: terr(['C1', 'D1', 'E1', 'F1', 'G1'], 'B').concat(wallShade), tone: 'warn', text: 'Count what each side has gained. Black’s five stones claim little more than the five points underneath them. White’s five stones form a wall that faces the whole upper half of the board (shaded), where White will find it easy to build territory or attack. Black got a few points; White got the rest of the board to play with.' },
+    ],
+  });
+
+  ui.choice('#w-q-wall', {
+    title: 'Question', checkpoint: 'q-wall',
+    setup: pos(['C2', 'D2', 'E2', 'F2', 'G2', 'G7'], ['C3', 'D3', 'E3', 'F3', 'G3']),
+    marks: [label('D4', 'A'), label('C6', 'B'), label('H2', 'C')],
+    prompt: '<p>The crawling from the example is over, and Black has also taken the upper-right corner at G7. It is White’s move. Which move makes the best use of White’s wall?</p>',
+    options: [
+      { text: 'A, on top of the wall', why: 'D4 sits right on top of the wall, which is already strong. The new stone adds almost nothing. That is overconcentration: two stones in one place doing the work of one.' },
+      { text: 'B, the upper-left corner', correct: true, why: 'Correct. The upper-left corner is still empty, and a stone at C6 works together with the wall below it: between them they mark out a large area on the left side of the board. Because the wall is strong, the new stone can be far away from it.' },
+      { text: 'C, blocking on the second line', why: 'H2 stops Black from crawling one more point to the right. It is worth a point or two, but the empty corner at the top left is much bigger. A small move like this can wait until later in the game.' },
+    ],
+    after: [{ at: 'C6', type: 'circ', tone: 'good' }],
+  });
+
+  /* Part 7: biggest point */
+  const lowCorner = 'That is in the right corner, but too close to the edge. A stone on the first or second line claims very little. Play on the third line.';
+  ui.puzzleSet('#w-big-set', {
+    id: 'big', title: 'Biggest point',
+    puzzles: [
+      {
+        setup: pos(['C4', 'G3', 'E5'], ['G6', 'E7']), toPlay: 'W',
+        prompt: '<p>You play White. Find the biggest point on the board and play there.</p>',
+        answers: {
+          C7: 'Correct. C7, the 3-3 point, takes the last empty corner securely.',
+          C6: 'Correct. C6, a 3-4 point, takes the last empty corner and also faces down the left side toward Black’s stone at C4.',
+        },
+        wrong: {
+          D7: 'D7 is in the right corner, but it touches your own stone at E7. Two stones side by side claim little more than one. Leave E7 to look after the top side, and claim the corner a little further away.',
+          D6: 'D6 is in the right corner, but it is high and close to Black’s centre stone, and it leaves the 3-3 point at C7 open underneath it. Pick a lower, more secure point.',
+          C5: 'C5 touches Black’s stone at C4. That helps Black get stronger, and the upper-left corner is still not yours.',
+          B7: lowCorner, B6: lowCorner, B8: lowCorner, C8: lowCorner, A7: lowCorner, B9: lowCorner, A8: lowCorner, A9: lowCorner, C9: lowCorner, D8: lowCorner,
+        },
+        defaultWrong: 'That move is not useless, but there is a bigger point. One corner of the board, the upper left, is still completely empty, and both players want it.',
+        hint: 'Look at all four corners before you choose, and remember which line claims territory.',
+        explain: 'An empty corner is almost always the biggest point in the opening. If White doesn’t take it, Black will, and then Black’s C4 and E5 will join up with it into one large area.',
+      },
+      {
+        setup: pos(['C4', 'G3'], ['G6', 'C7']), toPlay: 'B',
+        prompt: '<p>You play Black. All four corners are taken. Find the biggest point on the board and play there.</p>',
+        answers: { E5: 'Correct.' },
+        wrong: {
+          E4: 'That is close to the right area, but a little too low. E5 is the one point that is equally close to all four corners, so it does the most.',
+          E6: 'That is close to the right area, but E5, the exact centre, is equally close to all four corners, so it does the most.',
+          D5: 'That is close to the right area, but E5, the exact centre, is equally close to all four corners, so it does the most.',
+          F5: 'That is close to the right area, but E5, the exact centre, is equally close to all four corners, so it does the most.',
+          E3: 'E3 claims some of the bottom side, but the bottom is already leaning toward Black. The point that decides where the border runs is higher up.',
+        },
+        defaultWrong: 'There is a bigger point. All four corners are taken. On a 9×9 board, which single point is close to all four corners at once?',
+        hint: 'Think about the special point from Part 3.',
+        explain: 'The centre point supports both of Black’s corners and pushes the border between the colours up toward White. If White took it instead, White’s top side would bulge down into the middle of the board, and Black’s two corners would be left low and far apart.',
+      },
+    ],
+  });
+
+  /* Part 8 */
+  ui.fullGame('#w-game', {
+    size: 9, komi: 7.5, title: 'A full game against the computer', checkpoint: 'full-game', idPrefix: 'l5',
+    prompt: '<p>Play a complete 9×9 game. Plan your first moves using this lesson, and count the game at the end. Finish one game, win or lose, to complete the lesson.</p>',
+  });
+})();
+</script>

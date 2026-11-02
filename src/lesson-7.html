@@ -1,0 +1,391 @@
+<title>Sente and Gote</title>
+<!--HEAD-->
+<script>Go.ui.initLesson({ id: 'lesson-7' });</script>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="course" href="{{INDEX}}">First Moves <span>in Go</span></a>
+    <nav class="lesson-tabs" aria-label="Lessons">
+      <a href="{{L1}}">1 · Liberties</a>
+      <a href="{{L2}}">2 · Ladders</a>
+      <a href="{{L3}}">3 · Ko</a>
+      <a href="{{L4}}">4 · Territory</a>
+      <a href="{{L5}}">5 · Opening</a>
+      <a href="{{L6}}">6 · Cutting</a>
+      <a href="{{L7}}" aria-current="page">7 · Sente</a>
+      <a href="{{L8}}">8 · Shapes</a>
+      <a href="{{PLAY}}">Play a friend</a>
+    </nav>
+    <div class="meter"><span class="meter-track" data-progress><i></i></span><span data-progress-text></span><button type="button" data-progress-reset>Reset</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lesson 7 of 8</p>
+      <h1>Sente and Gote: the Initiative</h1>
+      <p class="lede">In every game of Go, one question comes up on almost every move: who gets to choose where the next important move is played? The player who keeps choosing usually wins. This lesson teaches you to tell which moves force an answer and which don’t, when you can safely ignore a threat, and how to finish a fight so that the next big move is yours.</p>
+      <ul class="goals">
+        <li>Tell whether a move is sente (it must be answered) or gote (it can be ignored).</li>
+        <li>Play a forcing move first and the big move second, and choose the version of a sequence that leaves you to move.</li>
+        <li>Decide when to ignore a threat and play elsewhere, by comparing what you lose with what you gain.</li>
+        <li>Keep forcing moves that gain nothing in reserve, for example as ko threats.</li>
+      </ul>
+    </div>
+    <!--HERO-->
+  </header>
+
+  <section class="step" id="sente">
+    <p class="eyebrow">Part 1</p>
+    <h2>Who chooses the next move?</h2>
+    <div class="prose">
+      <p>Some moves demand an answer. If you put your opponent’s stones in atari, your opponent usually has to save them. When they do, it is your turn again, and you are free to play anywhere you like. Other moves demand nothing: your opponent can ignore them and play the biggest move somewhere else.</p>
+      <p>Go players have a name for each kind of move. A move that your opponent must answer is <dfn>sente</dfn> <span class="term-jp">(先手)</span>, which means “first hand”. A move that your opponent does not need to answer is <dfn>gote</dfn> <span class="term-jp">(後手)</span>, which means “second hand”. Step through the example below to see the difference.</p>
+    </div>
+    <div id="w-sente"></div>
+    <div class="note key">
+      <span class="note-label">Sente and gote</span>
+      <p>A move is <b>sente</b> if your opponent must answer it, so that you get to move again afterwards. A move is <b>gote</b> if your opponent can ignore it and play elsewhere.</p>
+      <p>Players also say that you <b>have sente</b> when it is your turn and nothing on the board needs answering. Then you choose where the next important move is played. Keeping sente is how you get the big points before your opponent does.</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play chess</span>
+      <p>Sente is what chess players call a <i>tempo</i>. A check, an attack on a piece or a threat of mate forces a reply, and if your threatening move also improves your position, you have gained a tempo. That instinct is a big help in Go: look for moves that threaten something and build something at the same time.</p>
+      <p>One chess instinct misleads you, though: the feeling that every threat must be answered. In chess you must answer a check by the rules, and losing a piece is usually a disaster. In Go nothing is compulsory, and losing a stone or two is often a small price. A player who answers every threat lets the opponent decide where the whole game is played. Part 5 shows you when to ignore a threat.</p>
+    </div>
+  </section>
+
+  <section class="step" id="answer">
+    <p class="eyebrow">Part 2</p>
+    <h2>Must you answer?</h2>
+    <div class="prose">
+      <p>To tell whether your opponent’s move is sente, ask yourself one question: <b>if I don’t answer, what will my opponent play next, and what will it cost me?</b> These are the most common kinds of sente move:</p>
+      <ul>
+        <li><b>An atari.</b> If you don’t save the stones, they are captured.</li>
+        <li><b>A threat to cut.</b> If you don’t connect, your opponent plays between your stones and splits them into weak groups that may be captured.</li>
+        <li><b>A threat to break into territory.</b> A stone on the border of your territory may threaten to push further in, so that you lose points.</li>
+      </ul>
+      <p>If the honest answer is “nothing much”, the move is gote, and you are free to play the biggest move elsewhere. Try it on two positions. In both, Black has just played the stone with the small circle on it.</p>
+    </div>
+    <div id="w-q-cut"></div>
+    <div id="w-q-touch"></div>
+  </section>
+
+  <section class="step" id="free">
+    <p class="eyebrow">Part 3</p>
+    <h2>Free moves and expensive moves</h2>
+    <div class="prose">
+      <p>Look back at the example in Part 1. Black’s atari at E3 gained something: Black’s wall moved one point further into the bottom of the board. And because White had to answer, the gain cost Black nothing. Black still got the corner at G7 on the very next move.</p>
+      <p>A gote move is different. After it, your opponent plays the biggest move on the board. So a gote move is a trade: you get whatever your move gains, and your opponent gets the best point that is left.</p>
+    </div>
+    <div class="note key">
+      <span class="note-label">The price of a move</span>
+      <p>A sente move that gains even a little is <b>free</b>: you keep the gain and you still get to choose the next move.</p>
+      <p>A gote move costs you the initiative. Play it only if it is worth more than the move your opponent will play in reply.</p>
+    </div>
+    <div class="prose">
+      <p>Here is a common way to waste a move. Black has trapped a white stone and is tempted to capture it.</p>
+    </div>
+    <div id="w-q-capture"></div>
+  </section>
+
+  <section class="step" id="ending">
+    <p class="eyebrow">Part 4</p>
+    <h2>Ending a fight in sente</h2>
+    <div class="prose">
+      <p>Fights in one part of the board are usually short sequences: you play, your opponent answers, and sometimes you have to answer back. What matters is who plays the <b>last</b> move of the sequence. If your opponent has to play it, you <b>end in sente</b> and you choose the next move. If you have to play it, you <b>end in gote</b>, and your opponent chooses.</p>
+      <p>Often you can choose between two versions of a sequence that look almost the same. Here is the position from Part 1 again. This time Black puts the white stone in atari from the other side.</p>
+    </div>
+    <div id="w-gote"></div>
+    <div class="prose">
+      <p>Both ataris threatened the same stone. The difference was what happened to Black’s own stone. At E3 it was safely connected, so White’s answer ended the sequence. At F4 it was weak, so Black had to spend another move on it. Before you play a move that forces an answer, check that the answer won’t create a new threat against you.</p>
+      <p>Now try a new position.</p>
+    </div>
+    <div id="w-q-side"></div>
+  </section>
+
+  <section class="step" id="tenuki">
+    <p class="eyebrow">Part 5</p>
+    <h2>Tenuki: when to ignore a threat</h2>
+    <div class="prose">
+      <p>Playing somewhere else instead of answering your opponent’s last move is called <dfn>tenuki</dfn> <span class="term-jp">(手抜き)</span>. Sente is not a rule of the game. It is a judgement, and your opponent can always choose to ignore your move.</p>
+      <p>Before you answer a threat, compare two things:</p>
+      <ul>
+        <li>What you lose if you ignore it and your opponent carries out the threat.</li>
+        <li>What you gain by playing the biggest move somewhere else instead.</li>
+      </ul>
+      <p>If the move elsewhere is bigger, tenuki is right. Then your opponent faces the same question: carry out the threat, or answer your move?</p>
+    </div>
+    <div class="note">
+      <span class="note-label">If you play Civilization or Polytopia</span>
+      <p>In both games the turn is your scarcest resource. A player who sends units to every tile the AI raids never finishes the wonder or the next city. A player who ignores an army marching on the capital loses the game. Go asks you to make this judgement on every single move.</p>
+      <p>The instinct that misleads is letting the opponent’s last move decide where you play. Against a computer in Civilization or Polytopia, it is easy to spend whole turns reacting to whatever the AI just did and forget your own plan. In Go, answer only the threats that are bigger than the best move of your own.</p>
+    </div>
+    <div class="prose"><p>In both questions, White has just played the stone with the small circle on it, and the upper-right corner is still empty. Decide whether Black should answer or play tenuki.</p></div>
+    <div id="w-q-tenuki1"></div>
+    <div id="w-q-tenuki2"></div>
+  </section>
+
+  <section class="step" id="reserve">
+    <p class="eyebrow">Part 6</p>
+    <h2>Keep forcing moves in reserve</h2>
+    <div class="prose">
+      <p>A sente move that you play mainly so that your opponent has to answer is called a <dfn>forcing move</dfn> <span class="term-jp">(利かし kikashi)</span>. Black’s atari at E3 in Part 1 was a forcing move.</p>
+      <p>Once you know about forcing moves, it is tempting to play every one as soon as you see it, since your opponent has to answer anyway. That is often a mistake. While you haven’t played a forcing move, the threat stays on the board, and your opponent has to keep it in mind. Once you play it and your opponent answers, the weakness is mended for good. A forcing move that gains nothing right now just throws away one of your options.</p>
+      <p>Go players call the possibilities hidden in a position <dfn>aji</dfn> <span class="term-jp">(味)</span>, which means “taste”. If White’s shape has weaknesses that Black might use later, players say White has bad aji. Strong players leave aji alone until they can use it.</p>
+      <p>One of the best uses of a forcing move you have saved is as a ko threat. You met ko threats in Lesson 3: a move elsewhere that your opponent must answer, so that you may retake the ko. Here is the position from Part 1 again, with one difference: there is a ko in the upper right, and Black has not played the atari at E3 yet.</p>
+    </div>
+    <div id="w-ko"></div>
+    <div id="w-q-when"></div>
+    <div class="prose">
+      <p>So when should you play a forcing move? Play it when it gains something, as Black’s atari at E3 did in Part 1. Play it when your opponent is about to remove it, for example by playing the same point. And play it when you need it as a ko threat. Otherwise, keep it.</p>
+    </div>
+  </section>
+
+  <section class="step" id="problems">
+    <p class="eyebrow">Part 7</p>
+    <h2>Problems: forcing move first</h2>
+    <div class="prose">
+      <p>In every problem you play Black, and you make two moves. First play a forcing move. The computer plays White’s answer. Then play your second move. If you get a move wrong, the board resets and you start the problem again.</p>
+    </div>
+    <div id="w-set"></div>
+  </section>
+
+  <section class="step" id="full-game">
+    <p class="eyebrow">Part 8</p>
+    <h2>Play a full game and keep sente</h2>
+    <div class="prose">
+      <p>Play a 9×9 game against the computer and use what you learned. Some advice before you start:</p>
+      <ul>
+        <li><b>Ask before every move.</b> Does the computer’s last move threaten anything? If it does, how much would you lose, and is that more than the best move elsewhere?</li>
+        <li><b>Don’t answer moves that threaten nothing.</b> If nothing is in danger, take the biggest point on the board instead.</li>
+        <li><b>Look for moves that do two jobs.</b> The best moves often defend one of your weaknesses and threaten something at the same time, so your opponent must answer and you keep sente.</li>
+        <li><b>Finish fights in sente.</b> Before a forcing move, check that your own stones will be safe after your opponent answers, so that you don’t have to spend another move on them.</li>
+        <li><b>Keep forcing moves that gain nothing.</b> Save them for later. If a ko starts, they are your ko threats.</li>
+        <li><b>Use the hint.</b> The <b>Who owns what?</b> button shows who the computer thinks will own each point. Large areas that nobody owns yet are where the big moves are.</li>
+      </ul>
+      <p>When both sides have passed, check the scoring screen and press <b>Accept the result</b>. If the computer is too strong at first, choose <b>Komi 0.5</b>.</p>
+    </div>
+    <div id="w-game"></div>
+  </section>
+
+  <section class="step" id="recap">
+    <p class="eyebrow">Summary</p>
+    <h2>What to remember</h2>
+    <ol class="recap">
+      <li>A sente move must be answered, so you get to move again. A gote move can be ignored, so your opponent chooses the next move.</li>
+      <li>To judge a move, ask: if I don’t answer, what will my opponent do next, and what will it cost me?</li>
+      <li>A sente move that gains even a little is free. A gote move must be worth more than the move your opponent plays in reply.</li>
+      <li>Choose the version of a sequence that ends with your opponent answering, so that you end in sente.</li>
+      <li>Tenuki is right when the move elsewhere is bigger than what you lose by ignoring the threat.</li>
+      <li>Keep forcing moves that gain nothing in reserve. Play them when they gain something, when your opponent is about to remove them, or as ko threats.</li>
+    </ol>
+    <h3>Words from this lesson</h3>
+    <dl class="glossary">
+      <dt>Sente (先手)</dt><dd>A move that your opponent must answer, so that you move again. “Having sente” means it is your turn and nothing needs answering.</dd>
+      <dt>Gote (後手)</dt><dd>A move that your opponent can ignore, so that they choose where to play next.</dd>
+      <dt>Tenuki (手抜き)</dt><dd>Playing elsewhere instead of answering your opponent’s last move.</dd>
+      <dt>Forcing move (利かし kikashi)</dt><dd>A sente move played mainly so that the opponent has to answer.</dd>
+      <dt>Aji (味)</dt><dd>The possibilities hidden in a position, such as a weakness in the opponent’s shape that you might use later.</dd>
+    </dl>
+    <nav class="lesson-nav">
+      <a href="{{L6}}"><small>Previous lesson</small>← 6 · Cutting and Connecting</a>
+      <a href="{{L8}}"><small>Next lesson</small>8 · Life-and-Death Shapes →</a>
+    </nav>
+  </section>
+</main>
+
+<script>
+(function () {
+  const ui = Go.ui;
+
+  // Part 1 and Part 4: the white stone at E4 can be put in atari from two sides.
+  const P1 = ['.........', '.........', '..X......', '.........', '...XX....', '...XO.O..', '...X.OO..', '.........', '.........'];
+
+  ui.replay('#w-sente', {
+    title: 'Example: a move that must be answered', checkpoint: 'sente-replay',
+    setup: P1,
+    intro: 'Black to play. The upper-right corner is still empty, and the triangle at G7 marks a good point there. It is the last big corner on the board. The white stone at E4 has two liberties, shown as green dots: E3 and F4.',
+    introMarks: [{ at: 'G7', type: 'tri' }, { at: 'E3', type: 'lib' }, { at: 'F4', type: 'lib' }],
+    steps: [
+      { play: 'E3', color: 'B', libsOf: 'E4', marks: [{ at: 'E4', type: 'ring', tone: 'danger' }, { at: 'G7', type: 'tri' }],
+        text: 'Black plays E3. The white stone at E4 is in atari: its only liberty is F4. Black’s new stone is joined to the black stone at D3, so it is safe, and it pushes Black’s wall one point further into the bottom of the board.' },
+      { play: 'F4', color: 'W', marks: [{ at: 'G7', type: 'tri' }],
+        text: 'White must answer. If White played anywhere else, Black would play F4, capture the stone at E4 and break into White’s lower right. So White connects at F4, and the stone is safe.' },
+      { play: 'G7', color: 'B', tone: 'good',
+        text: 'Now it is Black’s turn again, and Black takes the corner at G7. Black’s atari at E3 was <b>sente</b>: White had to answer it. White’s answer at F4 was <b>gote</b>: it threatened nothing, so Black was free to play the big point.' },
+    ],
+  });
+
+  ui.choice('#w-q-cut', {
+    title: 'Question 1', checkpoint: 'q-cut',
+    setup: ['.......', '.......', '..X....', '..O..O.', '..XOX..', '.....O.', '.......'],
+    marks: [{ at: 'E3', type: 'last' }],
+    prompt: '<p>Black has just played E3. None of White’s stones is in atari. Must White answer this move?</p>',
+    options: [
+      { text: 'Yes. White should connect at D4.', correct: true, why: 'Correct. Black is threatening to cut at D4. That single move would put both white stones in atari at once: the stone at C4 would have only B4 left, and the stone at D3 would have only D2 left. White could save only one of them. After White connects at D4, the three stones form one chain with four liberties, and nothing can be cut.' },
+      { text: 'No. Nothing is in atari, so White can play elsewhere.', why: 'Look one move ahead. If White plays elsewhere, where would Black play next? Count how many liberties each white stone would have after that move.' },
+    ],
+    after: [{ at: 'D4', type: 'circ', tone: 'good' }],
+  });
+
+  ui.choice('#w-q-touch', {
+    title: 'Question 2', checkpoint: 'q-touch',
+    setup: ['.......', '.......', '..X.X..', '...X...', '.OOOOO.', '.......', '.......'],
+    marks: [{ at: 'D4', type: 'last' }],
+    prompt: '<p>Black has just played D4, right up against White’s wall. Must White answer this move?</p>',
+    options: [
+      { text: 'Yes. A stone touching White’s wall is a threat.', why: 'Not really. Count the liberties of White’s five stones, and look for a gap in the wall that Black could cut through. What could Black do next that would hurt White?' },
+      { text: 'No. White can play elsewhere.', correct: true, why: 'Correct. White’s five stones stand in a straight line with no gaps, so there is nothing to cut, and they still have 11 liberties. Black’s stone threatens nothing, so White can play the biggest move somewhere else. A stone that touches yours is not automatically a threat.' },
+    ],
+  });
+
+  ui.choice('#w-q-capture', {
+    title: 'Question', checkpoint: 'q-capture',
+    setup: ['.........', '.........', '..X......', '.........', '.........', '.....O...', 'XXXX..O..', '.OX......', '..X......'],
+    marks: [{ at: 'G7', type: 'tri' }],
+    prompt: '<p>Black to play. The white stone at B2 is trapped inside Black’s corner. Even if White moved first, it could not escape. The upper-right corner is empty, and the triangle at G7 marks a good point there. Which should Black do?</p>',
+    options: [
+      { text: 'Capture the stone at B2, starting with A2 or B1.', why: 'Capturing the stone takes two moves, an atari and then the capture, and White doesn’t need to answer either of them. While Black is busy capturing, White takes the corner. The stone can’t escape anyway, so leave it where it is.' },
+      { text: 'Take the empty corner at G7.', correct: true, why: 'Correct. The stone at B2 is already dead. If White extends to A2, Black plays B1, and if White extends to B1, Black plays A2: either way the white stones are in atari with nowhere to go. Spending moves to capture it would be gote and would gain nothing, because a dead stone is removed for free at the end of the game (you saw this in Lesson 4). The empty corner is the biggest point on the board.' },
+    ],
+  });
+
+  ui.replay('#w-gote', {
+    title: 'Example: a sequence that ends in gote', checkpoint: 'gote-replay',
+    setup: P1,
+    intro: 'The same position as in Part 1. Black wants to put the white stone at E4 in atari and then take the corner at G7.',
+    introMarks: [{ at: 'G7', type: 'tri' }, { at: 'E3', type: 'lib' }, { at: 'F4', type: 'lib' }],
+    steps: [
+      { play: 'F4', color: 'B', marks: [{ at: 'E4', type: 'ring', tone: 'danger' }, { at: 'F4', type: 'ring', tone: 'danger' }, { at: 'G7', type: 'tri' }],
+        text: 'This time Black plays the atari at F4. The white stone at E4 has only one liberty, E3. But look at Black’s new stone: it is surrounded by white stones on three sides, so it has only one liberty too, F5.' },
+      { play: 'E3', color: 'W', libsOf: 'F4', marks: [{ at: 'F4', type: 'ring', tone: 'danger' }, { at: 'G7', type: 'tri' }],
+        text: 'White escapes by playing E3, which joins the stone at E4 to White’s stones at F3 and G3. Black’s stone at F4 is still in atari. (White could also have captured it straight away by playing F5.)' },
+      { play: 'F5', color: 'B', marks: [{ at: 'G7', type: 'tri' }],
+        text: 'Black must save the stone by connecting at F5. This move threatens nothing, so White doesn’t need to answer it.' },
+      { play: 'G7', color: 'W', tone: 'bad',
+        text: 'So White takes the last big corner. Black’s sequence <b>ended in gote</b>: Black had to play its last move, and White chose the next big point. The point E3 also ended up on White’s side instead of Black’s.' },
+    ],
+  });
+
+  ui.choice('#w-q-side', {
+    title: 'Question', checkpoint: 'q-side',
+    setup: ['.........', '.........', '..OO.X...', '..O.OX...', '....XX...', '.........', '......X..', '.........', '.........'],
+    marks: [{ at: 'E7', type: 'label', text: 'A' }, { at: 'D6', type: 'label', text: 'B' }, { at: 'C3', type: 'tri' }],
+    prompt: '<p>Black to play. Black wants to put the white stone at E6 in atari and then take the empty lower-left corner, marked with a triangle. Which atari ends in sente?</p>',
+    options: [
+      { text: 'A, at E7', correct: true, why: 'Correct. After E7, the white stone’s only liberty is D6, and White must connect there. Black’s stone at E7 is joined to the black stones at F7, F6 and F5, so it is safe. White’s answer threatens nothing, and Black takes the corner next. The sequence ended in sente.' },
+      { text: 'B, at D6', why: 'Look at the stone you would play at D6. Its only liberty would be D5. White can capture it straight away, or connect at E7, which leaves your stone still in atari. Either way you must spend another move, and White takes the corner.' },
+    ],
+    after: [{ at: 'E7', type: 'circ', tone: 'good' }],
+  });
+
+  ui.choice('#w-q-tenuki1', {
+    title: 'Question 1', checkpoint: 'q-tenuki1',
+    setup: ['.........', '.........', '..X......', '.........', '.........', '..X..O...', '..X...O..', '.....OXO.', '.........'],
+    marks: [{ at: 'H2', type: 'last' }, { at: 'G7', type: 'tri' }],
+    prompt: '<p>White has just played H2, putting the black stone at G2 in atari. Should Black save the stone, or play tenuki and take the corner at G7?</p>',
+    options: [
+      { text: 'Save the stone by playing G1.', why: 'Read it out first. After G1, how many liberties do the two black stones have? What happens when White plays F1? Running from a lost cause only adds more stones to the capture.' },
+      { text: 'Play tenuki and take the corner.', correct: true, why: 'Correct. The stone at G2 can’t be saved. If Black plays G1, the two stones have only two liberties, F1 and H1, and White plays F1 to put them back in atari with no way out. One stone deep inside White’s area is worth very little, and running would only add a second stone to White’s capture. The empty corner is worth far more.' },
+    ],
+  });
+
+  ui.choice('#w-q-tenuki2', {
+    title: 'Question 2', checkpoint: 'q-tenuki2',
+    setup: ['.........', '.........', '..X.O....', '...OXO...', '...OXO...', '...OXO...', '..X...O..', '..X......', '.........'],
+    marks: [{ at: 'E7', type: 'last' }, { at: 'G7', type: 'tri' }],
+    prompt: '<p>White has just played E7, putting the three black stones at E6, E5 and E4 in atari. Their only liberty is E3. Should Black play tenuki and take the corner at G7?</p>',
+    options: [
+      { text: 'Yes. Take the corner.', why: 'Three stones are a lot to lose, and these three split White’s stones into two groups. Losing them would cost much more than one corner. Find the move that gives them more liberties.' },
+      { text: 'No. Extend to E3.', correct: true, why: 'Correct. These three stones split White’s position in two. If White captures them by playing E3, Black loses three stones, White’s stones are no longer divided, and the bottom of the board becomes White’s. After Black extends to E3, the chain has four stones and three liberties, D3, F3 and E2, and it reaches towards Black’s stones at C3 and C2. This threat is bigger than the corner.' },
+    ],
+    after: [{ at: 'E3', type: 'circ', tone: 'good' }],
+  });
+
+  // Part 6: the Part 1 position with a ko in the upper right.
+  ui.replay('#w-ko', {
+    title: 'Example: a forcing move saved for a ko', checkpoint: 'ko-replay',
+    setup: ['.........', '.....XO..', '..X.X.XO.', '.....XO..', '...XX....', '...XO.O..', '...X.OO..', '.........', '.........'],
+    intro: 'The black stone at G7 has only one liberty, F7. White is about to capture it, which starts a ko. Black has not yet played the atari at E3.',
+    introMarks: [{ at: 'G7', type: 'ring', tone: 'danger' }],
+    steps: [
+      { play: 'F7', color: 'W', text: 'White plays F7 and captures the black stone at G7. This is a ko: the white stone at F7 now has one liberty, G7, but Black may not retake there straight away.', marks: [{ at: 'G7', type: 'x', tone: 'danger' }] },
+      { play: 'E3', color: 'B', libsOf: 'E4', marks: [{ at: 'E4', type: 'ring', tone: 'danger' }],
+        text: 'So Black plays a ko threat: the atari at E3. If White ignores it, Black captures the stone at E4 with F4.' },
+      { play: 'F4', color: 'W', text: 'White answers by connecting at F4.' },
+      { play: 'G7', color: 'B', tone: 'good',
+        text: 'Now Black may retake the ko at G7, because two moves were played elsewhere in between. It is White who needs a ko threat now. If Black had played the atari at E3 earlier, just because it was sente, Black would have had no threat here and would have lost the ko.' },
+    ],
+  });
+
+  ui.choice('#w-q-when', {
+    title: 'Question', checkpoint: 'q-when',
+    prompt: '<p>Black has a forcing move: an atari that White will certainly answer. Right now it gains nothing, and there is no ko on the board. When should Black play it?</p>',
+    options: [
+      { text: 'Now, because sente moves are free.', why: 'Not quite. A sente move is free when it gains something. This one gains nothing yet, and once it is played and answered, the threat is gone for good. Keep it until you need it.' },
+      { text: 'Later, when it gains something or when Black needs a ko threat.', correct: true, why: 'Correct. Until it is played, the threat stays on the board and White has to keep it in mind. Play it when it gains something, when White is about to remove it, or when you need a ko threat.' },
+      { text: 'Never. Forcing moves are bad.', why: 'Forcing moves are good, at the right time. In Part 1, Black’s atari at E3 gained ground and cost nothing. The question is only when to play them.' },
+    ],
+  });
+
+  // Part 7 problem 3: White has just taken the ko at C2.
+  const koBoard = Go.Board.fromRows(['.........', '.........', '......X..', '.....XOX.', '.....XO..', '.......O.', '..XO..O..', '.X.XO....', '..XO.....']);
+  koBoard.play('C2', Go.WHITE);
+  koBoard.toPlay = Go.BLACK;
+
+  ui.puzzleSet('#w-set', {
+    id: 'forcing', title: 'Forcing move first',
+    puzzles: [
+      {
+        setup: ['.........', '.........', '..X......', '....XXX..', '....XO...', '......O..', '.....OO..', '.........', '.........'],
+        toPlay: 'B',
+        marks: [{ at: 'C3', type: 'tri' }],
+        prompt: '<p>Black to play. The triangle at C3 marks the big point in the empty lower-left corner. Before you take it, put the white stone at F5 in atari in a way that ends in sente. Make two moves: the atari first, then C3.</p>',
+        tree: { G5: { reply: 'F4', msg: 'White connects at F4. Now take the big point.', next: { C3: { win: 'Well played.' } } } },
+        wrong: {
+          F4: 'Your stone at F4 would have only one liberty, E4. White connects at G5, which leaves your stone in atari, so you must spend a move saving it, and White takes the corner.',
+          C3: 'C3 is the big point, but play the atari first. If you take C3 now, White can connect at G5 and your chance is gone. The atari gains ground and costs you nothing, because White must answer it.',
+        },
+        defaultWrong: 'That isn’t the move this problem is looking for. First put the stone at F5 in atari from the side where your own stone stays safe, and then take C3.',
+        hint: 'The stone at F5 has two liberties. Which one can you take without leaving your own stone weak?',
+        explain: 'The atari at G5 was joined to your stone at G6, so it was safe. White’s only answer was to connect, so the sequence ended in sente, and you took the corner as well.',
+      },
+      {
+        setup: ['.........', '.........', '..X......', '.........', '.........', '...XX....', '...XO.O..', '...X.O...', '....XO...'],
+        toPlay: 'B',
+        marks: [{ at: 'G7', type: 'tri' }],
+        prompt: '<p>Black to play. The triangle at G7 marks the big point in the empty upper-right corner. But at the bottom there is one point that is a forcing move for both players: whoever plays there first makes the other answer. Make two moves: that point first, then G7.</p>',
+        tree: { E2: { reply: 'F3', msg: 'White must save the stone at E3, so White connects at F3. Now take the big point.', next: { G7: { win: 'Well played.' } } } },
+        wrong: {
+          G7: 'G7 is the big point, but White would answer by playing E2. That puts your stone at E1 in atari, so you must connect at D1, and White gets to choose the next move. Take the shared point first.',
+          F3: 'After F3 your own stone has only one liberty, F4. White connects at E2, which puts both F3 and your stone at E1 in atari at the same time. You can save only one of them.',
+          D1: 'D1 makes your stone at E1 safe, but it threatens nothing, so White simply takes G7. Look for a move that protects E1 and attacks at the same time.',
+        },
+        defaultWrong: 'That isn’t the move this problem is looking for. Find the point at the bottom that would be a forcing move for White as well as for you, and play it first. Then take G7.',
+        hint: 'Find the empty point that touches both your stone at E1 and the white stone at E3.',
+        explain: 'E2 protected your stone at E1 and put the white stone at E3 in atari at the same time. White had to answer, so you kept sente and took G7 too. A point that is a forcing move for both players is worth playing before almost anything else.',
+      },
+      {
+        board: koBoard,
+        toPlay: 'B',
+        prompt: '<p>There is a ko in the lower left. White has just captured a black stone by playing C2, so you may not retake at D2 straight away. Win the ko: first play a ko threat that White must answer, then retake at D2.</p>',
+        tree: { H5: { reply: 'G4', msg: 'White saves its two stones by connecting at G4. Now you may retake the ko.', next: { D2: { win: 'You retook the ko.' } } } },
+        wrong: {
+          G4: 'That is a threat, but an expensive one. Your stone at G4 would have only one liberty, F4, so White answers by capturing it there. You could then retake the ko, but you would have given White a stone for nothing. Find a threat that costs you nothing.',
+          E1: 'E1 puts the white stone at D1 in atari, but White answers at D2. That saves D1 and fills the ko point at the same time, so the ko is over.',
+        },
+        defaultWrong: 'White doesn’t need to answer that move. White would simply connect at D2, and the ko would be over. Look for a move that threatens to capture white stones.',
+        hint: 'The two white stones at G6 and G5 have only two liberties.',
+        explain: 'H5 put two white stones in atari, so White had to answer, and then the ko was yours to retake. Your stone at H5 was joined to the black stone at H6, so the threat cost you nothing. This is why it pays to keep forcing moves in reserve.',
+      },
+    ],
+  });
+
+  ui.fullGame('#w-game', {
+    size: 9, komi: 7.5, title: 'A full game against the computer', checkpoint: 'full-game', idPrefix: 'l7',
+    prompt: '<p>Play a complete 9×9 game and count it at the end. Before each move, check whether the computer’s last move really needs an answer. Finish one game, win or lose, to complete the lesson.</p>',
+  });
+})();
+</script>
