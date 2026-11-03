@@ -13,6 +13,17 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were publishe
 ## Where things live
 
 - **Main copy: claude.ai artifacts** (Andres decided this on 2026-11-01). Send learners the home page: https://claude.ai/artifact/3DMxoQgME51Fg9tnQe3NET. Every page's artifact URL is in `links.json` (gitignored, keys `INDEX`, `L1`…`L8`, `PLAY`). Index, lessons 1–4 and Play a Friend are set to "Anyone with the link" (lessons 5–8 were published private on 2026-11-02; Andres was asked to share them); a newly published artifact starts private and Andres must share it from its Share menu (Claude cannot change sharing), so tell him whenever a new page is published.
+- All artifact URLs, in case `links.json` is missing (recreate it from this list):
+  - Home page (`INDEX`): https://claude.ai/artifact/3DMxoQgME51Fg9tnQe3NET
+  - Lesson 1 (`L1`): https://claude.ai/artifact/GEGPgMzThGPP4SwCAYyKkN
+  - Lesson 2 (`L2`): https://claude.ai/artifact/K1d6jjnHMr4QmdeC8vykQJ
+  - Lesson 3 (`L3`): https://claude.ai/artifact/7TqGqmYaUTkgR6rYMhR85c
+  - Lesson 4 (`L4`): https://claude.ai/artifact/FSd6JqtL2NGzfkohRiWiHd
+  - Play a Friend (`PLAY`): https://claude.ai/artifact/8mH6at6kZkiwBjYxDjmYhz
+  - Lesson 5 (`L5`): https://claude.ai/artifact/RCY8rEGxdXdWSNx52BJ6KX
+  - Lesson 6 (`L6`): https://claude.ai/artifact/Wrxy9w6m73SdePk3MdrFHN
+  - Lesson 7 (`L7`): https://claude.ai/artifact/BK8TvUKwXFsfwBpXSBTg7t
+  - Lesson 8 (`L8`): https://claude.ai/artifact/3AUQv97mvVJBzSaP5BPp9U
 - Mirror: GitHub Pages at https://andressolve.github.io/first-moves-in-go/, from the public repo https://github.com/andressolve/first-moves-in-go (branch `main`, serves `docs/`). Keep it in sync, but the artifacts come first.
 
 ## Files
@@ -23,7 +34,8 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were publishe
 - `src/lesson-N.html`, `src/index.html` and `src/play.html` (the Play a Friend page): page sources. `<!--HEAD-->` is replaced by fonts, CSS and JS; `<!--HERO-->` by the lesson's illustration; `{{L1}}`…`{{L8}}`, `{{INDEX}}` and `{{PLAY}}` by links.
 - `build.py`: bundles every page into one self-contained HTML file in `docs/`.
 - `tests/verify-lesson.js`: loads a lesson's widget specs and checks every puzzle against the engine (answers legal and capturing, kill and save puzzles having exactly the intended solutions, replays legal).
-- `tests/ui-click.test.js`: clicks through a built page in headless Chrome, running a script such as `tests/l1-clicks.js` or `tests/play-clicks.js` (example: `node tests/ui-click.test.js docs/play.html tests/play-clicks.js`). It needs `puppeteer-core`; install it somewhere and pass its path in the `PUPPETEER` environment variable.
+- `tests/ui-click.test.js`: clicks through a built page in headless Chrome, running a script such as `tests/l1-clicks.js` or `tests/play-clicks.js` (example: `node tests/ui-click.test.js docs/play.html tests/play-clicks.js`). It needs `puppeteer-core`: run `npm init -y && npm i puppeteer-core` in the session scratchpad and pass `<scratchpad>/node_modules/puppeteer-core` in the `PUPPETEER` environment variable. It uses the installed Google Chrome. Click scripts exist for lessons 1 and 5–8 and for Play a Friend; `l5-clicks.js` and `l7-clicks.js` save screenshots to `SHOT_DIR` or `SHOTS` (default: the system temp folder).
+- `tests/verify-ld.js` with `tests/ld-solver.js`: exhaustive life-and-death check for lesson 8 (see below).
 
 ## Workflow for a change
 
@@ -32,6 +44,17 @@ Interactive HTML lessons teaching the board game Go. Lessons 1–4 were publishe
 3. Run `python3 build.py`. It writes `publish/` (artifact bodies with artifact links) and `docs/` (GitHub Pages files with relative links).
 4. Republish every changed page from `publish/` to its existing artifact URL (pass `url` from `links.json` when working in a new session). For a new page: publish it, add its URL to `links.json`, rebuild, and republish every page so all the top bars link to it.
 5. Commit `src/` and `docs/` together and push, so the GitHub Pages mirror stays in sync.
+
+## Republishing an existing artifact from a new session
+
+The Artifact tool refuses to overwrite a page this session has not viewed, and saves the live version to a file. To get past it safely:
+1. Check that nobody changed the live page: rebuild the previous commit (`git worktree add <scratchpad>/old HEAD`, copy `links.json` in, run `build.py` there) and diff its `publish/` file against the saved live copy. The only expected difference is the host's `<html><head>…<body>` wrapper.
+2. Lessons are large and count as viewed at once. The home page and Play a Friend (about 100 KB) count only after the saved file is read through to its last line, in chunks of about 1,000 lines.
+3. Publish again with `url`. If it says "identical content already refused", fetch the page with `action: "read"` and then publish once more.
+
+## Open item as of 2026-11-03
+
+Lessons 5–8 were published private. Andres was asked to set each to "Anyone with the link"; confirm with him that this was done.
 
 ## Writing puzzles
 
